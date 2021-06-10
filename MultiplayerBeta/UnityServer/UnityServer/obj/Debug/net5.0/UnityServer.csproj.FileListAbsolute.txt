@@ -1,0 +1,16 @@
+F:\.Projects\VisualStudio\UnityServer\UnityServer\bin\Debug\net5.0\UnityServer.exe
+F:\.Projects\VisualStudio\UnityServer\UnityServer\bin\Debug\net5.0\UnityServer.deps.json
+F:\.Projects\VisualStudio\UnityServer\UnityServer\bin\Debug\net5.0\UnityServer.runtimeconfig.json
+F:\.Projects\VisualStudio\UnityServer\UnityServer\bin\Debug\net5.0\UnityServer.runtimeconfig.dev.json
+F:\.Projects\VisualStudio\UnityServer\UnityServer\bin\Debug\net5.0\UnityServer.dll
+F:\.Projects\VisualStudio\UnityServer\UnityServer\bin\Debug\net5.0\ref\UnityServer.dll
+F:\.Projects\VisualStudio\UnityServer\UnityServer\bin\Debug\net5.0\UnityServer.pdb
+F:\.Projects\VisualStudio\UnityServer\UnityServer\obj\Debug\net5.0\UnityServer.GeneratedMSBuildEditorConfig.editorconfig
+F:\.Projects\VisualStudio\UnityServer\UnityServer\obj\Debug\net5.0\UnityServer.AssemblyInfoInputs.cache
+F:\.Projects\VisualStudio\UnityServer\UnityServer\obj\Debug\net5.0\UnityServer.AssemblyInfo.cs
+F:\.Projects\VisualStudio\UnityServer\UnityServer\obj\Debug\net5.0\UnityServer.csproj.CoreCompileInputs.cache
+F:\.Projects\VisualStudio\UnityServer\UnityServer\obj\Debug\net5.0\UnityServer.dll
+F:\.Projects\VisualStudio\UnityServer\UnityServer\obj\Debug\net5.0\ref\UnityServer.dll
+F:\.Projects\VisualStudio\UnityServer\UnityServer\obj\Debug\net5.0\UnityServer.pdb
+F:\.Projects\VisualStudio\UnityServer\UnityServer\obj\Debug\net5.0\UnityServer.genruntimeconfig.cache
+F:\.Projects\VisualStudio\UnityServer\UnityServer\obj\Debug\net5.0\UnityServer.csprojAssemblyReference.cache
