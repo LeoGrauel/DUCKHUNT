@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using System.Numerics;
 
 namespace UnityServer
 {
@@ -77,13 +75,16 @@ namespace UnityServer
             }
         }
 
-        public static void UDPTest(int toclient)
+        public static void SpawnPlayer(int toClient, Player player)
         {
-            using (Packet packet = new Packet((int)ServerPackets.udpTest))
+            using (Packet packet = new Packet((int)ServerPackets.spawnPlayer))
             {
-                packet.Write("A test packet for UDP.");
+                packet.Write(player.id);
+                packet.Write(player.username);
+                packet.Write(player.position);
+                packet.Write(player.rotation);
 
-                SendUDPData(toclient, packet);
+                SendTCPData(toClient, packet);
             }
         }
 

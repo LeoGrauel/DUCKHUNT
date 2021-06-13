@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Numerics;
 using System.Net;
 using System.Net.Sockets;
 
@@ -14,6 +15,7 @@ namespace UnityServer
         public static int dataBuffersize = 4096;
 
         public int id;
+        public Player player;
         public TCP tcp;
         public UDP udp;
 
@@ -156,7 +158,6 @@ namespace UnityServer
             public void Connect(IPEndPoint endPoint)
             {
                 this.endPoint = endPoint;
-                ServerSend.UDPTest(id);
             }
 
             public void SendData(Packet packet)
@@ -177,6 +178,29 @@ namespace UnityServer
                         Server.packetHandlers[packetId](id, packet);
                     }
                 });
+            }
+        }
+
+        public void SendIntoGame(string playerName)
+        {
+            player = new Player(id, playerName, new Vector3(0,0,0) );
+
+            foreach (Client client in Server.clients.Values)
+            {
+                if (client.player != null)
+                {
+                    if (client.id != id)
+                    {
+                        ServerSend.SpawnPlayer(id,client.player);
+                    }
+                }
+            }
+            foreach (Client client in Server.clients.Values)
+            {
+                if (client.player != null)
+                {
+                    ServerSend.SpawnPlayer(client.id, player);
+                }
             }
         }
     }
