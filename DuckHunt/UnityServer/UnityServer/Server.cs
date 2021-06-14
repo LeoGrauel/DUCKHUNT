@@ -11,7 +11,7 @@ namespace UnityServer
 {
     public class Server
     {
-        public static int MaxPlayer { get; set; }
+        public static int MaxPlayers { get; set; }
         public static int Port { get; set; }
 
         public static Dictionary<int, Client> clients = new Dictionary<int, Client>();
@@ -23,7 +23,7 @@ namespace UnityServer
 
         public static void Start(int maxplayers, int port)
         {
-            MaxPlayer = maxplayers;
+            MaxPlayers = maxplayers;
             Port = port;
 
             InitializeServerData();
@@ -44,7 +44,7 @@ namespace UnityServer
             tcpListener.BeginAcceptTcpClient(new AsyncCallback(TCPConnectionCallback), null);
             Console.WriteLine($"Incomming connection from {client.Client.RemoteEndPoint}...");
 
-            for (int i = 1; i <= MaxPlayer; i++)
+            for (int i = 1; i <= MaxPlayers; i++)
             {
                 if (clients[i].tcp.socket == null)
                 {
@@ -113,14 +113,15 @@ namespace UnityServer
 
         private static void InitializeServerData()
         {
-            for (int i = 1; i <= MaxPlayer; i++)
+            for (int i = 1; i <= MaxPlayers; i++)
             {
                 clients.Add(i, new Client(i));
             }
 
             packetHandlers = new Dictionary<int, PacketHandler>()
             {
-                { (int)ClientPackets.welcomeReceived, ServerHandle.WelcomeReceived }
+                { (int)ClientPackets.welcomeReceived, ServerHandle.WelcomeReceived },
+                { (int)ClientPackets.playerMovement, ServerHandle.PlayerMovement }
             };
             Console.WriteLine("Initialized packets.");
         }

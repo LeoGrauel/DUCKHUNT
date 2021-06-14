@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
         GameObject _player;
         if (_id == Client.instance.myId)
         {
-            _player = Instantiate(localPlayerPrefab, _position, _rotation);
+           _player = Instantiate(localPlayerPrefab, _position, _rotation);
         }
         else
         {
