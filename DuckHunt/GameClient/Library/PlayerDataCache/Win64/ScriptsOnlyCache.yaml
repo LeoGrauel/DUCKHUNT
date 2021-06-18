@@ -63,51 +63,51 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 5472}
+      Script: {instanceID: 1544}
     - Class: 114
-      Script: {instanceID: 5714}
+      Script: {instanceID: 1792}
     - Class: 114
-      Script: {instanceID: 5742}
+      Script: {instanceID: 1820}
     - Class: 114
-      Script: {instanceID: 5954}
+      Script: {instanceID: 2038}
     - Class: 114
-      Script: {instanceID: 5962}
+      Script: {instanceID: 2046}
     - Class: 114
-      Script: {instanceID: 6134}
+      Script: {instanceID: 2218}
     - Class: 114
-      Script: {instanceID: 6264}
+      Script: {instanceID: 2354}
     - Class: 114
-      Script: {instanceID: 6368}
+      Script: {instanceID: 2460}
     - Class: 114
-      Script: {instanceID: 6512}
+      Script: {instanceID: 2614}
     - Class: 114
-      Script: {instanceID: 6552}
+      Script: {instanceID: 2654}
     - Class: 114
-      Script: {instanceID: 6698}
+      Script: {instanceID: 2800}
     - Class: 114
-      Script: {instanceID: 6750}
+      Script: {instanceID: 2852}
     - Class: 114
-      Script: {instanceID: 6790}
+      Script: {instanceID: 2892}
     - Class: 114
-      Script: {instanceID: 7044}
+      Script: {instanceID: 3146}
     - Class: 114
-      Script: {instanceID: 7166}
+      Script: {instanceID: 3268}
     - Class: 114
-      Script: {instanceID: 7308}
+      Script: {instanceID: 3410}
     - Class: 114
-      Script: {instanceID: 7580}
+      Script: {instanceID: 3694}
     - Class: 114
-      Script: {instanceID: 7592}
+      Script: {instanceID: 3706}
     - Class: 114
-      Script: {instanceID: 7882}
+      Script: {instanceID: 3996}
     - Class: 114
-      Script: {instanceID: 7904}
+      Script: {instanceID: 4022}
     - Class: 114
-      Script: {instanceID: 8024}
+      Script: {instanceID: 4144}
     - Class: 114
-      Script: {instanceID: 8200}
+      Script: {instanceID: 4320}
     - Class: 114
-      Script: {instanceID: 8370}
+      Script: {instanceID: 4494}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -728,4 +728,5 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Multiplayer/Testing/SampleScene.unity
-  playerPath: D:/.Projects/GitHub/DUCKHUNT/DuckHunt/GameClient/Build/CT Project.exe
+  playerPath: D:/.Projects/GitHub/DUCKHUNT/DuckHunt/GameClient/Build/CT Project_Data/CT
+    Project.exe

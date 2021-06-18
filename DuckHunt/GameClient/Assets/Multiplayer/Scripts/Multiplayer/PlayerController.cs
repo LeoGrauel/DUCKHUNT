@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
         SendInputToServer();
     }
 
+    /// <summary>Sends player input to the server.</summary>
     private void SendInputToServer()
     {
         bool[] _inputs = new bool[]
@@ -16,7 +17,8 @@ public class PlayerController : MonoBehaviour
             Input.GetKey(KeyCode.W),
             Input.GetKey(KeyCode.S),
             Input.GetKey(KeyCode.A),
-            Input.GetKey(KeyCode.D)
+            Input.GetKey(KeyCode.D),
+            Input.GetKey(KeyCode.Space)
         };
 
         ClientSend.PlayerMovement(_inputs);

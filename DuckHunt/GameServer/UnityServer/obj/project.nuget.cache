@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "NYZVphJxrLZS45xRiWmEESAIxgPUy6XiPMoRU/+t5sAoxZCjO+++IlcqljXMHQEb4uV5RIlz1e/DvNCDZ6V01w==",
+  "success": true,
+  "projectFilePath": "D:\\.Projects\\GitHub\\DUCKHUNT\\DuckHunt\\UnityServer\\UnityServer\\UnityServer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jtmau\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
