@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NYZVphJxrLZS45xRiWmEESAIxgPUy6XiPMoRU/+t5sAoxZCjO+++IlcqljXMHQEb4uV5RIlz1e/DvNCDZ6V01w==",
+  "dgSpecHash": "YVLPnz0VfyxTpWWxtAyQktTJmzrP64ucAXMPm+D7KDDent/PGzo5sqTRCfuBlrnXYLvNhI0pqIuCw5ojWhRtKg==",
   "success": true,
-  "projectFilePath": "D:\\.Projects\\GitHub\\DUCKHUNT\\DuckHunt\\UnityServer\\UnityServer\\UnityServer.csproj",
+  "projectFilePath": "D:\\.Projects\\GitHub\\DUCKHUNT\\DuckHunt\\GameServer\\UnityServer\\UnityServer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jtmau\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512"
   ],

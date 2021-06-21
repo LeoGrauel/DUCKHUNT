@@ -20,16 +20,12 @@ namespace GameServer
             Server.clients[_fromClient].SendIntoGame(_username);
         }
 
-        public static void PlayerMovement(int _fromClient, Packet _packet)
+        public static void PlayerTransform(int _fromClient, Packet packet)
         {
-            bool[] _inputs = new bool[_packet.ReadInt()];
-            for (int i = 0; i < _inputs.Length; i++)
-            {
-                _inputs[i] = _packet.ReadBool();
-            }
-            Quaternion _rotation = _packet.ReadQuaternion();
+            Vector3 position = packet.ReadVector3();
+            Quaternion quaternion = packet.ReadQuaternion();
 
-            Server.clients[_fromClient].player.SetInput(_inputs, _rotation);
+            Server.clients[_fromClient].player.updateTransform(position, quaternion);
         }
     }
 }

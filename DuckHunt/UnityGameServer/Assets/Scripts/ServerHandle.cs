@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ServerHandle
 {
@@ -17,15 +15,13 @@ public class ServerHandle
         Server.clients[_fromClient].SendIntoGame(_username);
     }
 
-    public static void PlayerMovement(int _fromClient, Packet _packet)
+    public static void PlayerTransform(int _fromClient, Packet packet)
     {
-        bool[] _inputs = new bool[_packet.ReadInt()];
-        for (int i = 0; i < _inputs.Length; i++)
-        {
-            _inputs[i] = _packet.ReadBool();
-        }
-        Quaternion _rotation = _packet.ReadQuaternion();
+        Vector3 position = packet.ReadVector3();
+        Quaternion rotation = packet.ReadQuaternion();
 
-        Server.clients[_fromClient].player.SetInput(_inputs, _rotation);
+        Client client = Server.clients[_fromClient];
+
+        client.UpdateTransform(position, rotation);
     }
 }

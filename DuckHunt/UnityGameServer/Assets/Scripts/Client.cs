@@ -10,9 +10,11 @@ public class Client
     public static int dataBufferSize = 4096;
 
     public int id;
-    public Player player;
+    public string username;
     public TCP tcp;
     public UDP udp;
+
+    
 
     public Client(int _clientId)
     {
@@ -212,28 +214,22 @@ public class Client
     /// <param name="_playerName">The username of the new player.</param>
     public void SendIntoGame(string _playerName)
     {
-        player = NetworkManager.instance.InstantiatePlayer();
-        player.Initialize(id, _playerName);
+        //player = NetworkManager.instance.InstantiatePlayer();
+        //player.Initialize(id, _playerName);
 
         // Send all players to the new player
         foreach (Client _client in Server.clients.Values)
         {
-            if (_client.player != null)
+            if (_client.id != id)
             {
-                if (_client.id != id)
-                {
-                    ServerSend.SpawnPlayer(id, _client.player);
-                }
+                ServerSend.SpawnPlayer(id, _client);
             }
         }
 
         // Send the new player to all players (including himself)
         foreach (Client _client in Server.clients.Values)
         {
-            if (_client.player != null)
-            {
-                ServerSend.SpawnPlayer(_client.id, player);
-            }
+            ServerSend.SpawnPlayer(_client.id, _client);
         }
     }
 
@@ -241,12 +237,6 @@ public class Client
     private void Disconnect()
     {
         Debug.Log($"{tcp.socket.Client.RemoteEndPoint} has disconnected.");
-
-        ThreadManager.ExecuteOnMainThread(() =>
-        {
-            UnityEngine.Object.Destroy(player.gameObject);
-            player = null;
-        });
 
         tcp.Disconnect();
         udp.Disconnect();
