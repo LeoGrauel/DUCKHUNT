@@ -1,5 +1,9 @@
 sceneSetups:
+<<<<<<< Updated upstream
 - path: Assets/Maps/Farm/Farm.unity
+=======
+- path: Assets/Scenes/MainMenu/S_MainMenu.unity
+>>>>>>> Stashed changes
   isLoaded: 1
   isActive: 1
   isSubScene: 0

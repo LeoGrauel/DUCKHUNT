@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public class MatchMaker : MonoBehaviour
 {
-    public Canvas serverBrowser;
-    public InputField input;
-
     public void searchforServer()
     {
         Debug.Log("Test");
