@@ -38,15 +38,18 @@ public class DB : MonoBehaviour
                     }
                 case "Username or Password is Incorrect":
                     {
+                        mainmenu.loginerrortext.text = "Username or Password is Incorrect";
                         Debug.LogWarning("Username or Password is Incorrect");
                         break;
                     }
                 case "Username or Password is Incorrect...":
                     {
+                        mainmenu.loginerrortext.text = "Username or Password is Incorrect";
                         Debug.LogWarning("Username or Password is Incorrect");
                         break;
                     }
                 default:
+                    mainmenu.loginerrortext.text = "FATAL ERROR";
                     Debug.LogError("UNRESOLVED ERROR WITH WEBREQUEST LOGIN");
                     break;
             }
@@ -81,10 +84,12 @@ public class DB : MonoBehaviour
                     }
                 case "username is taken":
                     {
+                        mainmenu.loginerrortext.text = "Username is taken";
                         Debug.LogWarning("Username is taken");
                         break;
                     }
                 default:
+                    mainmenu.loginerrortext.text = "FATAL ERROR";
                     Debug.LogError("UNRESOLVED ERROR WITH WEBREQUEST LOGIN");
                     break;
             }

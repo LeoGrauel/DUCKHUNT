@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class MainMenu : MonoBehaviour
 {
@@ -20,9 +21,13 @@ public class MainMenu : MonoBehaviour
 
     public DB db;
 
+    public Text loginerrortext;
+
     public InputField username;
     public InputField password;
 
+
+    public VideoPlayer videplayer;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +51,7 @@ public class MainMenu : MonoBehaviour
 
     public void showLoginScreen()
     {
+        loginerrortext.text = "";
         sst.position = hidden;
         lst.position = shown;
         mst.position = hidden;
@@ -56,12 +62,16 @@ public class MainMenu : MonoBehaviour
         sst.position = hidden;
         lst.position = hidden;
         mst.position = shown;
+
+        videplayer.Play();
     }
 
 
 
     public void tryLogin()
     {
+        loginerrortext.text = "";
+
         string username = this.username.text;
         string password = this.password.text;
         
@@ -78,7 +88,13 @@ public class MainMenu : MonoBehaviour
 
     public void quitGame()
     {
-        Application.Quit();
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #elif UNITY_WEBPLAYER
+         Application.OpenURL(webplayerQuitURL);
+        #else
+         Application.Quit();
+        #endif
     }
 
 
