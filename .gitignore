@@ -60,6 +60,9 @@ sysinfo.txt
 *.aab
 *.unitypackage
 DuckHunt/GameClient/Build/*
+DuckHunt/GameClient/Library/*
+DuckHunt/GameClient/Logs/*
+
 DuckHunt/UnityGameServer/Build/*
 
 # Crashlytics generated file
