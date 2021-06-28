@@ -18,7 +18,7 @@ public class MainMenu : MonoBehaviour
     Vector3 hidden = new Vector3(10000, 0, 10000);
     Vector3 shown;
 
-
+    public DB db;
 
     public InputField username;
     public InputField password;
@@ -65,39 +65,21 @@ public class MainMenu : MonoBehaviour
         string username = this.username.text;
         string password = this.password.text;
         
-        Debug.Log($"Trying to login with username:{username} and password:{password} ");
-
-        ELoginResult result = ELoginResult.error;
-
-        try
-        {
-            result = NiloxUser.login(username, password);
-        }
-        catch (System.Exception e)
-        {
-            Debug.Log(e.Message);
-        }
-
-        Debug.Log("MOVE");
-
-
-        switch (result)
-        {
-            case ELoginResult.succes:
-                showMainScreen();
-                Debug.Log("Login Success");
-                break;
-            case ELoginResult.usernameorpasswordincorrect:
-                Debug.LogWarning("Password or username incorrect");
-                break;
-            case ELoginResult.error:
-                Debug.LogError("UNRESOLVED ERROR COULDNT LOGIN");
-                break;
-            default:
-                Debug.LogError("UNRESOLVED ERROR COULDNT LOGIN");
-                break;
-        }
-
+        db.Login(username, password);
     }
+
+    public void tryRegister()
+    {
+        string username = this.username.text;
+        string password = this.password.text;
+
+        db.Register(username, password);
+    }
+
+    public void quitGame()
+    {
+        Application.Quit();
+    }
+
 
 }
