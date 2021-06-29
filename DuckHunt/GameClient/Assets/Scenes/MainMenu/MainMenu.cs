@@ -29,6 +29,8 @@ public class MainMenu : MonoBehaviour
 
     public VideoPlayer videplayer;
 
+    public AudioSource audioclip;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,6 +66,8 @@ public class MainMenu : MonoBehaviour
         mst.position = shown;
 
         videplayer.Play();
+
+        audioclip.Play();
     }
 
 
