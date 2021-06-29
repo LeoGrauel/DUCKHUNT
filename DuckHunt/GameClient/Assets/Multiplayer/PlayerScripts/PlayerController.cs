@@ -22,12 +22,13 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Movement();
+        movement();
+        shoot();
         ClientSend.PlayerTransform();
     }
 
     /// <summary>Sends player input to the server.</summary>
-    private void Movement()
+    private void movement()
     {
         inputs = new bool[]
         {
@@ -72,6 +73,23 @@ public class PlayerController : MonoBehaviour
         _moveDirection.y = yVelocity;
         controller.Move(_moveDirection);
     }
-    
 
+    public void shoot()
+    {
+        inputs = new bool[]
+        {
+            Input.GetKey(KeyCode.Mouse0),
+            Input.GetKey(KeyCode.Mouse1),
+        };
+
+        if (this.inputs[0])
+        {
+
+        }
+
+        if (this.inputs[1])
+        {
+
+        }
+    }
 }
