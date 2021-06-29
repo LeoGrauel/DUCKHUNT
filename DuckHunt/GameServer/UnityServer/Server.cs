@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 using System.Net;
 using System.Net.Sockets;
+using System.IO;
+using System.Net.Http;
 
 namespace GameServer
 {
@@ -25,6 +27,8 @@ namespace GameServer
         {
             MaxPlayers = maxplayers;
             Port = port;
+
+            entlistInDatabase();
 
             InitializeServerData();
 
@@ -108,6 +112,39 @@ namespace GameServer
             catch (Exception e)
             {
                 Console.WriteLine($"Error sending data to {clientendpoint} via UDP: {e}");
+            }
+        }
+
+
+        public async static void entlistInDatabase()
+        {
+            string result = "";
+            {
+                HttpClient client = new HttpClient();
+
+                var values = new Dictionary<string, string>
+                {
+                    { "servername", "hello" },
+                    { "maxplayercount", "10" },
+                    { "currentplayercount", "1" }
+                };
+
+                var content = new FormUrlEncodedContent(values);
+
+
+                var response = await client.PostAsync("http://nilox.network/open/PHP/duckhunt/entlist.php", content);
+
+                result = await response.Content.ReadAsStringAsync();
+
+                if (result == "1")
+                {
+                    Console.WriteLine("Databse entry was succesfull!!!");
+                }
+                else
+                {
+                    Console.WriteLine("Databaseentry Failed stopping server");
+                    await Task.Delay(-1);
+                }
             }
         }
 
