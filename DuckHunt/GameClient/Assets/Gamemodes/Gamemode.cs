@@ -12,7 +12,11 @@ public class Gamemode : MonoBehaviour
 
     void Start()
     {
+<<<<<<< Updated upstream
         GameManager.instance.SpawnPlayer(0, "local", new Vector3(0,10,0), new Quaternion(0,0,0,0));
+=======
+        GameManager.instance.SpawnPlayer(0, "local", new Vector3(0, 10, 0), new Quaternion(0, 0, 0, 0));
+>>>>>>> Stashed changes
     }
 
     // Update is called once per frame

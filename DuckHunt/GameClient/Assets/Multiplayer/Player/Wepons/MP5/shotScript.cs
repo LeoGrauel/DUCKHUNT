@@ -14,13 +14,23 @@ public class shotScript : MonoBehaviour
 
     public AudioClip shot;
     float gun_range;
-    float gun_timmer;
+    float gun_timer;
     float gunShot_delay;
 
     void Start()
     {
         gun_range = 50.0F;
         gunShot_delay = 1.0F;
+        gun_timer = gunShot_delay + 1F;
+    }
+
+    void Update()
+    {
+        if(Input.GetKey(KeyCode.Mouse0) && gun_timer >= gunShot_delay)
+        {
+            trigger = true;
+            gun_timer = 0F;
+        }
     }
 
     void FixedUpdate()
@@ -38,6 +48,27 @@ public class shotScript : MonoBehaviour
             see_any = false;
             print("Nichts Avisiert");
         }
+
+        if (trigger)
+        {
+            trigger = false;
+            this.GetComponent<AudioSource>().PlayOneShot(shot);
+
+            if (see_any)
+            {
+                print("Getroffen: " + gun_line.transform.tag);
+                if(gun_line.transform.tag == "localPlayer")
+                {
+                    
+                }
+                else
+                {
+
+                }
+            }
+        }
+
+        gun_timer += Time.deltaTime;
     }
 
     void OnDrawGizmos()
