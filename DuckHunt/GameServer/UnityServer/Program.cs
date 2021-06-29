@@ -7,17 +7,30 @@ namespace GameServer
     {
         private static bool isRunning = false;
 
+        public static Thread mainthread;
+        public static Thread inputthread;
+
         static void Main(string[] args)
         {
             Console.Title = "Server";
             isRunning = true;
 
-            Thread mainthread = new Thread(new ThreadStart(MainThread));
+            mainthread = new Thread(new ThreadStart(MainThread));
             mainthread.Start();
 
+            inputthread = new Thread(new ThreadStart(InputThread));
+            inputthread.Start();
+
             Server.Start(50, 26950);
+
         }
 
+        public static void Quit()
+        {
+            Console.WriteLine("Stopping server...    (this may take a minute)");
+            isRunning = false;
+            Server.Stop();
+        }
 
         private static void MainThread()
         {
@@ -38,6 +51,20 @@ namespace GameServer
                     }
                 }
             }
+
+            Console.WriteLine("Main Thread ended");
         }
+
+        private static void InputThread()
+        {
+            Console.WriteLine("InputThrad started");
+            while (isRunning)
+            {
+                string input = Console.ReadLine();
+                CommandHandler.handle(input);
+            }
+            Console.WriteLine("InputThread ended");
+        }
+
     }
 }

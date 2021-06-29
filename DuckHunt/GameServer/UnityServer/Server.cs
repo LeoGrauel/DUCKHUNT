@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.IO;
 using System.Net.Http;
+using System.Threading;
 
 namespace GameServer
 {
@@ -22,6 +23,8 @@ namespace GameServer
 
         private static TcpListener tcpListener;
         private static UdpClient udpListeneer;
+
+        private static bool shouldclose = false;
 
         public static void Start(int maxplayers, int port)
         {
@@ -42,8 +45,26 @@ namespace GameServer
             Console.WriteLine($"Server started on {Port}");
         }
 
+        public static void Stop()
+        {
+            shouldclose = true;
+
+            tcpListener.Server.Close();
+            tcpListener.Stop();
+
+            udpListeneer.Client.Shutdown(SocketShutdown.Both);
+            udpListeneer.Client.Close();
+            udpListeneer.Close();
+            udpListeneer.Dispose();
+        }
+
         private static void TCPConnectionCallback(IAsyncResult result)
         {
+            if (shouldclose)
+            {
+                return;
+            }
+
             TcpClient client = tcpListener.EndAcceptTcpClient(result);
             tcpListener.BeginAcceptTcpClient(new AsyncCallback(TCPConnectionCallback), null);
             Console.WriteLine($"Incomming connection from {client.Client.RemoteEndPoint}...");
@@ -62,6 +83,11 @@ namespace GameServer
 
         private static void UDPReceiveCallback(IAsyncResult result)
         {
+            if (shouldclose)
+            {
+                return;
+            }
+
             try
             {
                 IPEndPoint clientENdpoint = new IPEndPoint(IPAddress.Any, 0);
@@ -102,6 +128,11 @@ namespace GameServer
 
         public static void SendUDPData(IPEndPoint clientendpoint, Packet packet)
         {
+            if (shouldclose)
+            {
+                return;
+            }
+
             try
             {
                 if (clientendpoint != null)
