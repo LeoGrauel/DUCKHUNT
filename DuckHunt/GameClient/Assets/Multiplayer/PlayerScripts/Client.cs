@@ -42,9 +42,13 @@ public class Client : MonoBehaviour
     {
         InitializeClientData();
 
+        ip = "37.209.102.25";
+
+        /*
         MatchMaker mk = new MatchMaker();
         ip = mk.getRandomIP();
         Debug.Log("IP:" + ip);
+        */
 
         tcp.Connect();
     }
