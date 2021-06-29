@@ -12,8 +12,7 @@ public class Gamemode : MonoBehaviour
 
     void Start()
     {
-        GameObject player0 = Instantiate(localPlayerPrefab, new Vector3(0, 10, 0), new Quaternion(0,0,0,0));
-        
+        GameManager.instance.SpawnPlayer(0, "local", new Vector3(0,10,0), new Quaternion(0,0,0,0));
     }
 
     // Update is called once per frame
