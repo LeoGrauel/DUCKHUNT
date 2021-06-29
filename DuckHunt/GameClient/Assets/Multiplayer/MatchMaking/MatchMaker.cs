@@ -1,24 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Net;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 
-public class MatchMaker : MonoBehaviour
+public class MatchMaker 
 {
-    public void searchforServer()
+    public string ripurl = "http://nilox.network/open/PHP/duckunt/getip.php";
+
+    public string getRandomIP()
     {
-        Debug.Log("Test");
+        HttpWebRequest wr = WebRequest.CreateHttp(ripurl);
+        WebResponse response = wr.GetResponse();
+
+        using (Stream dataStream = response.GetResponseStream())
+        {
+            StreamReader reader = new StreamReader(dataStream);
+            string responseFromServer = reader.ReadToEnd();
+            return responseFromServer;
+        }
+
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

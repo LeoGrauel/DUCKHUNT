@@ -42,6 +42,10 @@ public class Client : MonoBehaviour
     {
         InitializeClientData();
 
+        MatchMaker mk = new MatchMaker();
+        ip = mk.getRandomIP();
+        Debug.Log(ip);
+
         tcp.Connect();
     }
 

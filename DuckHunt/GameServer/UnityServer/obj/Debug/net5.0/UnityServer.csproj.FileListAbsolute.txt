@@ -37,7 +37,6 @@ D:\.Projects\GitHub\DUCKHUNT\DuckHunt\GameServer\UnityServer\bin\Debug\net5.0\Ga
 D:\.Projects\GitHub\DUCKHUNT\DuckHunt\GameServer\UnityServer\bin\Debug\net5.0\GameServer.dll
 D:\.Projects\GitHub\DUCKHUNT\DuckHunt\GameServer\UnityServer\bin\Debug\net5.0\ref\GameServer.dll
 D:\.Projects\GitHub\DUCKHUNT\DuckHunt\GameServer\UnityServer\bin\Debug\net5.0\GameServer.pdb
-D:\.Projects\GitHub\DUCKHUNT\DuckHunt\GameServer\UnityServer\obj\Debug\net5.0\UnityServer.csprojAssemblyReference.cache
 D:\.Projects\GitHub\DUCKHUNT\DuckHunt\GameServer\UnityServer\obj\Debug\net5.0\UnityServer.GeneratedMSBuildEditorConfig.editorconfig
 D:\.Projects\GitHub\DUCKHUNT\DuckHunt\GameServer\UnityServer\obj\Debug\net5.0\UnityServer.AssemblyInfoInputs.cache
 D:\.Projects\GitHub\DUCKHUNT\DuckHunt\GameServer\UnityServer\obj\Debug\net5.0\UnityServer.AssemblyInfo.cs
@@ -46,3 +45,4 @@ D:\.Projects\GitHub\DUCKHUNT\DuckHunt\GameServer\UnityServer\obj\Debug\net5.0\Ga
 D:\.Projects\GitHub\DUCKHUNT\DuckHunt\GameServer\UnityServer\obj\Debug\net5.0\ref\GameServer.dll
 D:\.Projects\GitHub\DUCKHUNT\DuckHunt\GameServer\UnityServer\obj\Debug\net5.0\GameServer.pdb
 D:\.Projects\GitHub\DUCKHUNT\DuckHunt\GameServer\UnityServer\obj\Debug\net5.0\UnityServer.genruntimeconfig.cache
+D:\.Projects\GitHub\DUCKHUNT\DuckHunt\GameServer\UnityServer\obj\Debug\net5.0\UnityServer.csproj.AssemblyReference.cache
