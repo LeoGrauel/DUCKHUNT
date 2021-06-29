@@ -34,7 +34,6 @@ ExportedObj/
 *.csproj
 *.unityproj
 *.sln
-!DuckHunt/GameServer/*sln
 *.suo
 *.tmp
 *.user
