@@ -514,7 +514,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 1e-45, z: 0, w: -0}
+  m_BoundingSphereOverride: {x: 0, y: NaN, z: 0, w: NaN}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -957,6 +957,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06fde89844781e4409e8f9d98dfb3cc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playoffline: 0
   gameobject0: {fileID: 0}
   localPlayerPrefab: {fileID: 7135128349409551598, guid: 890640fbdf1c95b4083bcdbe933c163d,
     type: 3}
@@ -1614,7 +1615,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1627949005}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c51ccda8880f83489faefa37a11cfd5, type: 3}
   m_Name: 

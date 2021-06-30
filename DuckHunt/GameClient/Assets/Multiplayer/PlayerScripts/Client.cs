@@ -191,6 +191,8 @@ public class Client : MonoBehaviour
             socket.Connect(endPoint);
             socket.BeginReceive(ReceiveCallback, null);
 
+            Debug.Log("UDP Connected");
+
             using (Packet _packet = new Packet())
             {
                 SendData(_packet);
@@ -210,6 +212,7 @@ public class Client : MonoBehaviour
             catch (Exception _ex)
             {
                 Debug.Log($"Error sending data to server via UDP: {_ex}");
+                throw;
             }
         }
 
