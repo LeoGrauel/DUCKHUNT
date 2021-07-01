@@ -49,9 +49,11 @@ namespace GameServer
         {
             shouldclose = true;
 
+            tcpListener.Server.LingerState = new LingerOption(false, 0);
             tcpListener.Server.Close();
             tcpListener.Stop();
 
+            //udpListeneer.Client.LingerState = new LingerOption(false, 0);
             udpListeneer.Client.Shutdown(SocketShutdown.Both);
             udpListeneer.Client.Close();
             udpListeneer.Close();
