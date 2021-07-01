@@ -5,7 +5,7 @@ using UnityEngine;
 public class shotScript : MonoBehaviour
 {
     bool trigger;
-    bool see_any;
+    bool gizmo;
 
     Vector3 direction;
     Vector3 lookpos;
@@ -38,34 +38,22 @@ public class shotScript : MonoBehaviour
         lookpos = transform.position;
         direction = transform.forward;
 
-        if(Physics.Raycast(lookpos, direction, out gun_line, gun_range))
-        {
-            see_any = true;
-            print("Anvisiert: " + gun_line.transform.tag);
-        }
-        else
-        {
-            see_any = false;
-            print("Nichts Avisiert");
-        }
-
         if (trigger)
         {
             trigger = false;
             this.GetComponent<AudioSource>().PlayOneShot(shot);
 
-            if (see_any)
+            if (Physics.Raycast(lookpos, direction, out gun_line, gun_range))
             {
+                gizmo = true;
                 print("Getroffen: " + gun_line.transform.tag);
-                if(gun_line.transform.tag == "localPlayer")
-                {
-                    
-                }
-                else
-                {
-
-                }
             }
+            else
+            {
+                gizmo = false;
+                print("Nichts Getroffen");
+            }
+
         }
 
         gun_timer += Time.deltaTime;
@@ -73,15 +61,16 @@ public class shotScript : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        if (see_any)
+        if (gizmo)
         {
             Gizmos.color = Color.yellow;
             Gizmos.DrawRay(lookpos, direction * gun_line.distance);
         }
-        else if (!see_any)
+        else if (!gizmo)
         {
             Gizmos.color = Color.green;
             Gizmos.DrawRay(lookpos, direction * gun_range);
         }
+
     }
 }
