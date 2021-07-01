@@ -28,6 +28,16 @@ public class UIManager : MonoBehaviour
     {
         startMenu.SetActive(false);
         usernameField.interactable = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
         Client.instance.ConnectToServer();
     }
+
+    public void CloseMenu()
+    {
+        startMenu.SetActive(false);
+        usernameField.interactable = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
 }

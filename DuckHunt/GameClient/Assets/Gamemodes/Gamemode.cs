@@ -5,11 +5,25 @@ using UnityEngine.UI;
 
 public class Gamemode : MonoBehaviour
 {
+    public static Gamemode instance;
+
     // Start is called before the first frame update
     public bool playoffline;
-    public GameObject gameobject0;
     public GameObject localPlayerPrefab;
     public string username0;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Debug.Log("Instance already exists, destroying object!");
+            Destroy(this);
+        }
+    }
 
     void Start()
     {
