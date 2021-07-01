@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class shotScript : MonoBehaviour
+public class shotScript_m14 : MonoBehaviour
 {
     bool trigger;
 
@@ -11,7 +11,6 @@ public class shotScript : MonoBehaviour
 
     RaycastHit gun_line;
 
-    public bool Debug = false;
     public AudioClip shot;
     float gun_range;
     float gun_timer;
@@ -19,14 +18,14 @@ public class shotScript : MonoBehaviour
 
     void Start()
     {
-        gun_range = 50.0F;
-        gunShot_delay = 0.1F;
+        gun_range = 100.0F;
+        gunShot_delay = 0.8F;
         gun_timer = gunShot_delay + 1F;
     }
 
     void Update()
     {
-        if(Input.GetKey(KeyCode.Mouse0) && gun_timer >= gunShot_delay)
+        if (Input.GetKey(KeyCode.Mouse0) && gun_timer >= gunShot_delay)
         {
             trigger = true;
             gun_timer = 0F;
