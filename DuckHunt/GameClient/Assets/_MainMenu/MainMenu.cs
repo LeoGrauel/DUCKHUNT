@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
@@ -101,5 +102,8 @@ public class MainMenu : MonoBehaviour
         #endif
     }
 
-
+    public void quikplay()
+    {
+        SceneManager.LoadScene("Game");
+    }
 }

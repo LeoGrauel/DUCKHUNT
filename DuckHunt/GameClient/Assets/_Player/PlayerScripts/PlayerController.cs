@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     public float gravity = -9.81f;
     public float moveSpeed = 5f;
     public float jumpSpeed = 5f;
+    public float maxvelocity = 9f;
+
 
     private bool[] inputs;
     private float yVelocity = 0;

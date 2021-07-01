@@ -12,6 +12,7 @@ public class shotScript : MonoBehaviour
 
     RaycastHit gun_line;
 
+    public bool Debug = false;
     public AudioClip shot;
     float gun_range;
     float gun_timer;
