@@ -68,20 +68,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jtmau\\.nuget\\packages\\": {}
+    "C:\\Users\\jtmau\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\.Projects\\.GitHub\\DUCKHUNT\\DuckHunt\\GameServer\\UnityServer\\UnityServer.csproj",
+      "projectUniqueName": "D:\\.Projects\\GitHub\\DUCKHUNT\\DuckHunt\\GameServer\\UnityServer\\UnityServer.csproj",
       "projectName": "GameServer",
-      "projectPath": "F:\\.Projects\\.GitHub\\DUCKHUNT\\DuckHunt\\GameServer\\UnityServer\\UnityServer.csproj",
+      "projectPath": "D:\\.Projects\\GitHub\\DUCKHUNT\\DuckHunt\\GameServer\\UnityServer\\UnityServer.csproj",
       "packagesPath": "C:\\Users\\jtmau\\.nuget\\packages\\",
-      "outputPath": "F:\\.Projects\\.GitHub\\DUCKHUNT\\DuckHunt\\GameServer\\UnityServer\\obj\\",
+      "outputPath": "D:\\.Projects\\GitHub\\DUCKHUNT\\DuckHunt\\GameServer\\UnityServer\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
         "C:\\Users\\jtmau\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"

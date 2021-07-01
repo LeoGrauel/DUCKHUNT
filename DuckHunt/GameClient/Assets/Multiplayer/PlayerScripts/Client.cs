@@ -42,6 +42,7 @@ public class Client : MonoBehaviour
     {
         InitializeClientData();
 
+        /*
         ip = "37.209.102.25";
 
         /*
