@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class shotScript_mp5 : MonoBehaviour
+public class shotScriptmp55 : MonoBehaviour
 {
     bool trigger;
 
     Vector3 direction;
     Vector3 lookpos;
+
 
     RaycastHit gun_line;
 
@@ -26,7 +27,7 @@ public class shotScript_mp5 : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKey(KeyCode.Mouse0) && gun_timer >= gunShot_delay)
+        if (Input.GetKey(KeyCode.Mouse0) && gun_timer >= gunShot_delay)
         {
             trigger = true;
             gun_timer = 0F;
