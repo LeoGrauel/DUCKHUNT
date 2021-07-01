@@ -42,7 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6202178322472424536}
   - component: {fileID: 6202178322472424518}
-  - component: {fileID: 1352214984284553461}
+  - component: {fileID: 5920481700225734081}
   m_Layer: 0
   m_Name: shot_pos
   m_TagString: Untagged
@@ -74,9 +74,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 69dfee57e3702154bb60880aa5947095, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.301
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -160,7 +160,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1352214984284553461
+--- !u!114 &5920481700225734081
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Debug: 0
-  shot: {fileID: 8300000, guid: 69dfee57e3702154bb60880aa5947095, type: 3}
+  shot: {fileID: 8300000, guid: c9aa8624199083b4ab6352a5a6d725a0, type: 3}
 --- !u!1001 &6202178322236444101
 PrefabInstance:
   m_ObjectHideFlags: 0

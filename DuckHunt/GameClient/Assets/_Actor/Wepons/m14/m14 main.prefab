@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8772241241476971369}
-  - component: {fileID: 8772241241476971370}
   - component: {fileID: 8772241241476971368}
+  - component: {fileID: 1442295725136064948}
   m_Layer: 0
   m_Name: shot_pos
   m_TagString: Untagged
@@ -32,19 +32,6 @@ Transform:
   m_Father: {fileID: 8772241242649417907}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &8772241241476971370
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8772241241476971366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97f90de421cc8a149b1ef2298281bfab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shot: {fileID: 8300000, guid: 69dfee57e3702154bb60880aa5947095, type: 3}
 --- !u!82 &8772241241476971368
 AudioSource:
   m_ObjectHideFlags: 0
@@ -141,6 +128,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1442295725136064948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8772241241476971366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97f90de421cc8a149b1ef2298281bfab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shot: {fileID: 8300000, guid: 69dfee57e3702154bb60880aa5947095, type: 3}
 --- !u!1 &8772241242649417904
 GameObject:
   m_ObjectHideFlags: 0

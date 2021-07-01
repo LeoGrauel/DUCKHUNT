@@ -33,6 +33,7 @@ public class DB : MonoBehaviour
                 case "Login-Success":
                     {
                         mainmenu.showMainScreen();
+                        GameInstance.instance.setUsername(username);
                         Debug.Log("User logged in");
                         break;
                     }
@@ -79,6 +80,7 @@ public class DB : MonoBehaviour
                 case "User Created":
                     {
                         mainmenu.showMainScreen();
+                        GameInstance.instance.setUsername(username);
                         Debug.Log("User Created");
                         break;
                     }

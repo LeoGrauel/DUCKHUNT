@@ -19,11 +19,10 @@ public class GameManager : MonoBehaviour
         }
         else if (instance != this)
         {
-            Debug.Log("Instance already exists, destroying object!");
+            Debug.Log("[GameManager] Instance already exists, destroying object!");
             Destroy(this);
         }
 
-        DontDestroyOnLoad(this);
     }
 
     public void SpawnPlayer(int _id, string _username, Vector3 _position, Quaternion _rotation)
@@ -42,4 +41,9 @@ public class GameManager : MonoBehaviour
         _player.GetComponent<PlayerManager>().username = _username;
         players.Add(_id, _player.GetComponent<PlayerManager>());
     }
+
+
+
+
+
 }
