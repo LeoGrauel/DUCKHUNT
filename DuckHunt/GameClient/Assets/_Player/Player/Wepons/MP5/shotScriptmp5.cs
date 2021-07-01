@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class shotScript : MonoBehaviour
+public class shotScript_mp5 : MonoBehaviour
 {
     bool trigger;
 
