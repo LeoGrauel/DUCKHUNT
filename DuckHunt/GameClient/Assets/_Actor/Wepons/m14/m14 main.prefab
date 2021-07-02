@@ -42,7 +42,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 69dfee57e3702154bb60880aa5947095, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -137,10 +137,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8772241241476971366}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97f90de421cc8a149b1ef2298281bfab, type: 3}
+  m_Script: {fileID: 11500000, guid: 507406c547e2b3e4d8e1433464a4272d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shot: {fileID: 8300000, guid: 69dfee57e3702154bb60880aa5947095, type: 3}
+  shot: {fileID: 8300000, guid: c9aa8624199083b4ab6352a5a6d725a0, type: 3}
+  rpm: 500
+  damage: 10
 --- !u!1 &8772241242649417904
 GameObject:
   m_ObjectHideFlags: 0

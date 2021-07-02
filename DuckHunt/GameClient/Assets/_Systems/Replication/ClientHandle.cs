@@ -38,4 +38,11 @@ public class ClientHandle : MonoBehaviour
         GameManager.players[_id].transform.position = _position;
     }
 
+    public static void updateHealthOfId(Packet packet)
+    {
+        int id = packet.ReadInt();
+        int value = packet.ReadInt();
+
+        GameManager.players[id].GetComponent<Health>().health = value;
+    }
 }

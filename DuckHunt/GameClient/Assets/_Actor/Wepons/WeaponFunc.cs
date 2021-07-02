@@ -2,27 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class shotScriptmp55 : MonoBehaviour
+public class WeaponFunc : MonoBehaviour
 {
     bool trigger;
 
     Vector3 direction;
     Vector3 lookpos;
 
+    RaycastHit hitresult;
 
-    RaycastHit gun_line;
-
-    public bool Debug = false;
     public AudioClip shot;
+    public int rpm = 450;
+    public int damage = 5;
+
     float gun_range;
     float gun_timer;
     float gunShot_delay;
 
     void Start()
     {
+        //Convert RPM to shotdelay
+        {
+            float e = rpm / 60;
+            e = 1 / e;
+            gunShot_delay = e;
+
+            Debug.Log("Delay 1:" + gunShot_delay);
+        }
+
         gun_range = 50.0F;
-        gunShot_delay = 0.1F;
         gun_timer = gunShot_delay + 1F;
+
+        Debug.Log("Delay 2:" + gunShot_delay);
     }
 
     void Update()
@@ -39,20 +50,26 @@ public class shotScriptmp55 : MonoBehaviour
         lookpos = transform.position;
         direction = transform.forward;
 
-
-
         if (trigger)
         {
             trigger = false;
             this.GetComponent<AudioSource>().PlayOneShot(shot);
-
-            if (Physics.Raycast(lookpos, direction, out gun_line, gun_range))
+            
+            if (Physics.Raycast(lookpos, direction, out hitresult, gun_range))
             {
-                print("Getroffen: " + gun_line.transform.tag);
+                Health h = hitresult.collider.GetComponent<Health>();
+                if (h != null)
+                {
+                    h.Damage(damage);
+                }
+                else
+                {
+                    Debug.Log("Hit doenst have health component");
+                }
             }
             else
             {
-                print("Nichts Getroffen");
+                //Debug.Log("No hit");
             }
         }
 
@@ -64,12 +81,12 @@ public class shotScriptmp55 : MonoBehaviour
         if (trigger)
         {
             Gizmos.color = Color.yellow;
-            Gizmos.DrawRay(lookpos, direction * gun_line.distance);
+            Gizmos.DrawRay(lookpos, direction * hitresult.distance);
         }
         else if (!trigger)
         {
-            Gizmos.color = Color.green;
-            Gizmos.DrawRay(lookpos, direction * gun_range);
+            //Gizmos.color = Color.green;
+            //Gizmos.DrawRay(lookpos, direction * gun_range);
         }
     }
 }

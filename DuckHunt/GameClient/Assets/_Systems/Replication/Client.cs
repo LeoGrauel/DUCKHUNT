@@ -260,7 +260,8 @@ public class Client : MonoBehaviour
         {
             { (int)ServerPackets.welcome, ClientHandle.Welcome },
             { (int)ServerPackets.spawnPlayer, ClientHandle.SpawnPlayer },
-            { (int)ServerPackets.playerTransform, ClientHandle.PlayerTransform }
+            { (int)ServerPackets.playerTransform, ClientHandle.PlayerTransform },
+            { (int)ServerPackets.updateHealthOfID, ClientHandle.updateHealthOfId}
         };
         Debug.Log("Initialized packets.");
     }

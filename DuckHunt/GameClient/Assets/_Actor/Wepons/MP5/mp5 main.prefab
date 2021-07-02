@@ -169,11 +169,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6202178322472424539}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9c101274de743b499734f66dd38a2f5, type: 3}
+  m_Script: {fileID: 11500000, guid: 507406c547e2b3e4d8e1433464a4272d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Debug: 0
   shot: {fileID: 8300000, guid: c9aa8624199083b4ab6352a5a6d725a0, type: 3}
+  rpm: 100
 --- !u!1001 &6202178322236444101
 PrefabInstance:
   m_ObjectHideFlags: 0

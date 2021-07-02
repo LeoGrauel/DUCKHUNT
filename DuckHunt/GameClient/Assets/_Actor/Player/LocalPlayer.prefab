@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 8665376653949235694}
   - component: {fileID: 2044216496808100899}
   - component: {fileID: 8305779392570546260}
+  - component: {fileID: 6354036996578922662}
   - component: {fileID: 8772446691771242952}
   - component: {fileID: 6325386139011089068}
   m_Layer: 0
@@ -98,6 +99,19 @@ MonoBehaviour:
   moveSpeed: 5
   jumpSpeed: 5
   maxvelocity: 9
+--- !u!114 &6354036996578922662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7135128349409551598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da4077739eef9e4459fc9bf33943d382, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!143 &8772446691771242952
 CharacterController:
   m_ObjectHideFlags: 0
@@ -333,6 +347,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6371922912251699887}
     m_Modifications:
+    - target: {fileID: 5920481700225734081, guid: 1ca257086e489c748afe83a0aa632db5,
+        type: 3}
+      propertyPath: rpm
+      value: 700
+      objectReference: {fileID: 0}
     - target: {fileID: 6202178322426537684, guid: 1ca257086e489c748afe83a0aa632db5,
         type: 3}
       propertyPath: m_Name
