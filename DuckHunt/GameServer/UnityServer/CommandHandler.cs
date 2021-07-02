@@ -19,6 +19,12 @@ namespace GameServer
                         Program.Quit();
                         break;
                     }
+                case "re":
+                case "restart":
+                    {
+                        Program.Restart();
+                        break;
+                    }
                 default:
                     break;
             }

@@ -10,7 +10,6 @@ public class Player : MonoBehaviour
     /// <summary>Processes player input and moves the player.</summary>
     public void FixedUpdate()
     {
-        ServerSend.PlayerTransform(this);
     }
 
     public void UpdateTransform(Vector3 _position, Quaternion _rotation)

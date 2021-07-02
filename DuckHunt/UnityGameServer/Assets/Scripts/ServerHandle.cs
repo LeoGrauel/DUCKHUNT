@@ -22,6 +22,5 @@ public class ServerHandle
 
         Client client = Server.clients[_fromClient];
 
-        client.UpdateTransform(position, rotation);
     }
 }

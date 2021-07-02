@@ -45,21 +45,6 @@ namespace GameServer
             Console.WriteLine($"Server started on {Port}");
         }
 
-        public static void Stop()
-        {
-            shouldclose = true;
-
-            tcpListener.Server.LingerState = new LingerOption(false, 0);
-            tcpListener.Server.Close();
-            tcpListener.Stop();
-
-            //udpListeneer.Client.LingerState = new LingerOption(false, 0);
-            udpListeneer.Client.Shutdown(SocketShutdown.Both);
-            udpListeneer.Client.Close();
-            udpListeneer.Close();
-            udpListeneer.Dispose();
-        }
-
         private static void TCPConnectionCallback(IAsyncResult result)
         {
             if (shouldclose)
@@ -149,6 +134,24 @@ namespace GameServer
         }
 
 
+        private static void InitializeServerData()
+        {
+            for (int i = 1; i <= MaxPlayers; i++)
+            {
+                clients.Add(i, new Client(i));
+            }
+
+            packetHandlers = new Dictionary<int, PacketHandler>()
+            {
+                { (int)ClientPackets.welcomeReceived, ServerHandle.WelcomeReceived },
+                { (int)ClientPackets.playerTransform, ServerHandle.PlayerTransform },
+                { (int)ClientPackets.damagePlayer, ServerHandle.damagePlayer}
+            };
+            Console.WriteLine("Initialized packets: " + packetHandlers.Count);
+        }
+
+
+        #region SQL
         public async static void entlistInDatabase()
         {
             string result = "";
@@ -171,7 +174,7 @@ namespace GameServer
 
                 if (result == "1")
                 {
-                    Console.WriteLine("Databse entry was succesfull!!!");
+                    Console.WriteLine("Databse entry was succesfull");
                 }
                 else
                 {
@@ -181,19 +184,27 @@ namespace GameServer
             }
         }
 
-        private static void InitializeServerData()
+        public async static void removefromDatabase()
         {
-            for (int i = 1; i <= MaxPlayers; i++)
+            string result = "";
             {
-                clients.Add(i, new Client(i));
-            }
+                HttpClient client = new HttpClient();
 
-            packetHandlers = new Dictionary<int, PacketHandler>()
-            {
-                { (int)ClientPackets.welcomeReceived, ServerHandle.WelcomeReceived },
-                { (int)ClientPackets.playerTransform, ServerHandle.PlayerTransform }
-            };
-            Console.WriteLine("Initialized packets.");
+                var response = await client.GetAsync("http://nilox.network/open/PHP/duckhunt/delist.php");
+
+                result = await response.Content.ReadAsStringAsync();
+
+                if (result == "1")
+                {
+                    Console.WriteLine("Databse entry was removed");
+                }
+                else
+                {
+                    Console.WriteLine("Databaseremoval Failed stopping server");
+                    await Task.Delay(-1);
+                }
+            }
         }
+        #endregion
     }
 }

@@ -27,5 +27,20 @@ namespace GameServer
 
             Server.clients[_fromClient].player.updateTransform(position, quaternion);
         }
+
+        public static void damagePlayer(int fromclient, Packet packet)
+        {
+            int instigatorid = packet.ReadInt();
+            int targetid = packet.ReadInt();
+            int ammount = packet.ReadInt();
+
+            if (fromclient != instigatorid)
+            {
+                Console.WriteLine("Instigator and fromclient didnt match!!!");
+                return;
+            }
+
+            Server.clients[targetid].player.damage(ammount);
+        }
     }
 }

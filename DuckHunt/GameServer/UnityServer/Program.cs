@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading;
 
 namespace GameServer
@@ -27,9 +28,17 @@ namespace GameServer
 
         public static void Quit()
         {
-            Console.WriteLine("Stopping server...    (this may take a minute)");
-            isRunning = false;
-            Server.Stop();
+            Server.removefromDatabase();
+            Console.WriteLine("------------------------------------------------------------------------------");
+            Environment.Exit(0);
+        }
+
+        public static void Restart()
+        {
+            var p = Process.GetCurrentProcess();
+            string n = p.ProcessName;
+            Process.Start(n);
+            Quit();
         }
 
         private static void MainThread()

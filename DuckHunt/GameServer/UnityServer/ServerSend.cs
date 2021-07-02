@@ -92,7 +92,18 @@ namespace GameServer
                 _packet.Write(_player.position);
                 _packet.Write(_player.rotation);
 
-                SendUDPDataToAll(_player.id, _packet);
+                SendTCPDataToAll(_player.id, _packet);
+            }
+        }
+
+        public static void updateHealthodId(Player player)
+        {
+            using (Packet _packet = new Packet((int)ServerPackets.updateHealthOfID))
+            {
+                _packet.Write(player.id);
+                _packet.Write(player.health);
+
+                SendTCPDataToAll(player.id, _packet);
             }
         }
         #endregion
