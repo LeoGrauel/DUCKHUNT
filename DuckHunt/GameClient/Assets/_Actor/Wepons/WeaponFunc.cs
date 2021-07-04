@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WeaponFunc : MonoBehaviour
 {
+    public ParticleSystem muzzleFlash;
     bool trigger;
 
     Vector3 direction;
@@ -53,6 +54,7 @@ public class WeaponFunc : MonoBehaviour
         if (trigger)
         {
             trigger = false;
+            muzzleFlash.Play();
             this.GetComponent<AudioSource>().PlayOneShot(shot);
             
             if (Physics.Raycast(lookpos, direction, out hitresult, gun_range))
