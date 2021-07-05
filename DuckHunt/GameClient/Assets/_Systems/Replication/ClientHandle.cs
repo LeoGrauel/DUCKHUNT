@@ -19,12 +19,15 @@ public class ClientHandle : MonoBehaviour
 
     public static void SpawnPlayer(Packet _packet)
     {
+
         int _id = _packet.ReadInt();
-        string _username = _packet.ReadString();
+        string username = _packet.ReadString();
         Vector3 _position = _packet.ReadVector3();
         Quaternion _rotation = _packet.ReadQuaternion();
 
-        GameManager.instance.SpawnPlayer(_id, _username, _position, _rotation);
+        Debug.Log($"Received spawn Player {username}");
+
+        GameManager.instance.SpawnPlayer(_id, username, _position, _rotation);
     }
 
 
@@ -33,6 +36,11 @@ public class ClientHandle : MonoBehaviour
         int _id = _packet.ReadInt();
         Vector3 _position = _packet.ReadVector3();
         Quaternion _rotation = _packet.ReadQuaternion();
+
+        if (GameManager.players[_id] == null)
+        {
+            Debug.LogError("Player with id " + _id + " doesnt exist");
+        }
 
         GameManager.players[_id].transform.rotation = _rotation;
         GameManager.players[_id].transform.position = _position;
@@ -44,5 +52,6 @@ public class ClientHandle : MonoBehaviour
         int value = packet.ReadInt();
 
         GameManager.players[id].GetComponent<Health>().health = value;
+        Debug.Log($"Player {GameManager.players[id].username} took {value} Damage");
     }
 }

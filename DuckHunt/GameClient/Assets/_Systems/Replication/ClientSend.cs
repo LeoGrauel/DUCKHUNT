@@ -45,11 +45,14 @@ public class ClientSend : MonoBehaviour
 
     public static void PlayerDamage(int myid, int targetid, int damage)
     {
+        Debug.Log("Sending PlayerDamage");
         using (Packet packet = new Packet((int)ClientPackets.damagePlayer))
         {
             packet.Write(myid); //instigator id
             packet.Write(targetid); //tartget id
             packet.Write(damage);
+
+            SendTCPData(packet);
         }
     }
     #endregion

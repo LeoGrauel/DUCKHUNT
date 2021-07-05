@@ -60,6 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  pm: {fileID: 2044216496808100899}
 --- !u!1 &7180405253224457795
 GameObject:
   m_ObjectHideFlags: 0
