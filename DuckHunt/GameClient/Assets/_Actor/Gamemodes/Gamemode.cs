@@ -12,6 +12,8 @@ public class Gamemode : MonoBehaviour
     public GameObject localPlayerPrefab;
     public string username0;
 
+    public Vector3 spawnlocation;
+
     private void Awake()
     {
         if (instance == null)
@@ -29,7 +31,7 @@ public class Gamemode : MonoBehaviour
     {
         if (playoffline)
         {
-            GameManager.instance.SpawnPlayer(0, "local", new Vector3(0, 10, 0), new Quaternion(0, 0, 0, 0));
+            GameManager.instance.SpawnPlayer(0, "local", spawnlocation, new Quaternion(0, 0, 0, 0));
         }
     }
 

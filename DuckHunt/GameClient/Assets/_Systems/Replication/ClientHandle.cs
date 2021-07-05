@@ -27,6 +27,8 @@ public class ClientHandle : MonoBehaviour
 
         Debug.Log($"Received spawn Player {username}");
 
+        _position = Gamemode.instance.spawnlocation;
+
         GameManager.instance.SpawnPlayer(_id, username, _position, _rotation);
     }
 

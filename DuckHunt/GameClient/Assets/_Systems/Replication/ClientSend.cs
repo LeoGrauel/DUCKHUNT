@@ -39,7 +39,7 @@ public class ClientSend : MonoBehaviour
             _packet.Write(GameManager.players[Client.instance.myId].transform.position);
             _packet.Write(GameManager.players[Client.instance.myId].transform.rotation);
 
-            SendTCPData(_packet);
+            SendUDPData(_packet);
         }
     }
 
