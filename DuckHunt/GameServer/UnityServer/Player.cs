@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
 using NiloxUniversalLib.Logging;
+using System.Timers;
 
 namespace GameServer
 {
@@ -30,6 +31,8 @@ namespace GameServer
         public Vector3 position;
         public Quaternion rotation;
 
+        Timer respawntimer = new Timer();
+
         public Player(int _id, string _username, Vector3 _spawnPosition)
         {
             id = _id;
@@ -38,6 +41,15 @@ namespace GameServer
             rotation = Quaternion.Identity;
             health = 100;
 
+            respawntimer.Interval = 2000;
+            respawntimer.Elapsed += Respawn;
+        }
+
+        private void Respawn(object sender, ElapsedEventArgs e)
+        {
+            health = 100;
+            ServerSend.playerrespawn(this);
+            respawntimer.Stop();
         }
 
         public void Update()
@@ -71,6 +83,7 @@ namespace GameServer
                 {
                     Log.Info($"Player {username} died");
                     ServerSend.playerDied(this, instigatorid);
+                    respawntimer.Start();
                 }
             }
             else

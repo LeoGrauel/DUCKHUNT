@@ -12,7 +12,8 @@ namespace GameServer
         spawnPlayer,
         playerTransform,
         updateHealthOfID,
-        playerdied
+        playerdied,
+        playerrespawn
     }
 
     /// <summary>Sent from client to server.</summary>
