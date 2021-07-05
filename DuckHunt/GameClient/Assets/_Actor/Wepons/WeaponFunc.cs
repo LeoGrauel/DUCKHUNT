@@ -5,7 +5,9 @@ using UnityEngine;
 public class WeaponFunc : MonoBehaviour
 {
     public ParticleSystem muzzleFlash;
-    bool trigger;
+    bool trigger = false;
+    bool empty = false;
+    bool reload = false;
 
     Vector3 direction;
     Vector3 lookpos;
@@ -13,9 +15,14 @@ public class WeaponFunc : MonoBehaviour
     RaycastHit hitresult;
 
     public AudioClip shot;
+    public AudioClip emptyAudio;
     public int rpm = 450;
+    public int magazine = 20;
     public int damage = 5;
+    public float reloadTime = 3.0F;
 
+    int rounds;
+    float reload_timer;
     float gun_range;
     float gun_timer;
     float gunShot_delay;
@@ -29,6 +36,8 @@ public class WeaponFunc : MonoBehaviour
             gunShot_delay = e;
         }
 
+        rounds = magazine;
+        reload_timer = reloadTime;
         gun_range = 50.0F;
         gun_timer = gunShot_delay + 1F;
     }
@@ -40,16 +49,42 @@ public class WeaponFunc : MonoBehaviour
             trigger = true;
             gun_timer = 0F;
         }
+        if(Input.GetKey(KeyCode.R) && rounds != magazine && reload_timer >= reloadTime)
+        {
+            reload = true;
+            reload_timer = 0F;
+        }
     }
 
     void FixedUpdate()
     {
         lookpos = transform.position;
         direction = transform.forward;
+        if (empty)
+        {
+            this.GetComponent<AudioSource>().PlayOneShot(emptyAudio);
+            if (reload)
+            {
+                reload = false;
+                rounds = magazine;
+            }
+        }
+
+        if (reload)
+        {
+            reload = false;
+            rounds = magazine;
+            return;
+        }
 
         if (trigger)
         {
             trigger = false;
+            if(rounds <= 0)
+            {
+                return;
+            }
+            rounds -= 1;
             muzzleFlash.Play();
             this.GetComponent<AudioSource>().PlayOneShot(shot);
             
@@ -73,9 +108,10 @@ public class WeaponFunc : MonoBehaviour
         }
 
         gun_timer += Time.deltaTime;
+        reload_timer += Time.deltaTime;
     }
 
-    void OnDrawGizmos()
+    /*void OnDrawGizmos()
     {
         if (trigger)
         {
@@ -87,5 +123,5 @@ public class WeaponFunc : MonoBehaviour
             //Gizmos.color = Color.green;
             //Gizmos.DrawRay(lookpos, direction * gun_range);
         }
-    }
+    }*/
 }
