@@ -94,11 +94,11 @@ public class WeaponFunc : MonoBehaviour
                 if (h != null)
                 {
                     h.Damage(damage);
-                    Debug.Log("HIT");
+                    //Debug.Log("HIT");
                 }
                 else
                 {
-                    Debug.Log("Hit doenst have health component");
+                    //Debug.Log("Hit doenst have health component");
                 }
             }
             else

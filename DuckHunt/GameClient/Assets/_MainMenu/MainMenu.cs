@@ -104,6 +104,6 @@ public class MainMenu : MonoBehaviour
 
     public void quikplay()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("Camp");
     }
 }
