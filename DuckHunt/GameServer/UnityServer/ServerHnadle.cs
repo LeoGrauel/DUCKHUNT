@@ -31,6 +31,8 @@ namespace GameServer
 
         public static void damagePlayer(int fromclient, Packet packet)
         {
+            Log.Info("Received samagePlayer packet");
+
             int instigatorid = packet.ReadInt();
             int targetid = packet.ReadInt();
             int ammount = packet.ReadInt();
@@ -41,7 +43,7 @@ namespace GameServer
                 return;
             }
 
-            Server.clients[targetid].player.damage(ammount);
+            Server.clients[targetid].player.damage(ammount, instigatorid);
         }
     }
 }
