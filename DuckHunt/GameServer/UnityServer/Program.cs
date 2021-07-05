@@ -2,6 +2,7 @@
 using System;
 using System.Diagnostics;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace GameServer
 {
@@ -27,9 +28,9 @@ namespace GameServer
 
         }
 
-        public static void Quit()
+        public async static void Quit()
         {
-            Server.removefromDatabase();
+            await Server.removefromDatabase();
             Log.Info("------------------------------------------------------------------------------");
             Environment.Exit(0);
         }

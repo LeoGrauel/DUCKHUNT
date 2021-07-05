@@ -19,6 +19,12 @@ namespace GameServer
                         Program.Quit();
                         break;
                     }
+                case "c":
+                case "clear":
+                    {
+                        Console.Clear();
+                        break;
+                    }
                 case "re":
                 case "restart":
                     {

@@ -161,7 +161,7 @@ namespace GameServer
 
                 var values = new Dictionary<string, string>
                 {
-                    { "servername", "hello" },
+                    { "servername", Environment.UserName.ToLower() + "s Server"},
                     { "maxplayercount", "10" },
                     { "currentplayercount", "1" }
                 };
@@ -185,7 +185,7 @@ namespace GameServer
             }
         }
 
-        public async static void removefromDatabase()
+        public async static Task removefromDatabase()
         {
             string result = "";
             {
@@ -205,6 +205,8 @@ namespace GameServer
                     await Task.Delay(-1);
                 }
             }
+
+            return;
         }
         #endregion
     }

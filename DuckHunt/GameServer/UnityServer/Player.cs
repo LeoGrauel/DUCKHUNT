@@ -12,6 +12,20 @@ namespace GameServer
         public string username;
 
         public int health;
+        public bool alive
+        {
+            get
+            {
+                if (health > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
 
         public Vector3 position;
         public Quaternion rotation;
@@ -23,27 +37,49 @@ namespace GameServer
             position = _spawnPosition;
             rotation = Quaternion.Identity;
             health = 100;
+
         }
 
         public void Update()
         {
-            ServerSend.PlayerTransform(this);
+            if (alive)
+            {
+                ServerSend.PlayerTransform(this);
+            }
         }
 
         public void updateTransform(Vector3 _position, Quaternion _quaternion)
         {
-            position = _position;
-            rotation = _quaternion;
+            if (alive)
+            {
+                position = _position;
+                rotation = _quaternion;
+            }
         }
         
-        public void damage(int ammount)
+        public void damage(int ammount, int instigatorid)
         {
-            health = health - ammount;
+            if (alive)
+            {
+                health = health - ammount;
 
-            Log.Debug($"Player {username} took {ammount} Damage and has now {health}HP");
+                Log.Debug($"Player {username} took {ammount} Damage and has now {health}HP");
 
-            ServerSend.updateHealthodId(this);
+                ServerSend.updateHealthodId(this);
+
+                if (alive == false)
+                {
+                    Log.Info($"Player {username} died");
+                    ServerSend.playerDied(this, instigatorid);
+                }
+            }
+            else
+            {
+                Log.Warning("Player already dead");
+            }
+            
         }
+
 
     }
 }

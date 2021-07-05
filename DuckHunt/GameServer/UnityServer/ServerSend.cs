@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NiloxUniversalLib.Logging;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -46,6 +47,7 @@ namespace GameServer
                 Server.clients[i].udp.SendData(_packet);
             }
         }
+
         private static void SendUDPDataToAll(int _exceptClient, Packet _packet)
         {
             _packet.WriteLength();
@@ -58,9 +60,10 @@ namespace GameServer
             }
         }
 
-        #region Packets
+    #region Packets
         public static void Welcome(int _toClient, string _msg)
         {
+            Log.Info("Sending Welcomemessage");
             using (Packet _packet = new Packet((int)ServerPackets.welcome))
             {
                 _packet.Write(_msg);
@@ -70,8 +73,10 @@ namespace GameServer
             }
         }
 
+
         public static void SpawnPlayer(int _toClient, Player _player)
         {
+            Log.Info($"Sending Spawn Player({_player.username})");
             using (Packet _packet = new Packet((int)ServerPackets.spawnPlayer))
             {
                 _packet.Write(_player.id);
@@ -106,6 +111,18 @@ namespace GameServer
                 SendTCPDataToAll(player.id, _packet);
             }
         }
-        #endregion
+
+        public static void playerDied(Player player, int instigatorid)
+        {
+            using (Packet _packet = new Packet((int)ServerPackets.playerdied))
+            {
+                _packet.Write(player.id);
+                _packet.Write(instigatorid);
+
+                SendTCPDataToAll(_packet);
+            }
+        }
+
+    #endregion
     }
 }
