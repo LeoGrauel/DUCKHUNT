@@ -4,6 +4,7 @@ using System.Text;
 using System.Net;
 using System.Net.Sockets;
 using System.Numerics;
+using NiloxUniversalLib.Logging;
 
 namespace GameServer
 {
@@ -64,7 +65,7 @@ namespace GameServer
                 }
                 catch (Exception _ex)
                 {
-                    Console.WriteLine($"Error sending data to player {id} via TCP: {_ex}");
+                    Log.Error($"Error sending data to player {id} via TCP: {_ex}");
                 }
             }
 
@@ -87,7 +88,7 @@ namespace GameServer
                 }
                 catch (Exception _ex)
                 {
-                    Console.WriteLine($"Error receiving TCP data: {_ex}");
+                    Log.Error($"Error receiving TCP data: {_ex}");
                     Server.clients[id].Disconnect();
                 }
             }
@@ -216,7 +217,7 @@ namespace GameServer
 
         private void Disconnect()
         {
-            Console.WriteLine($"{tcp.socket.Client.RemoteEndPoint} has disconnected.");
+            Log.Info($"{tcp.socket.Client.RemoteEndPoint} '{player.username}' has disconnected.");
 
             player = null;
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NiloxUniversalLib.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,7 @@ namespace GameServer
         {
             if (_action == null)
             {
-                Console.WriteLine("No action to execute on main thread!");
+                Log.Info("No action to execute on main thread!");
                 return;
             }
 

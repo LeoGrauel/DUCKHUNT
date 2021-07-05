@@ -9,6 +9,7 @@ using System.Net.Sockets;
 using System.IO;
 using System.Net.Http;
 using System.Threading;
+using NiloxUniversalLib.Logging;
 
 namespace GameServer
 {
@@ -42,7 +43,7 @@ namespace GameServer
             udpListeneer = new UdpClient(port);
             udpListeneer.BeginReceive(UDPReceiveCallback, null);
 
-            Console.WriteLine($"Server started on {Port}");
+            Log.Info($"Server started on {Port}");
         }
 
         private static void TCPConnectionCallback(IAsyncResult result)
@@ -54,7 +55,7 @@ namespace GameServer
 
             TcpClient client = tcpListener.EndAcceptTcpClient(result);
             tcpListener.BeginAcceptTcpClient(new AsyncCallback(TCPConnectionCallback), null);
-            Console.WriteLine($"Incomming connection from {client.Client.RemoteEndPoint}...");
+            Log.Info($"Incomming connection from {client.Client.RemoteEndPoint}...");
 
             for (int i = 1; i <= MaxPlayers; i++)
             {
@@ -65,7 +66,7 @@ namespace GameServer
                 }
             }
 
-            Console.WriteLine($"{client.Client.RemoteEndPoint} failed to connect: Server full!");
+            Log.Info($"{client.Client.RemoteEndPoint} failed to connect: Server full!");
         }
 
         private static void UDPReceiveCallback(IAsyncResult result)
@@ -109,7 +110,7 @@ namespace GameServer
             }
             catch (Exception e)
             {
-                Console.WriteLine($"Error receiving UDP data: {e.Message}");
+                Log.Error($"Error receiving UDP data: {e.Message}");
             }
         }
 
@@ -129,7 +130,7 @@ namespace GameServer
             }
             catch (Exception e)
             {
-                Console.WriteLine($"Error sending data to {clientendpoint} via UDP: {e}");
+                Log.Error($"Error sending data to {clientendpoint} via UDP: {e}");
             }
         }
 
@@ -147,7 +148,7 @@ namespace GameServer
                 { (int)ClientPackets.playerTransform, ServerHandle.PlayerTransform },
                 { (int)ClientPackets.damagePlayer, ServerHandle.damagePlayer}
             };
-            Console.WriteLine("Initialized packets: " + packetHandlers.Count);
+            Log.Info("Initialized packets: " + packetHandlers.Count);
         }
 
 
@@ -174,11 +175,11 @@ namespace GameServer
 
                 if (result == "1")
                 {
-                    Console.WriteLine("Databse entry was succesfull");
+                    Log.Info("Databse entry was succesfull");
                 }
                 else
                 {
-                    Console.WriteLine("Databaseentry Failed stopping server");
+                    Log.Error("Databaseentry Failed stopping server");
                     await Task.Delay(-1);
                 }
             }
@@ -196,11 +197,11 @@ namespace GameServer
 
                 if (result == "1")
                 {
-                    Console.WriteLine("Databse entry was removed");
+                    Log.Info("Databse entry was removed");
                 }
                 else
                 {
-                    Console.WriteLine("Databaseremoval Failed stopping server");
+                    Log.Error("Databaseremoval Failed stopping server");
                     await Task.Delay(-1);
                 }
             }

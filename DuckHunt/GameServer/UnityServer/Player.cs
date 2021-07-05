@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
+using NiloxUniversalLib.Logging;
 
 namespace GameServer
 {
@@ -38,6 +39,8 @@ namespace GameServer
         public void damage(int ammount)
         {
             health = health - ammount;
+
+            Log.Debug($"Player {username} took {ammount} Damage and has now {health}HP");
 
             ServerSend.updateHealthodId(this);
         }

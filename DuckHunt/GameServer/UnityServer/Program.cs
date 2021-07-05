@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NiloxUniversalLib.Logging;
+using System;
 using System.Diagnostics;
 using System.Threading;
 
@@ -29,7 +30,7 @@ namespace GameServer
         public static void Quit()
         {
             Server.removefromDatabase();
-            Console.WriteLine("------------------------------------------------------------------------------");
+            Log.Info("------------------------------------------------------------------------------");
             Environment.Exit(0);
         }
 
@@ -43,7 +44,7 @@ namespace GameServer
 
         private static void MainThread()
         {
-            Console.WriteLine($"Main Thread starded. Running at {Constants.TICKS_PER_SEC} ticks per second");
+            Log.Info($"Main Thread starded. Running at {Constants.TICKS_PER_SEC} ticks per second");
             DateTime nextLoop = DateTime.Now;
 
             while (isRunning)
@@ -61,18 +62,18 @@ namespace GameServer
                 }
             }
 
-            Console.WriteLine("Main Thread ended");
+            Log.Info("Main Thread ended");
         }
 
         private static void InputThread()
         {
-            Console.WriteLine("InputThrad started");
+            Log.Info("InputThrad started");
             while (isRunning)
             {
                 string input = Console.ReadLine();
                 CommandHandler.handle(input);
             }
-            Console.WriteLine("InputThread ended");
+            Log.Info("InputThread ended");
         }
 
     }
