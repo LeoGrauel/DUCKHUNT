@@ -27,14 +27,10 @@ public class WeaponFunc : MonoBehaviour
             float e = rpm / 60;
             e = 1 / e;
             gunShot_delay = e;
-
-            Debug.Log("Delay 1:" + gunShot_delay);
         }
 
         gun_range = 50.0F;
         gun_timer = gunShot_delay + 1F;
-
-        Debug.Log("Delay 2:" + gunShot_delay);
     }
 
     void Update()
