@@ -292,7 +292,8 @@ public class Client : MonoBehaviour
             { (int)ServerPackets.spawnPlayer, ClientHandle.SpawnPlayer },
             { (int)ServerPackets.playerTransform, ClientHandle.PlayerTransform },
             { (int)ServerPackets.updateHealthOfID, ClientHandle.updateHealthOfId },
-            { (int)ServerPackets.playerdied, ClientHandle.playerdied }
+            { (int)ServerPackets.playerdied, ClientHandle.playerdied },
+            { (int)ServerPackets.playerrespawn, ClientHandle.playerRespawn }
         };
         Debug.Log("Initialized packets.");
     }

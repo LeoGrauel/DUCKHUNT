@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
 
-    public bool enabled = true;
+    private bool isenabled = true;
 
     public CharacterController controller;
     public float gravity = -9.81f;
@@ -59,12 +59,30 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (enabled)
+        if (isenabled)
         {
             movement();
             shoot();
             ClientSend.PlayerTransform();
         }
+    }
+
+    private void OnEnable()
+    {
+        Debug.Log("PC enabled");
+        controller.enabled = true;
+        isenabled = true;
+    }
+    private void OnDisable()
+    {
+        Debug.Log("PC disabled");
+        controller.enabled = false;
+        isenabled = false;
+    }
+
+    public void setLocation(Vector3 location)
+    {
+
     }
 
     /// <summary>Sends player input to the server.</summary>

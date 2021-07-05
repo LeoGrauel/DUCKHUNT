@@ -79,6 +79,19 @@ public class ClientHandle : MonoBehaviour
         if (Client.instance.myId == id)
         {
             PlayerController.instance.enabled = false;
+                
+        }
+    }
+
+    public static void playerRespawn(Packet packet)
+    {
+        int id = packet.ReadInt();
+
+        GameManager.players[id].gameObject.transform.position = Gamemode.instance.spawnlocation;
+
+        if (Client.instance.myId == id)
+        {
+            PlayerController.instance.enabled = true;
         }
     }
 }
