@@ -21,6 +21,13 @@ public class PlayerController : MonoBehaviour
         jumpSpeed *= Time.fixedDeltaTime;
     }
 
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            GameInstance.quitGame();
+        }
+    }
 
     private void FixedUpdate()
     {

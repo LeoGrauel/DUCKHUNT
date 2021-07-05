@@ -53,7 +53,16 @@ public class GameInstance : MonoBehaviour
     }
 
 
-
+    public static void quitGame()
+    {
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #elif UNITY_WEBPLAYER
+         Application.OpenURL(webplayerQuitURL);
+        #else
+         Application.Quit();
+        #endif
+    }
 
     public string getUsername()
     {
