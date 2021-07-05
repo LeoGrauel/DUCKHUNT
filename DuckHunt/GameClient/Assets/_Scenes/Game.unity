@@ -1676,16 +1676,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1442295725136064948, guid: 0106392650a9f0443864e131f1d6b123,
-        type: 3}
-      propertyPath: magazine
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1442295725136064948, guid: 0106392650a9f0443864e131f1d6b123,
-        type: 3}
-      propertyPath: reloadTime
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 8772241242649417904, guid: 0106392650a9f0443864e131f1d6b123,
         type: 3}
       propertyPath: m_Name

@@ -5004,8 +5004,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   muzzleFlash: {fileID: 1598357355}
   shot: {fileID: 8300000, guid: c9aa8624199083b4ab6352a5a6d725a0, type: 3}
+  emptyAudio: {fileID: 0}
   rpm: 200
+  magazine: 5
   damage: 10
+  reloadTime: 3
 --- !u!1 &8772241242649417904
 GameObject:
   m_ObjectHideFlags: 0
