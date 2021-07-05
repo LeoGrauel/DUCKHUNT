@@ -10,7 +10,8 @@ public enum ServerPackets
     welcome = 1,
     spawnPlayer,
     playerTransform,
-    updateHealthOfID
+    updateHealthOfID,
+    playerdied
 }
 
 /// <summary>Sent from client to server.</summary>

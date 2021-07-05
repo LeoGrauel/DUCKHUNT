@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
+
+    public bool enabled = true;
+
     public CharacterController controller;
     public float gravity = -9.81f;
     public float moveSpeed = 5f;
@@ -13,6 +17,19 @@ public class PlayerController : MonoBehaviour
 
     private bool[] inputs;
     private float yVelocity = 0;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Debug.Log("Instance already exists, destroying object!");
+            Destroy(this);
+        }
+    }
 
     private void Start()
     {
@@ -27,13 +44,27 @@ public class PlayerController : MonoBehaviour
         {
             GameInstance.quitGame();
         }
+        if (Input.GetKey(KeyCode.Tab))
+        {
+            if (Cursor.lockState != CursorLockMode.Locked)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.None;
+            }
+        }
     }
 
     private void FixedUpdate()
     {
-        movement();
-        shoot();
-        ClientSend.PlayerTransform();
+        if (enabled)
+        {
+            movement();
+            shoot();
+            ClientSend.PlayerTransform();
+        }
     }
 
     /// <summary>Sends player input to the server.</summary>

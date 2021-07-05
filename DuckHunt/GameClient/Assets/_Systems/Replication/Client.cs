@@ -43,10 +43,11 @@ public class Client : MonoBehaviour
     {
         InitializeClientData();
 
-        //ip = "37.209.102.25";
+        ip = "37.209.102.25";
 
-        MatchMaker mk = new MatchMaker();
-        ip = mk.getRandomIP();
+
+        //MatchMaker mk = new MatchMaker();
+        //ip = mk.getRandomIP();
         Debug.Log("IP:" + ip);
 
         tcp.Connect();
@@ -290,7 +291,8 @@ public class Client : MonoBehaviour
             { (int)ServerPackets.welcome, ClientHandle.Welcome },
             { (int)ServerPackets.spawnPlayer, ClientHandle.SpawnPlayer },
             { (int)ServerPackets.playerTransform, ClientHandle.PlayerTransform },
-            { (int)ServerPackets.updateHealthOfID, ClientHandle.updateHealthOfId }
+            { (int)ServerPackets.updateHealthOfID, ClientHandle.updateHealthOfId },
+            { (int)ServerPackets.playerdied, ClientHandle.playerdied }
         };
         Debug.Log("Initialized packets.");
     }
