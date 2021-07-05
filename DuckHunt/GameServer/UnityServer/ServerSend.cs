@@ -123,6 +123,16 @@ namespace GameServer
             }
         }
 
+        public static void playerrespawn(Player player)
+        {
+            using (Packet _packet = new Packet((int)ServerPackets.playerrespawn))
+            {
+                _packet.Write(player.id);
+
+                SendTCPDataToAll(_packet);
+            }
+        }
+
     #endregion
     }
 }
