@@ -27,14 +27,10 @@ public class WeaponFunc : MonoBehaviour
             float e = rpm / 60;
             e = 1 / e;
             gunShot_delay = e;
-
-            Debug.Log("Delay 1:" + gunShot_delay);
         }
 
         gun_range = 50.0F;
         gun_timer = gunShot_delay + 1F;
-
-        Debug.Log("Delay 2:" + gunShot_delay);
     }
 
     void Update()
@@ -59,10 +55,11 @@ public class WeaponFunc : MonoBehaviour
             
             if (Physics.Raycast(lookpos, direction, out hitresult, gun_range))
             {
-                Health h = hitresult.collider.GetComponent<Health>();
+                Health h = hitresult.collider.gameObject.GetComponentInParent<Health>();
                 if (h != null)
                 {
                     h.Damage(damage);
+                    Debug.Log("HIT");
                 }
                 else
                 {
