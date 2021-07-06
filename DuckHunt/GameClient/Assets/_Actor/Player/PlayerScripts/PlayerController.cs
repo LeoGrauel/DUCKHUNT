@@ -40,11 +40,20 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        
+    }
+
+    private void FixedUpdate()
+    {
         if (Input.GetKey(KeyCode.Escape))
         {
             GameInstance.quitGame();
         }
         if (Input.GetKey(KeyCode.Tab))
+        {
+            PauseMenu.togglePausemenu();
+        }
+        if (Input.GetKey(KeyCode.CapsLock))
         {
             if (Cursor.lockState != CursorLockMode.Locked)
             {
@@ -55,10 +64,7 @@ public class PlayerController : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
             }
         }
-    }
 
-    private void FixedUpdate()
-    {
         if (isenabled)
         {
             movement();
@@ -80,11 +86,6 @@ public class PlayerController : MonoBehaviour
         isenabled = false;
     }
 
-    public void setLocation(Vector3 location)
-    {
-
-    }
-
     /// <summary>Sends player input to the server.</summary>
     private void movement()
     {
@@ -97,26 +98,36 @@ public class PlayerController : MonoBehaviour
             Input.GetKey(KeyCode.Space)
         };
 
+        Vector3 _moveDirection;
         Vector2 _inputDirection = Vector2.zero;
-        if (this.inputs[0])
         {
-            _inputDirection.y += 1;
-        }
-        if (this.inputs[1])
-        {
-            _inputDirection.y -= 1;
-        }
-        if (this.inputs[2])
-        {
-            _inputDirection.x -= 1;
-        }
-        if (this.inputs[3])
-        {
-            _inputDirection.x += 1;
+            if (this.inputs[0])
+            {
+                _inputDirection.y += 1;
+            }
+            if (this.inputs[1])
+            {
+                _inputDirection.y -= 1;
+            }
+            if (this.inputs[2])
+            {
+                _inputDirection.x -= 1;
+            }
+            if (this.inputs[3])
+            {
+                _inputDirection.x += 1;
+            }
+
+            if (!controller.isGrounded)
+            {
+                _inputDirection *= 0.1f;
+            }
+
+            _moveDirection = transform.right * _inputDirection.x + transform.forward * _inputDirection.y;
+            _moveDirection *= moveSpeed;
         }
 
-        Vector3 _moveDirection = transform.right * _inputDirection.x + transform.forward * _inputDirection.y;
-        _moveDirection *= moveSpeed;
+        
 
         if (controller.isGrounded)
         {
