@@ -19,6 +19,8 @@ public class handleCroshair : MonoBehaviour
         }
     }
 
+    public GameObject ammo;
+
     public GameObject top;
     public GameObject down;
     public GameObject right;
@@ -59,4 +61,10 @@ public class handleCroshair : MonoBehaviour
         right.GetComponent<RectTransform>().position = Vector3.Lerp(startright, maxright, percentage);
         left.GetComponent<RectTransform>().position = Vector3.Lerp(startleft, maxleft, percentage);
     }
+
+    public void setAmmo(int value)
+    {
+        ammo.GetComponent<Text>().text = value.ToString();   
+    }
+
 }
