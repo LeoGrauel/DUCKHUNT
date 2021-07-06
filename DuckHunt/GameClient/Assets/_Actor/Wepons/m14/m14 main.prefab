@@ -5003,7 +5003,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   muzzleFlash: {fileID: 1598357355}
-  bulletTrail: {fileID: 0}
+  bulletHit: {fileID: 3264725337720706966, guid: 99320159d05d206448317c64d908ea6b,
+    type: 3}
+  playerHit: {fileID: 7186184521149456387, guid: fc46393fdb384d043ad2ef4810ed7dba,
+    type: 3}
   shot: {fileID: 8300000, guid: c9aa8624199083b4ab6352a5a6d725a0, type: 3}
   emptyAudio: {fileID: 8300000, guid: 331f6b14c16f57d48b511f82ce8f24ff, type: 3}
   rpm: 200
