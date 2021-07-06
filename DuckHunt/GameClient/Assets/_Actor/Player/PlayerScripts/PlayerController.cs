@@ -68,7 +68,6 @@ public class PlayerController : MonoBehaviour
         if (isenabled)
         {
             movement();
-            shoot();
             ClientSend.PlayerTransform();
         }
     }
@@ -89,50 +88,34 @@ public class PlayerController : MonoBehaviour
     /// <summary>Sends player input to the server.</summary>
     private void movement()
     {
-        inputs = new bool[]
-        {
-            Input.GetKey(KeyCode.W),
-            Input.GetKey(KeyCode.S),
-            Input.GetKey(KeyCode.A),
-            Input.GetKey(KeyCode.D),
-            Input.GetKey(KeyCode.Space)
-        };
-
         Vector3 _moveDirection;
         Vector2 _inputDirection = Vector2.zero;
         {
-            if (this.inputs[0])
+            if (Input.GetKey(KeyCode.W))
             {
                 _inputDirection.y += 1;
             }
-            if (this.inputs[1])
+            if (Input.GetKey(KeyCode.S))
             {
                 _inputDirection.y -= 1;
             }
-            if (this.inputs[2])
+            if (Input.GetKey(KeyCode.A))
             {
                 _inputDirection.x -= 1;
             }
-            if (this.inputs[3])
+            if (Input.GetKey(KeyCode.D))
             {
                 _inputDirection.x += 1;
-            }
-
-            if (!controller.isGrounded)
-            {
-                _inputDirection *= 0.1f;
             }
 
             _moveDirection = transform.right * _inputDirection.x + transform.forward * _inputDirection.y;
             _moveDirection *= moveSpeed;
         }
 
-        
-
         if (controller.isGrounded)
         {
             yVelocity = 0f;
-            if (this.inputs[4])
+            if (Input.GetKey(KeyCode.Space))
             {
                 yVelocity = jumpSpeed;
             }
@@ -141,24 +124,9 @@ public class PlayerController : MonoBehaviour
 
         _moveDirection.y = yVelocity;
         controller.Move(_moveDirection);
+
+        handleCroshair.instance.percentage = _moveDirection.magnitude;
     }
 
-    public void shoot()
-    {
-        inputs = new bool[]
-        {
-            Input.GetKey(KeyCode.Mouse0),
-            Input.GetKey(KeyCode.Mouse1),
-        };
-
-        if (this.inputs[0])
-        {
-
-        }
-
-        if (this.inputs[1])
-        {
-
-        }
-    }
+    
 }
