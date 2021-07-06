@@ -67,6 +67,7 @@ public class WeaponFunc : MonoBehaviour
         {
             reload = false;
             rounds = magazine;
+            HUD.instance.setAmmo(rounds);
             return;
         }
 
@@ -86,7 +87,9 @@ public class WeaponFunc : MonoBehaviour
             {
                 empty = false;
             }
+
             rounds -= 1;
+            HUD.instance.setAmmo(rounds);
             muzzleFlash.Play();
             this.GetComponent<AudioSource>().PlayOneShot(shot);
             

@@ -74,13 +74,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
-        Debug.Log("PC enabled");
         controller.enabled = true;
         isenabled = true;
     }
     private void OnDisable()
     {
-        Debug.Log("PC disabled");
         controller.enabled = false;
         isenabled = false;
     }
@@ -108,6 +106,11 @@ public class PlayerController : MonoBehaviour
                 _inputDirection.x += 1;
             }
 
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                _inputDirection *= 1.6f;
+            }
+
             _moveDirection = transform.right * _inputDirection.x + transform.forward * _inputDirection.y;
             _moveDirection *= moveSpeed;
         }
@@ -125,7 +128,7 @@ public class PlayerController : MonoBehaviour
         _moveDirection.y = yVelocity;
         controller.Move(_moveDirection);
 
-        handleCroshair.instance.percentage = _moveDirection.magnitude;
+        HUD.instance.percentage = _moveDirection.magnitude;
     }
 
     

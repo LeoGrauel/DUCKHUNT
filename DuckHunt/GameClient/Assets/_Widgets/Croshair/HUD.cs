@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class handleCroshair : MonoBehaviour
+public class HUD : MonoBehaviour
 {
-    public static handleCroshair instance;
+    public static HUD instance;
     private void Awake()
     {
         if (instance == null)

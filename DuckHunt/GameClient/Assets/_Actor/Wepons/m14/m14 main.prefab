@@ -5011,7 +5011,7 @@ MonoBehaviour:
   emptyAudio: {fileID: 8300000, guid: 331f6b14c16f57d48b511f82ce8f24ff, type: 3}
   rpm: 200
   magazine: 5
-  damage: 10
+  damage: 20
   reloadTime: 3
 --- !u!1 &8772241242649417904
 GameObject:
