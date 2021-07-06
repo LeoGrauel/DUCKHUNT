@@ -60,15 +60,6 @@ public class WeaponFunc : MonoBehaviour
     {
         lookpos = transform.position;
         direction = transform.forward;
-        if (empty)
-        {
-            this.GetComponent<AudioSource>().PlayOneShot(emptyAudio);
-            if (reload)
-            {
-                reload = false;
-                rounds = magazine;
-            }
-        }
 
         if (reload)
         {
@@ -82,7 +73,16 @@ public class WeaponFunc : MonoBehaviour
             trigger = false;
             if(rounds <= 0)
             {
+                if (!empty)
+                {
+                    this.GetComponent<AudioSource>().PlayOneShot(emptyAudio);
+                    empty = true;
+                }
                 return;
+            }
+            else
+            {
+                empty = false;
             }
             rounds -= 1;
             muzzleFlash.Play();
