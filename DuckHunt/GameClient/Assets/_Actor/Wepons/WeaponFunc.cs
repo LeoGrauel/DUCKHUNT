@@ -5,7 +5,8 @@ using UnityEngine;
 public class WeaponFunc : MonoBehaviour
 {
     public ParticleSystem muzzleFlash;
-    public ParticleSystem bulletTrail;
+    public GameObject bulletHit;
+    public GameObject playerHit;
     bool trigger = false;
     bool empty = false;
     bool reload = false;
@@ -88,7 +89,6 @@ public class WeaponFunc : MonoBehaviour
             rounds -= 1;
             muzzleFlash.Play();
             this.GetComponent<AudioSource>().PlayOneShot(shot);
-            bulletTrail.Play();
             
             if (Physics.Raycast(lookpos, direction, out hitresult, gun_range))
             {
@@ -96,10 +96,12 @@ public class WeaponFunc : MonoBehaviour
                 if (h != null)
                 {
                     h.Damage(damage);
+                    Instantiate(playerHit, hitresult.point, Quaternion.LookRotation(hitresult.normal));
                     //Debug.Log("HIT");
                 }
                 else
                 {
+                    Instantiate(bulletHit, hitresult.point, Quaternion.LookRotation(hitresult.normal));
                     //Debug.Log("Hit doenst have health component");
                 }
             }
