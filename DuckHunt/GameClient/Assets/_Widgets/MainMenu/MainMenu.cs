@@ -6,19 +6,28 @@ using UnityEngine.UI;
 using UnityEngine.Video;
 using UnityEngine.SceneManagement;
 
+using NiloxUniversalLib.EnDecryption;
+
 public class MainMenu : MonoBehaviour
 {
-    public Canvas startScreen;
-    RectTransform sst;
+    public static MainMenu instance;
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Debug.Log("[MainMenui] Instance already exists, destroying object!");
+            Destroy(this);
+        }
+    }
 
-    public Canvas loginScreen;
-    RectTransform lst;
-
-    public Canvas mainScreen;
-    RectTransform mst;
-
-    Vector3 hidden = new Vector3(10000, 0, 10000);
-    Vector3 shown;
+    public GameObject startScreen;
+    public GameObject loginScreen;
+    public GameObject mainScreen;
+    public GameObject settings;
 
     public DB db;
 
@@ -27,23 +36,19 @@ public class MainMenu : MonoBehaviour
     public InputField username;
     public InputField password;
 
-
     public VideoPlayer videplayer;
-
     public AudioSource audioclip;
 
     // Start is called before the first frame update
     void Start()
     {
-        sst = startScreen.GetComponent<RectTransform>();
-        lst = loginScreen.GetComponent<RectTransform>();
-        mst = mainScreen.GetComponent<RectTransform>();
+        hideLoginScreen();
+        hideMainScreen();
+        hideSettings();
 
-        shown = sst.position;
+        showStartScreen();
 
-        sst.position = shown;
-        lst.position = hidden;
-        mst.position = hidden;
+        autologin();
     }
 
     // Update is called once per frame
@@ -51,27 +56,91 @@ public class MainMenu : MonoBehaviour
     {
     }
 
+    #region shwo hide
+    public void showStartScreen()
+    {
+        hideLoginScreen();
+        hideMainScreen();
+        hideSettings();
 
+        startScreen.SetActive(true);
+    }
+    public void hideStartScreen()
+    {
+        startScreen.SetActive(false);
+    }
     public void showLoginScreen()
     {
-        loginerrortext.text = "";
-        sst.position = hidden;
-        lst.position = shown;
-        mst.position = hidden;
-    }
+        hideStartScreen();
+        hideMainScreen();
+        hideSettings();
 
+        loginScreen.SetActive(true);
+    }
+    public void hideLoginScreen()
+    {
+        loginScreen.SetActive(false);
+    }
     public void showMainScreen()
     {
-        sst.position = hidden;
-        lst.position = hidden;
-        mst.position = shown;
+        hideLoginScreen();
+        hideStartScreen();
+        hideSettings();
 
-        videplayer.Play();
-
-        audioclip.Play();
+        mainScreen.SetActive(true);
     }
+    public void hideMainScreen()
+    {
+        mainScreen.SetActive(false);
+    }
+    public void showSettings()
+    {
+        hideLoginScreen();
+        hideMainScreen();
+        hideStartScreen();
 
+        settings.SetActive(true);
+    }
+    public void hideSettings()
+    {
+        settings.SetActive(false);
+    }
+    #endregion
 
+    #region Login
+    private void autologin()
+    {
+        if (GameInstance.loadAutologin())
+        {
+            Debug.Log("Autologin is on");
+
+            Dictionary<string, string> load = GameInstance.loadUserCredentials();
+
+            string lusername;
+            if (load.TryGetValue("username", out lusername))
+            {
+                username.text = lusername;
+            }
+            else
+            {
+                Debug.LogError("Value 'username' dosnt exist in Directory or is empty");
+            }
+
+            string lpassword;
+            if (load.TryGetValue("password", out lpassword))
+            {
+                password.text = lpassword;
+            }
+            else
+            {
+                Debug.LogError("Value 'password' dosnt exist in Directory or is empty");
+            }
+        }
+        else
+        {
+            Debug.Log("Autologin is off");
+        }
+    }
 
     public void tryLogin()
     {
@@ -90,20 +159,12 @@ public class MainMenu : MonoBehaviour
 
         db.Register(username, password);
     }
+    #endregion
 
-    public void quitGame()
-    {
-        #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-        #elif UNITY_WEBPLAYER
-         Application.OpenURL(webplayerQuitURL);
-        #else
-         Application.Quit();
-        #endif
-    }
-
+    #region Mathchmaking
     public void quikplay()
     {
         SceneManager.LoadScene("Camp");
     }
+    #endregion
 }

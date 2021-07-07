@@ -34,6 +34,7 @@ public class DB : MonoBehaviour
                     {
                         mainmenu.showMainScreen();
                         GameInstance.instance.setUsername(username);
+                        GameInstance.saveUserCredentials(username, password);
                         Debug.Log("User logged in");
                         break;
                     }
@@ -80,6 +81,7 @@ public class DB : MonoBehaviour
                 case "User Created":
                     {
                         mainmenu.showMainScreen();
+                        GameInstance.saveUserCredentials(username, password);
                         GameInstance.instance.setUsername(username);
                         Debug.Log("User Created");
                         break;

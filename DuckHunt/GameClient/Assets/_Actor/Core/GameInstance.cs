@@ -22,8 +22,10 @@ public class GameInstance : MonoBehaviour
         }
 
         DontDestroyOnLoad(this);
-        Debug.Log("START");
+        Debug.Log("Gaminstance initiated");
     }
+
+
     private void OnEnable()
     {
         SceneManager.sceneLoaded += SceneManager_sceneLoaded;
@@ -35,11 +37,54 @@ public class GameInstance : MonoBehaviour
 
     private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
-        print("Still here");
+        
+    }
+
+    #region Save / Load
+    public static void saveAutologin(bool autologin)
+    {
+        int i;
+
+        if (autologin)
+        {
+            i = 1;
+        }
+        else
+        {
+            i = 0;
+        }
+
+        PlayerPrefs.SetInt("autologin", i);
+    }
+    public static bool loadAutologin()
+    {
+        int i = PlayerPrefs.GetInt("autologin");
+
+        if (i == 1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
 
+    public static void saveUserCredentials(string username, string password)
+    {
+        PlayerPrefs.SetString("username", username);
+        PlayerPrefs.SetString("password", password);
+    }
+    public static Dictionary<string, string> loadUserCredentials()
+    {
+        Dictionary<string, string> credentials = new Dictionary<string, string>();
+        credentials.Add("username", PlayerPrefs.GetString("username"));
+        credentials.Add("password", PlayerPrefs.GetString("password"));
 
+        return credentials;
+    }
+    #endregion
 
 
     // Start is called before the first frame update
