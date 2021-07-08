@@ -5,6 +5,7 @@ using UnityEngine;
 public class WeaponFunc : MonoBehaviour
 {
     public ParticleSystem muzzleFlash;
+    public ParticleSystem bulletTrail;
     public GameObject bulletHit;
     public GameObject playerHit;
     bool trigger = false;
@@ -92,6 +93,7 @@ public class WeaponFunc : MonoBehaviour
             HUD.instance.setAmmo(rounds);
             muzzleFlash.Play();
             this.GetComponent<AudioSource>().PlayOneShot(shot);
+            bulletTrail.Play();
             
             if (Physics.Raycast(lookpos, direction, out hitresult, gun_range))
             {

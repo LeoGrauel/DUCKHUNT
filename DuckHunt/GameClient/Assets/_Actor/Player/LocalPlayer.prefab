@@ -337,7 +337,7 @@ PrefabInstance:
         type: 3}
       propertyPath: bulletTrail
       value: 
-      objectReference: {fileID: 4950196410793835004}
+      objectReference: {fileID: 4815970153695776905}
     - target: {fileID: 6421973213646750551, guid: 0106392650a9f0443864e131f1d6b123,
         type: 3}
       propertyPath: TrailModule.colorOverTrail.maxColor.b
@@ -436,9 +436,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2138594046388124331}
   m_PrefabAsset: {fileID: 0}
---- !u!198 &4950196410793835004 stripped
+--- !u!198 &4815970153695776905 stripped
 ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 6421973213646750551, guid: 0106392650a9f0443864e131f1d6b123,
+  m_CorrespondingSourceObject: {fileID: 6879262324596746786, guid: 0106392650a9f0443864e131f1d6b123,
     type: 3}
   m_PrefabInstance: {fileID: 2138594046388124331}
   m_PrefabAsset: {fileID: 0}
