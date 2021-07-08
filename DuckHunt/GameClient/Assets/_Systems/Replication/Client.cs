@@ -50,9 +50,9 @@ public class Client : MonoBehaviour
         ip = mk.getRandomIP();
         Debug.Log("IP:" + ip);
 
-        while (tcp == null)
+        if (tcp == null)
         {
-            
+            Debug.LogError("TCP WAS NULL");
         }
 
         tcp.Connect();
