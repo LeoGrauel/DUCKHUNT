@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Threading.Tasks;
 
 public class UIManager : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        //await Task.Delay(100);
+
         if (GameInstance.instance != null)
         {
             if (GameInstance.instance.username != null)
@@ -40,7 +43,13 @@ public class UIManager : MonoBehaviour
             GameObject gi = new GameObject("GameInstance");
             gi.AddComponent<GameInstance>();
             gi.GetComponent<GameInstance>().username = "user";
+            ConnectedToServer();
         }
+    }
+
+    public void BeginPlay()
+    {
+
     }
 
     public void ConnectedToServer()

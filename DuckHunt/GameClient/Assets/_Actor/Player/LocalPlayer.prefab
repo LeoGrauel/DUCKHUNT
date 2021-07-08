@@ -95,6 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e43e420d78555a46aff5dadb0ca133b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playercamera: {fileID: 46507139668197752}
   controller: {fileID: 8772446691771242952}
   gravity: -9.81
   moveSpeed: 5

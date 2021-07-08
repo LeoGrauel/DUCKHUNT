@@ -45,15 +45,11 @@ public class Client : MonoBehaviour
 
         //ip = "37.209.102.25";
 
+        Cursor.lockState = CursorLockMode.Locked;
 
         MatchMaker mk = new MatchMaker();
         ip = mk.getRandomIP();
         Debug.Log("IP:" + ip);
-
-        if (tcp == null)
-        {
-            Debug.LogError("TCP WAS NULL");
-        }
 
         tcp.Connect();
     }

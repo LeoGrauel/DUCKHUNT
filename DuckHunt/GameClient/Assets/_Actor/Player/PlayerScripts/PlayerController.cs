@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 
     private bool isenabled = true;
 
+    public Camera playercamera;
     public CharacterController controller;
     public float gravity = -9.81f;
     public float moveSpeed = 5f;
@@ -15,6 +16,8 @@ public class PlayerController : MonoBehaviour
     public float maxvelocity = 9f;
 
     private float yVelocity = 0;
+
+    private bool canswitchlockstate = true;
 
     private void Awake()
     {
@@ -53,6 +56,9 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.CapsLock))
         {
+            canswitchlockstate = false;
+            StartCoroutine(resetcanswitchlockstate(0.2f));
+
             if (Cursor.lockState != CursorLockMode.Locked)
             {
                 Cursor.lockState = CursorLockMode.Locked;
@@ -75,8 +81,18 @@ public class PlayerController : MonoBehaviour
             Weaponmanager.instance.switchtoWeapon(2);
         }
 
+
         if (isenabled)
         {
+            if (Input.GetKey(KeyCode.Mouse1) && playercamera.fieldOfView != 40)
+            {
+                playercamera.fieldOfView = 40;
+            }
+            if(!Input.GetKey(KeyCode.Mouse1) && playercamera.fieldOfView != 60)
+            {
+                playercamera.fieldOfView = 60;
+            }
+
             movement();
             ClientSend.PlayerTransform();
         }
@@ -115,11 +131,11 @@ public class PlayerController : MonoBehaviour
             {
                 _inputDirection.x += 1;
             }
-
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 _inputDirection *= 1.6f;
             }
+            
 
             _moveDirection = transform.right * _inputDirection.x + transform.forward * _inputDirection.y;
             _moveDirection *= moveSpeed;
@@ -141,5 +157,11 @@ public class PlayerController : MonoBehaviour
         HUD.instance.percentage = _moveDirection.magnitude;
     }
 
+
+    IEnumerator resetcanswitchlockstate(float seconds)
+    {
+        yield return new WaitForSecondsRealtime(seconds);
+        canswitchlockstate = true;
+    }
     
 }
