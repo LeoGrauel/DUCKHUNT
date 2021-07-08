@@ -23,6 +23,9 @@ public class Weaponmanager : MonoBehaviour
 
     private List<GameObject> weapons = new List<GameObject>();
 
+    private bool canswitch = true;
+    private float delay = 0.2f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -30,34 +33,40 @@ public class Weaponmanager : MonoBehaviour
         weapons.Add(null);
         weapons.Add(mp5);
         weapons.Add(m14);
+
+        switchtoWeapon(0);
     }
 
     public void switchtoWeapon(int value)
     {
-        Debug.Log("Switching to " + value + "C:" + weapons.Count);
+        if (canswitch == false)
+        {
+            return;
+        }
 
         int index = 0;
         foreach (GameObject w in weapons)
         {
             if (index == 0)
             {
-                Debug.Log("INdex 0");
+                index++;
                 continue;
             }
 
             if (index == value)
             {
-                //w.gameObject.GetComponent<MeshRenderer>().gameObject.SetActive(true);
-                w.gameObject.GetComponent<WeaponFunc>().shotenabled = true;
+                w.gameObject.GetComponentInChildren<MeshRenderer>().enabled = true;
+                w.gameObject.GetComponentInChildren<WeaponFunc>().shotenabled = true;
+                HUD.instance.setAmmo(w.gameObject.GetComponentInChildren<WeaponFunc>().getRounds());
+
+                canswitch = false;
+                StartCoroutine(reset(delay));
             }
             else
             {
-                //w.gameObject.GetComponent<MeshRenderer>().gameObject.SetActive(false);
-                w.gameObject.GetComponent<WeaponFunc>().shotenabled = false;
+                w.gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
+                w.gameObject.GetComponentInChildren<WeaponFunc>().shotenabled = false;
             }
-
-            Debug.Log("asdas" + index);
-
 
             index++;
         }
@@ -70,6 +79,10 @@ public class Weaponmanager : MonoBehaviour
     }
 
 
-
+    IEnumerator reset(float seconds)
+    {
+        yield return new WaitForSecondsRealtime(seconds);
+        canswitch = true;
+    }
 
 }

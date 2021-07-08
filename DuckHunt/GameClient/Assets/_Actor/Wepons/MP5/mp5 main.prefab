@@ -9899,6 +9899,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 507406c547e2b3e4d8e1433464a4272d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shotenabled: 1
   muzzleFlash: {fileID: 2028902771}
   bulletTrail: {fileID: 3229167122910132980}
   bulletHit: {fileID: 3264725337720706966, guid: 99320159d05d206448317c64d908ea6b,

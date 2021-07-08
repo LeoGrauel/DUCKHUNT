@@ -10,7 +10,6 @@ public class UIManager : MonoBehaviour
     public GameObject startMenu;
     public InputField usernameField;
 
-
     private void Awake()
     {
         if (instance == null)
@@ -26,12 +25,21 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        if (GameInstance.instance.username != null)
+        if (GameInstance.instance != null)
         {
-            if (GameInstance.instance.username != "")
+            if (GameInstance.instance.username != null)
             {
-                ConnectedToServer();
+                if (GameInstance.instance.username != "")
+                {
+                    ConnectedToServer();
+                }
             }
+        }
+        else
+        {
+            GameObject gi = new GameObject("GameInstance");
+            gi.AddComponent<GameInstance>();
+            gi.GetComponent<GameInstance>().username = "user";
         }
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WeaponFunc : MonoBehaviour
 {
-    public bool shotenabled = false;
+    public bool shotenabled = true;
 
     public ParticleSystem muzzleFlash;
     public ParticleSystem bulletTrail;
@@ -31,6 +31,11 @@ public class WeaponFunc : MonoBehaviour
     float gun_range;
     float gun_timer;
     float gunShot_delay;
+
+    public int getRounds()
+    {
+        return rounds;
+    }
 
     void Start()
     {
@@ -114,17 +119,14 @@ public class WeaponFunc : MonoBehaviour
                 {
                     h.Damage(damage);
                     Instantiate(playerHit, hitresult.point, Quaternion.LookRotation(hitresult.normal));
-                    //Debug.Log("HIT");
                 }
                 else
                 {
                     Instantiate(bulletHit, hitresult.point, Quaternion.LookRotation(hitresult.normal));
-                    //Debug.Log("Hit doenst have health component");
                 }
             }
             else
             {
-                //Debug.Log("No hit");
             }
         }
 
