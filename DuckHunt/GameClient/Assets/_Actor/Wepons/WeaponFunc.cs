@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WeaponFunc : MonoBehaviour
 {
+    public bool shotenabled = false;
+
     public ParticleSystem muzzleFlash;
     public ParticleSystem bulletTrail;
     public GameObject bulletHit;
@@ -47,6 +49,11 @@ public class WeaponFunc : MonoBehaviour
 
     void Update()
     {
+        if (shotenabled == false)
+        {
+            return;
+        }
+
         if (Input.GetKey(KeyCode.Mouse0) && gun_timer >= gunShot_delay)
         {
             trigger = true;
@@ -61,6 +68,11 @@ public class WeaponFunc : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (shotenabled == false)
+        {
+            return;
+        }
+
         lookpos = transform.position;
         direction = transform.forward;
 

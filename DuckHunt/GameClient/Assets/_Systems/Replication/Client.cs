@@ -43,12 +43,17 @@ public class Client : MonoBehaviour
     {
         InitializeClientData();
 
-        ip = "37.209.102.25";
+        //ip = "37.209.102.25";
 
 
-        //MatchMaker mk = new MatchMaker();
-        //ip = mk.getRandomIP();
+        MatchMaker mk = new MatchMaker();
+        ip = mk.getRandomIP();
         Debug.Log("IP:" + ip);
+
+        while (tcp == null)
+        {
+            
+        }
 
         tcp.Connect();
     }

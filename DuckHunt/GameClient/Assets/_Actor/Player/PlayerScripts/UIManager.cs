@@ -24,11 +24,23 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        if (GameInstance.instance.username != null)
+        {
+            if (GameInstance.instance.username != "")
+            {
+                ConnectedToServer();
+            }
+        }
+    }
+
     public void ConnectedToServer()
     {
         startMenu.SetActive(false);
         usernameField.interactable = false;
-        //Cursor.lockState = CursorLockMode.Locked;
+
+        GameInstance.instance.username = usernameField.text;
 
         Client.instance.ConnectToServer();
     }

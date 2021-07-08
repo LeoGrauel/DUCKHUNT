@@ -22,16 +22,14 @@ public class ClientSend : MonoBehaviour
         using (Packet _packet = new Packet((int)ClientPackets.welcomeReceived))
         {
             _packet.Write(Client.instance.myId);
-            _packet.Write(UIManager.instance.usernameField.text);
+            _packet.Write(GameInstance.instance.username);
 
             SendTCPData(_packet);
         }
     }
 
 
-    /// <summary>
-    /// 
-    /// </summary>
+
     public static void PlayerTransform()
     {
         using (Packet _packet = new Packet((int)ClientPackets.playerTransform))

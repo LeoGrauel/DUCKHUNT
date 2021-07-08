@@ -82,6 +82,8 @@ public class GameInstance : MonoBehaviour
         credentials.Add("username", PlayerPrefs.GetString("username"));
         credentials.Add("password", PlayerPrefs.GetString("password"));
 
+        instance.username = PlayerPrefs.GetString("username");
+
         return credentials;
     }
     #endregion

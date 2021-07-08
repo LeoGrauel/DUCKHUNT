@@ -14,8 +14,6 @@ public class PlayerController : MonoBehaviour
     public float jumpSpeed = 5f;
     public float maxvelocity = 9f;
 
-
-    private bool[] inputs;
     private float yVelocity = 0;
 
     private void Awake()
@@ -63,6 +61,18 @@ public class PlayerController : MonoBehaviour
             {
                 Cursor.lockState = CursorLockMode.None;
             }
+        }
+        if (Input.GetKey(KeyCode.Alpha0))
+        {
+            Weaponmanager.instance.switchtoWeapon(0);
+        }
+        if (Input.GetKey(KeyCode.Alpha1))
+        {
+            Weaponmanager.instance.switchtoWeapon(1);
+        }
+        if (Input.GetKey(KeyCode.Alpha2))
+        {
+            Weaponmanager.instance.switchtoWeapon(2);
         }
 
         if (isenabled)
