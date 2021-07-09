@@ -10,6 +10,7 @@ public class WeaponFunc : MonoBehaviour
     public ParticleSystem bulletTrail;
     public GameObject bulletHit;
     public GameObject playerHit;
+    public Animation recoil;
     bool trigger = false;
     bool empty = false;
     bool reload = false;
@@ -111,6 +112,8 @@ public class WeaponFunc : MonoBehaviour
             muzzleFlash.Play();
             this.GetComponent<AudioSource>().PlayOneShot(shot);
             bulletTrail.Play();
+            recoil.Stop();
+            recoil.Play();
             
             if (Physics.Raycast(lookpos, direction, out hitresult, gun_range))
             {

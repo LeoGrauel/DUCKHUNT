@@ -4862,6 +4862,41 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!111 &7849705641902546638
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8465688950198534213}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: f9a8cf4f108217147897bf50eff7dad1, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: f9a8cf4f108217147897bf50eff7dad1, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!95 &3544458046135713072
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8465688950198534213}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4c01ea3c600b69f439fe22eaff61bc83, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8725410888376266194
 GameObject:
   m_ObjectHideFlags: 0
@@ -9866,12 +9901,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 507406c547e2b3e4d8e1433464a4272d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shotenabled: 1
   muzzleFlash: {fileID: 1598357355}
   bulletTrail: {fileID: 6879262324596746786}
   bulletHit: {fileID: 3264725337720706966, guid: 99320159d05d206448317c64d908ea6b,
     type: 3}
   playerHit: {fileID: 7186184521149456387, guid: fc46393fdb384d043ad2ef4810ed7dba,
     type: 3}
+  recoil: {fileID: 7849705641902546638}
   shot: {fileID: 8300000, guid: c9aa8624199083b4ab6352a5a6d725a0, type: 3}
   emptyAudio: {fileID: 8300000, guid: 331f6b14c16f57d48b511f82ce8f24ff, type: 3}
   rpm: 200
@@ -10000,6 +10037,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f50f17263b8c4bd45898884bfc8988a7, type: 3}
+--- !u!1 &8465688950198534213 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f50f17263b8c4bd45898884bfc8988a7,
+    type: 3}
+  m_PrefabInstance: {fileID: 8772241242840218900}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9095014584048737023 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f50f17263b8c4bd45898884bfc8988a7,
