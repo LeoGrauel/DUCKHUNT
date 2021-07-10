@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
         {
             PauseMenu.togglePausemenu();
         }
-        if (Input.GetKey(KeyCode.CapsLock))
+        if (Input.GetKey(KeyCode.CapsLock) && canswitchlockstate)
         {
             canswitchlockstate = false;
             StartCoroutine(resetcanswitchlockstate(0.2f));
