@@ -11,6 +11,7 @@ public class WeaponFunc : MonoBehaviour
     public GameObject bulletHit;
     public GameObject playerHit;
     public Animation recoil;
+    //public Animation reloadA;
     bool trigger = false;
     bool empty = false;
     bool reload = false;
@@ -25,7 +26,7 @@ public class WeaponFunc : MonoBehaviour
     public int rpm = 450;
     public int magazine = 20;
     public int damage = 5;
-    public float reloadTime = 3.0F;
+    public float reloadTime = 2.0F;
 
     int rounds;
     float reload_timer;
@@ -68,6 +69,7 @@ public class WeaponFunc : MonoBehaviour
         if(Input.GetKey(KeyCode.R) && rounds != magazine && reload_timer >= reloadTime)
         {
             reload = true;
+            reloadA.Play();
             reload_timer = 0F;
         }
     }
@@ -90,7 +92,7 @@ public class WeaponFunc : MonoBehaviour
             return;
         }
 
-        if (trigger)
+        if (trigger && reload_timer >= reloadTime)
         {
             trigger = false;
             if(rounds <= 0)
