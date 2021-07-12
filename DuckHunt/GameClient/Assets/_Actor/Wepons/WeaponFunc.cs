@@ -69,7 +69,7 @@ public class WeaponFunc : MonoBehaviour
         if(Input.GetKey(KeyCode.R) && rounds != magazine && reload_timer >= reloadTime)
         {
             reload = true;
-            reloadA.Play();
+            //reloadA.Play();
             reload_timer = 0F;
         }
     }
