@@ -9734,6 +9734,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6202178322426537685}
+  - component: {fileID: 8514894236107800531}
   m_Layer: 0
   m_Name: mp5 main
   m_TagString: Untagged
@@ -9758,6 +9759,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!111 &8514894236107800531
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6202178322426537684}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: b38eb110834cf994bab5ce978948a428, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: b38eb110834cf994bab5ce978948a428, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &6202178322472424539
 GameObject:
   m_ObjectHideFlags: 0
@@ -9907,12 +9924,13 @@ MonoBehaviour:
   playerHit: {fileID: 7186184521149456387, guid: fc46393fdb384d043ad2ef4810ed7dba,
     type: 3}
   recoil: {fileID: 2645908907006705133}
+  reloadA: {fileID: 8514894236107800531}
   shot: {fileID: 8300000, guid: c9aa8624199083b4ab6352a5a6d725a0, type: 3}
   emptyAudio: {fileID: 8300000, guid: 331f6b14c16f57d48b511f82ce8f24ff, type: 3}
   rpm: 500
   magazine: 20
   damage: 6
-  reloadTime: 3
+  reloadTime: 1.1
 --- !u!111 &2645908907006705133
 Animation:
   m_ObjectHideFlags: 0

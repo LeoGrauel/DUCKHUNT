@@ -11,10 +11,11 @@ public class WeaponFunc : MonoBehaviour
     public GameObject bulletHit;
     public GameObject playerHit;
     public Animation recoil;
-    //public Animation reloadA;
+    public Animation reloadA;
     bool trigger = false;
     bool empty = false;
     bool reload = false;
+    bool reloadLock = false;
 
     Vector3 direction;
     Vector3 lookpos;
@@ -26,7 +27,7 @@ public class WeaponFunc : MonoBehaviour
     public int rpm = 450;
     public int magazine = 20;
     public int damage = 5;
-    public float reloadTime = 2.0F;
+    public float reloadTime = 1.0F;
 
     int rounds;
     float reload_timer;
@@ -87,12 +88,16 @@ public class WeaponFunc : MonoBehaviour
         if (reload)
         {
             reload = false;
+            reloadLock = true;
+            print("reload");
+            StartCoroutine(canShootAgain(reloadTime));
+            reloadA.Play();
             rounds = magazine;
             HUD.instance.setAmmo(rounds);
             return;
         }
 
-        if (trigger && reload_timer >= reloadTime)
+        if (trigger && !reloadLock)
         {
             trigger = false;
             if(rounds <= 0)
@@ -156,4 +161,11 @@ public class WeaponFunc : MonoBehaviour
             //Gizmos.DrawRay(lookpos, direction * gun_range);
         }
     }*/
+
+    IEnumerator canShootAgain(float seconds)
+    {
+        yield return new WaitForSecondsRealtime(seconds);
+        print("shoot");
+        reloadLock = false;
+    }
 }
