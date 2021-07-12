@@ -89,7 +89,6 @@ public class WeaponFunc : MonoBehaviour
         {
             reload = false;
             reloadLock = true;
-            print("reload");
             StartCoroutine(canShootAgain(reloadTime));
             reloadA.Play();
             rounds = magazine;
@@ -165,7 +164,6 @@ public class WeaponFunc : MonoBehaviour
     IEnumerator canShootAgain(float seconds)
     {
         yield return new WaitForSecondsRealtime(seconds);
-        print("shoot");
         reloadLock = false;
     }
 }
