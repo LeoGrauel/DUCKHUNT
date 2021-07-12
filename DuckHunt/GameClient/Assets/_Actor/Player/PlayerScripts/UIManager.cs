@@ -26,8 +26,6 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        //await Task.Delay(100);
-
         if (GameInstance.instance != null)
         {
             if (GameInstance.instance.username != null)
@@ -47,19 +45,32 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void BeginPlay()
-    {
-
-    }
-
     public void ConnectedToServer()
     {
+        Debug.Log("1");
+        StartCoroutine(delayedstart());
+    }
+    private void ConnectedToServer2()
+    {
+        Debug.Log("2");
         startMenu.SetActive(false);
         usernameField.interactable = false;
 
         GameInstance.instance.username = usernameField.text;
 
+        int index = 0;
+        while (Client.instance.tcp == null)
+        {
+            Debug.Log("TCP null " + index);
+            index++;
+        }
+
         Client.instance.ConnectToServer();
+    }
+    IEnumerator delayedstart()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        ThreadManager.ExecuteOnMainThread(ConnectedToServer2);
     }
 
     public void CloseMenu()

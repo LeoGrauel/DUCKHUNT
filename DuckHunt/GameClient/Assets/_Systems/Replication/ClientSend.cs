@@ -32,6 +32,12 @@ public class ClientSend : MonoBehaviour
 
     public static void PlayerTransform()
     {
+        if (GameManager.players[Client.instance.myId] == null)
+        {
+            Debug.LogError("Player dosnt exist");
+            return;
+        }
+
         using (Packet _packet = new Packet((int)ClientPackets.playerTransform))
         {
             _packet.Write(GameManager.players[Client.instance.myId].transform.position);

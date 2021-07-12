@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Net;
 using System.Net.Sockets;
 using System;
+using System.Threading.Tasks;
 
 public class Client : MonoBehaviour
 {
@@ -41,6 +42,7 @@ public class Client : MonoBehaviour
 
     public void ConnectToServer()
     {
+
         InitializeClientData();
 
         //ip = "37.209.102.25";
