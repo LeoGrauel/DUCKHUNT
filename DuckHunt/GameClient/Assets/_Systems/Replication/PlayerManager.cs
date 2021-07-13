@@ -13,5 +13,6 @@ public class PlayerManager : MonoBehaviour
     public void spawnShot(Vector3 location, Quaternion rotation)
     {
         Instantiate(shotprefab, location, rotation);
+        Debug.Log("Enemy shot at " + location.ToString());
     }
 }
