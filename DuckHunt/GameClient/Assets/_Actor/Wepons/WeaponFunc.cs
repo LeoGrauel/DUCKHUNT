@@ -12,7 +12,7 @@ public class WeaponFunc : MonoBehaviour
     public GameObject playerHit;
     public Animation recoil;
     public Animation reloadA;
-    Camera camera;
+    public Camera aimcamera;
     bool trigger = false;
     bool empty = false;
     bool reload = false;
@@ -50,7 +50,7 @@ public class WeaponFunc : MonoBehaviour
             gunShot_delay = e;
         }
 
-        camera = PlayerController.instance.playercamera;
+        aimcamera = PlayerController.instance.playercamera;
 
         rounds = magazine;
         reload_timer = reloadTime;
@@ -86,9 +86,9 @@ public class WeaponFunc : MonoBehaviour
         }
 
         //lookpos = transform.position;
-        lookpos = camera.transform.position;
+        lookpos = aimcamera.transform.position;
         //direction = transform.forward;
-        direction = camera.transform.forward;
+        direction = aimcamera.transform.forward;
 
         if (reload)
         {
