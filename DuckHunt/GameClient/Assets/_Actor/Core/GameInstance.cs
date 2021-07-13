@@ -121,4 +121,9 @@ public class GameInstance : MonoBehaviour
     }
 
 
+    public void goToMainMenu()
+    {
+        SceneManager.LoadScene("S_MainMenu");
+    }
+
 }

@@ -107,6 +107,13 @@ public class ClientHandle : MonoBehaviour
     {
         int id = packet.ReadInt();
 
+        if (id == Client.instance.myId)
+        {
+            GameInstance.instance.goToMainMenu();
+            return;
+        }
+
+
         if (GameManager.players[id] != null)
         {
             Destroy(GameManager.players[id].gameObject);
