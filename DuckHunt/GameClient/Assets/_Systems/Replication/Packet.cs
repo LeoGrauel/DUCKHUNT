@@ -13,7 +13,8 @@ public enum ServerPackets
     updateHealthOfID,
     playerdied,
     playerrespawn,
-    playershot
+    playershot,
+    despawnplayer
 }
 
 /// <summary>Sent from client to server.</summary>

@@ -71,7 +71,6 @@ public class ClientHandle : MonoBehaviour
         int id = packet.ReadInt();
         int instigatorid = packet.ReadInt();
 
-
         Debug.Log($"{GameManager.players[instigatorid].username} killed {GameManager.players[id].username}");
 
         GameManager.players[id].gameObject.transform.position = new Vector3(0,0,0);
@@ -102,6 +101,27 @@ public class ClientHandle : MonoBehaviour
         Quaternion rotation = packet.ReadQuaternion();
 
         GameManager.players[instigator].gameObject.GetComponent<PlayerManager>().spawnShot(location, rotation);
+    }
+
+    public static void despawnPlayer(Packet packet)
+    {
+        int id = packet.ReadInt();
+
+        if (id == Client.instance.myId)
+        {
+            GameInstance.instance.goToMainMenu();
+            return;
+        }
+
+
+        if (GameManager.players[id] != null)
+        {
+            Destroy(GameManager.players[id].gameObject);
+        }
+        else
+        {
+            Debug.LogWarning("Player should despawn but doenst exist!");
+        }
     }
 
 }

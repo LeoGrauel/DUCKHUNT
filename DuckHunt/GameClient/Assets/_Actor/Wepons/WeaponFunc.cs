@@ -124,11 +124,11 @@ public class WeaponFunc : MonoBehaviour
             this.GetComponent<AudioSource>().PlayOneShot(shot);
             recoil.Stop();
             recoil.Play();
-            
+
+            ClientSend.playershot(Client.instance.myId, lookpos, gameObject.transform.rotation);
+
             if (Physics.Raycast(lookpos, direction, out hitresult, gun_range))
             {
-                ClientSend.playershot(Client.instance.myId, lookpos, gameObject.transform.rotation);
-
                 bulletTrail.transform.LookAt(hitresult.point);
                 Health h = hitresult.collider.gameObject.GetComponentInParent<Health>();
                 if (h != null)
