@@ -13,7 +13,9 @@ namespace GameServer
         playerTransform,
         updateHealthOfID,
         playerdied,
-        playerrespawn
+        playerrespawn,
+        playershot,
+        despawnplayer
     }
 
     /// <summary>Sent from client to server.</summary>
@@ -21,7 +23,8 @@ namespace GameServer
     {
         welcomeReceived = 1,
         playerTransform,
-        damagePlayer
+        damagePlayer,
+        playershot
     }
 
     public class Packet : IDisposable
