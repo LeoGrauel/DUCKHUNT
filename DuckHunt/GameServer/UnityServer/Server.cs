@@ -48,11 +48,6 @@ namespace GameServer
 
         private static void TCPConnectionCallback(IAsyncResult result)
         {
-            if (shouldclose)
-            {
-                return;
-            }
-
             TcpClient client = tcpListener.EndAcceptTcpClient(result);
             tcpListener.BeginAcceptTcpClient(new AsyncCallback(TCPConnectionCallback), null);
             Log.Info($"Incomming connection from {client.Client.RemoteEndPoint}...");
@@ -146,7 +141,8 @@ namespace GameServer
             {
                 { (int)ClientPackets.welcomeReceived, ServerHandle.WelcomeReceived },
                 { (int)ClientPackets.playerTransform, ServerHandle.PlayerTransform },
-                { (int)ClientPackets.damagePlayer, ServerHandle.damagePlayer}
+                { (int)ClientPackets.damagePlayer, ServerHandle.damagePlayer},
+                { (int)ClientPackets.playershot, ServerHandle.playershot}
             };
             Log.Info("Initialized packets: " + packetHandlers.Count);
         }
@@ -155,6 +151,8 @@ namespace GameServer
         #region SQL
         public async static void entlistInDatabase()
         {
+            await removefromDatabase();
+
             string result = "";
             {
                 HttpClient client = new HttpClient();

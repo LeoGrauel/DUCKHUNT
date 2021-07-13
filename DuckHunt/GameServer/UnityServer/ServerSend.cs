@@ -1,6 +1,7 @@
 ﻿using NiloxUniversalLib.Logging;
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 using System.Text;
 
 namespace GameServer
@@ -123,6 +124,16 @@ namespace GameServer
             }
         }
 
+        public static void despawnplayer(int id)
+        {
+            using (Packet _packet = new Packet((int)ServerPackets.despawnplayer))
+            {
+                _packet.Write(id);
+
+                SendTCPDataToAll(_packet);
+            }
+        }
+
         public static void playerrespawn(Player player)
         {
             using (Packet _packet = new Packet((int)ServerPackets.playerrespawn))
@@ -133,6 +144,20 @@ namespace GameServer
             }
         }
 
+        public static void playershot(int instigator, Vector3 location, Quaternion rotation)
+        {
+            using (Packet _packet = new Packet((int)ServerPackets.playershot))
+            {
+                _packet.Write(instigator);
+                _packet.Write(location);
+                _packet.Write(rotation);
+
+                SendTCPDataToAll(instigator, _packet );
+            }
+        }
+
     #endregion
+
+
     }
 }
