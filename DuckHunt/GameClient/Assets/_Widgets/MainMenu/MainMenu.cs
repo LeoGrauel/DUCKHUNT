@@ -167,4 +167,11 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("Camp");
     }
     #endregion
+
+    #region quit
+    public void quitgame()
+    {
+        GameInstance.quitGame();
+    }
+    #endregion
 }
