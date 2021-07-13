@@ -129,7 +129,7 @@ public class WeaponFunc : MonoBehaviour
             {
                 ClientSend.playershot(Client.instance.myId, lookpos, gameObject.transform.rotation);
 
-                bulletTrail.transform.LookAt(hitresult.point);//Quaternion.LookRotation(muzzleFlash.transform.position,hitresult.point);
+                bulletTrail.transform.LookAt(hitresult.point);
                 Health h = hitresult.collider.gameObject.GetComponentInParent<Health>();
                 if (h != null)
                 {
