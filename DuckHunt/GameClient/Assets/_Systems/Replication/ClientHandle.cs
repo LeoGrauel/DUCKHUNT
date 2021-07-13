@@ -109,7 +109,7 @@ public class ClientHandle : MonoBehaviour
 
         if (GameManager.players[id] != null)
         {
-            Destroy(GameManager.players[id]);
+            Destroy(GameManager.players[id].gameObject);
         }
         else
         {
