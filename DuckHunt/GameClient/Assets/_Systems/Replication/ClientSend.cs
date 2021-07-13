@@ -59,5 +59,16 @@ public class ClientSend : MonoBehaviour
             SendTCPData(packet);
         }
     }
+
+    public static void playershot(int myid, Vector3 location, Quaternion rotation)
+    {
+        using (Packet packet = new Packet((int)ClientPackets.playershot))
+        {
+            packet.Write(location);
+            packet.Write(rotation);
+
+            SendTCPData(packet);
+        }
+    }
     #endregion
 }

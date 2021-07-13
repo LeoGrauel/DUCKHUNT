@@ -94,4 +94,13 @@ public class ClientHandle : MonoBehaviour
             PlayerController.instance.enabled = true;
         }
     }
+
+    public static void playershot(Packet packet)
+    {
+        Vector3 location = packet.ReadVector3();
+        Quaternion rotation = packet.ReadQuaternion();
+
+        
+    }
+
 }

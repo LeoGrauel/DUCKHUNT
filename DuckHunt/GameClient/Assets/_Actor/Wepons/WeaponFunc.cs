@@ -127,6 +127,8 @@ public class WeaponFunc : MonoBehaviour
             
             if (Physics.Raycast(lookpos, direction, out hitresult, gun_range))
             {
+                ClientSend.playershot(Client.instance.myId, lookpos, gameObject.transform.rotation);
+
                 bulletTrail.transform.LookAt(hitresult.point);//Quaternion.LookRotation(muzzleFlash.transform.position,hitresult.point);
                 Health h = hitresult.collider.gameObject.GetComponentInParent<Health>();
                 if (h != null)

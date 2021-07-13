@@ -12,7 +12,8 @@ public enum ServerPackets
     playerTransform,
     updateHealthOfID,
     playerdied,
-    playerrespawn
+    playerrespawn,
+    playershot
 }
 
 /// <summary>Sent from client to server.</summary>
@@ -20,7 +21,8 @@ public enum ClientPackets
 {
     welcomeReceived = 1,
     playerTransform,
-    damagePlayer
+    damagePlayer,
+    playershot
 }
 
 public class Packet : IDisposable
