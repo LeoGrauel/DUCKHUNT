@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Net;
 using System.Net.Sockets;
 using System;
+using System.Threading.Tasks;
 
 public class Client : MonoBehaviour
 {
@@ -41,6 +42,7 @@ public class Client : MonoBehaviour
 
     public void ConnectToServer()
     {
+
         InitializeClientData();
 
         //ip = "37.209.102.25";
@@ -294,7 +296,8 @@ public class Client : MonoBehaviour
             { (int)ServerPackets.playerTransform, ClientHandle.PlayerTransform },
             { (int)ServerPackets.updateHealthOfID, ClientHandle.updateHealthOfId },
             { (int)ServerPackets.playerdied, ClientHandle.playerdied },
-            { (int)ServerPackets.playerrespawn, ClientHandle.playerRespawn }
+            { (int)ServerPackets.playerrespawn, ClientHandle.playerRespawn },
+            { (int)ServerPackets.playershot, ClientHandle.playershot }
         };
         Debug.Log("Initialized packets.");
     }

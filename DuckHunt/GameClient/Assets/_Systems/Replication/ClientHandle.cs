@@ -94,4 +94,14 @@ public class ClientHandle : MonoBehaviour
             PlayerController.instance.enabled = true;
         }
     }
+
+    public static void playershot(Packet packet)
+    {
+        int instigator = packet.ReadInt();
+        Vector3 location = packet.ReadVector3();
+        Quaternion rotation = packet.ReadQuaternion();
+
+        GameManager.players[instigator].gameObject.GetComponent<PlayerManager>().spawnShot(location, rotation);
+    }
+
 }

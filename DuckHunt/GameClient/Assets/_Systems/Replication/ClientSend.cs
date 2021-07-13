@@ -32,6 +32,12 @@ public class ClientSend : MonoBehaviour
 
     public static void PlayerTransform()
     {
+        if (GameManager.players[Client.instance.myId] == null)
+        {
+            Debug.LogError("Player dosnt exist");
+            return;
+        }
+
         using (Packet _packet = new Packet((int)ClientPackets.playerTransform))
         {
             _packet.Write(GameManager.players[Client.instance.myId].transform.position);
@@ -49,6 +55,17 @@ public class ClientSend : MonoBehaviour
             packet.Write(myid); //instigator id
             packet.Write(targetid); //tartget id
             packet.Write(damage);
+
+            SendTCPData(packet);
+        }
+    }
+
+    public static void playershot(int myid, Vector3 location, Quaternion rotation)
+    {
+        using (Packet packet = new Packet((int)ClientPackets.playershot))
+        {
+            packet.Write(location);
+            packet.Write(rotation);
 
             SendTCPData(packet);
         }

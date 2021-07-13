@@ -11,9 +11,12 @@ public class WeaponFunc : MonoBehaviour
     public GameObject bulletHit;
     public GameObject playerHit;
     public Animation recoil;
+    public Animation reloadA;
+    public Camera aimcamera;
     bool trigger = false;
     bool empty = false;
     bool reload = false;
+    bool reloadLock = false;
 
     Vector3 direction;
     Vector3 lookpos;
@@ -25,7 +28,7 @@ public class WeaponFunc : MonoBehaviour
     public int rpm = 450;
     public int magazine = 20;
     public int damage = 5;
-    public float reloadTime = 3.0F;
+    public float reloadTime = 1.0F;
 
     int rounds;
     float reload_timer;
@@ -46,6 +49,8 @@ public class WeaponFunc : MonoBehaviour
             e = 1 / e;
             gunShot_delay = e;
         }
+
+        aimcamera = PlayerController.instance.playercamera;
 
         rounds = magazine;
         reload_timer = reloadTime;
@@ -68,6 +73,7 @@ public class WeaponFunc : MonoBehaviour
         if(Input.GetKey(KeyCode.R) && rounds != magazine && reload_timer >= reloadTime)
         {
             reload = true;
+            //reloadA.Play();
             reload_timer = 0F;
         }
     }
@@ -79,18 +85,23 @@ public class WeaponFunc : MonoBehaviour
             return;
         }
 
-        lookpos = transform.position;
-        direction = transform.forward;
+        //lookpos = transform.position;
+        lookpos = aimcamera.transform.position;
+        //direction = transform.forward;
+        direction = aimcamera.transform.forward;
 
         if (reload)
         {
             reload = false;
+            reloadLock = true;
+            StartCoroutine(canShootAgain(reloadTime));
+            reloadA.Play();
             rounds = magazine;
             HUD.instance.setAmmo(rounds);
             return;
         }
 
-        if (trigger)
+        if (trigger && !reloadLock)
         {
             trigger = false;
             if(rounds <= 0)
@@ -111,26 +122,35 @@ public class WeaponFunc : MonoBehaviour
             HUD.instance.setAmmo(rounds);
             muzzleFlash.Play();
             this.GetComponent<AudioSource>().PlayOneShot(shot);
-            bulletTrail.Play();
             recoil.Stop();
             recoil.Play();
             
             if (Physics.Raycast(lookpos, direction, out hitresult, gun_range))
             {
+                ClientSend.playershot(Client.instance.myId, lookpos, gameObject.transform.rotation);
+
+                bulletTrail.transform.LookAt(hitresult.point);
                 Health h = hitresult.collider.gameObject.GetComponentInParent<Health>();
                 if (h != null)
                 {
+                    Debug.Log(h.ToString());
+
                     h.Damage(damage);
                     Instantiate(playerHit, hitresult.point, Quaternion.LookRotation(hitresult.normal));
+                    Debug.Log("Damaged player has now " + h.health);
                 }
                 else
                 {
                     Instantiate(bulletHit, hitresult.point, Quaternion.LookRotation(hitresult.normal));
+                    Debug.Log("Not a player");
                 }
             }
             else
             {
+                bulletTrail.transform.localRotation = new Quaternion(0,0,0,0);
             }
+
+            bulletTrail.Play();
         }
 
         gun_timer += Time.deltaTime;
@@ -150,4 +170,10 @@ public class WeaponFunc : MonoBehaviour
             //Gizmos.DrawRay(lookpos, direction * gun_range);
         }
     }*/
+
+    IEnumerator canShootAgain(float seconds)
+    {
+        yield return new WaitForSecondsRealtime(seconds);
+        reloadLock = false;
+    }
 }
