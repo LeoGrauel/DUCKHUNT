@@ -11,6 +11,7 @@ public enum damagetype
 public class Health : MonoBehaviour
 {
     public int health = 100;
+    public AudioClip hitSound;
     private int maxhealth;
 
     public PlayerManager pm;
@@ -31,6 +32,7 @@ public class Health : MonoBehaviour
     public void Damage(int ammount, damagetype type = damagetype.normal)
     {
         ClientSend.PlayerDamage(Client.instance.myId, pm.id, ammount);
+        this.GetComponent<AudioSource>().PlayOneShot(hitSound);
     }
 
 

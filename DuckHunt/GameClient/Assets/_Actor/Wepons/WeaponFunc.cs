@@ -12,6 +12,7 @@ public class WeaponFunc : MonoBehaviour
     public GameObject playerHit;
     public Animation recoil;
     public Animation reloadA;
+    Camera camera;
     bool trigger = false;
     bool empty = false;
     bool reload = false;
@@ -49,6 +50,8 @@ public class WeaponFunc : MonoBehaviour
             gunShot_delay = e;
         }
 
+        camera = PlayerController.instance.playercamera;
+
         rounds = magazine;
         reload_timer = reloadTime;
         gun_range = 50.0F;
@@ -82,8 +85,10 @@ public class WeaponFunc : MonoBehaviour
             return;
         }
 
-        lookpos = transform.position;
-        direction = transform.forward;
+        //lookpos = transform.position;
+        lookpos = camera.transform.position;
+        //direction = transform.forward;
+        direction = camera.transform.forward;
 
         if (reload)
         {
@@ -117,12 +122,12 @@ public class WeaponFunc : MonoBehaviour
             HUD.instance.setAmmo(rounds);
             muzzleFlash.Play();
             this.GetComponent<AudioSource>().PlayOneShot(shot);
-            bulletTrail.Play();
             recoil.Stop();
             recoil.Play();
             
             if (Physics.Raycast(lookpos, direction, out hitresult, gun_range))
             {
+                bulletTrail.transform.LookAt(hitresult.point);//Quaternion.LookRotation(muzzleFlash.transform.position,hitresult.point);
                 Health h = hitresult.collider.gameObject.GetComponentInParent<Health>();
                 if (h != null)
                 {
@@ -140,7 +145,10 @@ public class WeaponFunc : MonoBehaviour
             }
             else
             {
+                bulletTrail.transform.localRotation = new Quaternion(0,0,0,0);
             }
+
+            bulletTrail.Play();
         }
 
         gun_timer += Time.deltaTime;
