@@ -230,6 +230,8 @@ namespace GameServer
 
         private void Disconnect()
         {
+            ServerSend.despawnplayer(id);
+
             Log.Info($"{tcp.socket.Client.RemoteEndPoint} '{player.username}' has disconnected.");
 
             player = null;

@@ -126,6 +126,7 @@ namespace GameServer
 
         public static void despawnplayer(int id)
         {
+            Log.Warning("Sending despawn player for id:" + id);
             using (Packet _packet = new Packet((int)ServerPackets.despawnplayer))
             {
                 _packet.Write(id);

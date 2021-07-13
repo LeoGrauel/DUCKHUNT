@@ -27,6 +27,7 @@ namespace GameServer
 
         private static bool shouldclose = false;
 
+        #region Data
         public static void Start(int maxplayers, int port)
         {
             MaxPlayers = maxplayers;
@@ -146,7 +147,15 @@ namespace GameServer
             };
             Log.Info("Initialized packets: " + packetHandlers.Count);
         }
+        #endregion
 
+        public static void kickAll()
+        {
+            foreach(Client c in clients.Values)
+            {
+                ServerSend.despawnplayer(c.id);
+            }
+        }
 
         #region SQL
         public async static void entlistInDatabase()

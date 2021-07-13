@@ -30,6 +30,7 @@ namespace GameServer
 
         public async static void Quit()
         {
+            Server.kickAll();
             await Server.removefromDatabase();
             Log.Info("------------------------------------------------------------------------------");
             Environment.Exit(0);

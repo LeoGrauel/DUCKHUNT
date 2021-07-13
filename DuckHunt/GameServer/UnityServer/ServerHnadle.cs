@@ -75,9 +75,6 @@ namespace GameServer
             Vector3 location = packet.ReadVector3();
             Quaternion rotation = packet.ReadQuaternion();
 
-            Log.Debug("Shot at" + location.ToString());
-
-
             ServerSend.playershot(fromclient, location, rotation);
         } 
 
