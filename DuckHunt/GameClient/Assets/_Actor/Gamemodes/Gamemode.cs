@@ -51,6 +51,11 @@ public class Gamemode : MonoBehaviour
 
     public Vector3 getrandomSpawnpoint()
     {
+        if (respawns.Length == 0)
+        {
+            Debug.LogError("NO RESPAWNS AVAILABLE");
+        }
+
         int index = Random.Range(0, respawns.Length);
 
         return respawns[index].transform.position;

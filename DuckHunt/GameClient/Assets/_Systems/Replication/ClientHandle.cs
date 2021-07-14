@@ -101,8 +101,9 @@ public class ClientHandle : MonoBehaviour
         int instigator = packet.ReadInt();
         Vector3 location = packet.ReadVector3();
         Quaternion rotation = packet.ReadQuaternion();
+        int shotid = packet.ReadInt();
 
-        GameManager.players[instigator].gameObject.GetComponent<PlayerManager>().spawnShot(location, rotation);
+        GameManager.players[instigator].gameObject.GetComponent<PlayerManager>().spawnShot(location, rotation, shotid);
     }
 
     public static void despawnPlayer(Packet packet)

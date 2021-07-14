@@ -18,6 +18,8 @@ public class WeaponFunc : MonoBehaviour
     bool reload = false;
     bool reloadLock = false;
 
+    public int shotid;
+
     Vector3 direction;
     Vector3 lookpos;
 
@@ -125,7 +127,7 @@ public class WeaponFunc : MonoBehaviour
             recoil.Stop();
             recoil.Play();
 
-            ClientSend.playershot(Client.instance.myId, lookpos, gameObject.transform.rotation);
+            ClientSend.playershot(Client.instance.myId, shotid, lookpos, gameObject.transform.rotation);
 
             if (Physics.Raycast(lookpos, direction, out hitresult, gun_range))
             {

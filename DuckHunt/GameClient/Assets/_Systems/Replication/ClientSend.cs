@@ -60,12 +60,13 @@ public class ClientSend : MonoBehaviour
         }
     }
 
-    public static void playershot(int myid, Vector3 location, Quaternion rotation)
+    public static void playershot(int myid,int shotid ,Vector3 location, Quaternion rotation)
     {
         using (Packet packet = new Packet((int)ClientPackets.playershot))
         {
             packet.Write(location);
             packet.Write(rotation);
+            packet.Write(shotid);
 
             SendTCPData(packet);
         }
