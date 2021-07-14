@@ -29,7 +29,7 @@ public class ClientHandle : MonoBehaviour
         Vector3 _position = _packet.ReadVector3();
         Quaternion _rotation = _packet.ReadQuaternion();
 
-        _position = Gamemode.instance.spawnlocation;
+        _position = Gamemode.instance.getrandomSpawnpoint();
 
         Debug.Log($"Received spawn Player {username} at {_position}");
 

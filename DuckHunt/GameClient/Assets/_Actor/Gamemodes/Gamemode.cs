@@ -13,7 +13,6 @@ public class Gamemode : MonoBehaviour
     public GameObject localPlayerPrefab;
     public string username0;
 
-    public Vector3 spawnlocation;
     public Vector3 deathlocation;
 
     public GameObject[] respawns;
