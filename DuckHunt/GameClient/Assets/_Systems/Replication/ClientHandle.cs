@@ -126,4 +126,12 @@ public class ClientHandle : MonoBehaviour
         }
     }
 
+    public static void updatePoints(Packet packet)
+    {
+        int blue = packet.ReadInt();
+        int red = packet.ReadInt();
+
+        HUD.instance.updatePoints(blue, red);
+    }
+
 }

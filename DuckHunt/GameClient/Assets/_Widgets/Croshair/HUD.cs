@@ -21,6 +21,9 @@ public class HUD : MonoBehaviour
 
     public GameObject ammo;
 
+    public GameObject pointsblue;
+    public GameObject pointsred;
+
     public GameObject top;
     public GameObject down;
     public GameObject right;
@@ -67,4 +70,9 @@ public class HUD : MonoBehaviour
         ammo.GetComponent<Text>().text = value.ToString();   
     }
 
+    public void updatePoints(int blue, int red)
+    {
+        pointsblue.GetComponent<Text>().text = blue.ToString();
+        pointsred.GetComponent<Text>().text = red.ToString();
+    }
 }
