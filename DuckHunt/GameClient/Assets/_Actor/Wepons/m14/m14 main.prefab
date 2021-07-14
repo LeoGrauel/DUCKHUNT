@@ -9912,7 +9912,7 @@ MonoBehaviour:
   reloadA: {fileID: 1932995724340300379}
   aimcamera: {fileID: 0}
   shotid: 1
-  shot: {fileID: 8300000, guid: c9aa8624199083b4ab6352a5a6d725a0, type: 3}
+  shot: {fileID: 8300000, guid: 69dfee57e3702154bb60880aa5947095, type: 3}
   emptyAudio: {fileID: 8300000, guid: 331f6b14c16f57d48b511f82ce8f24ff, type: 3}
   rpm: 200
   magazine: 5

@@ -83,6 +83,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   username: 
+  teamid: 0
+  shotprefab0: {fileID: 2082848101439050335, guid: a2989fc24771f324cb3b677f74d2b92e,
+    type: 3}
+  shotprefab1: {fileID: 2914373178829824827, guid: d51b7306cdf425c45a3ab9cfd7903dcf,
+    type: 3}
 --- !u!114 &8305779392570546260
 MonoBehaviour:
   m_ObjectHideFlags: 0
