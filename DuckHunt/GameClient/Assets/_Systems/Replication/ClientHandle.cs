@@ -76,12 +76,11 @@ public class ClientHandle : MonoBehaviour
 
         Debug.Log($"{GameManager.players[instigatorid].username} killed {GameManager.players[id].username}");
 
-        GameManager.players[id].gameObject.transform.position = new Vector3(0,0,0);
+        GameManager.players[id].gameObject.transform.position = Gamemode.instance.deathlocation;
 
         if (Client.instance.myId == id)
         {
             PlayerController.instance.enabled = false;
-                
         }
     }
 
@@ -89,7 +88,7 @@ public class ClientHandle : MonoBehaviour
     {
         int id = packet.ReadInt();
 
-        GameManager.players[id].gameObject.transform.position = Gamemode.instance.spawnlocation;
+        GameManager.players[id].gameObject.transform.position = Gamemode.instance.getrandomSpawnpoint();
 
         if (Client.instance.myId == id)
         {

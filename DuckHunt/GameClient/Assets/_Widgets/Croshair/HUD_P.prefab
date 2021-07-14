@@ -432,6 +432,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammo: {fileID: 2339879305635496503}
+  pointsblue: {fileID: 6618413385586816636}
+  pointsred: {fileID: 4144616530081054470}
   top: {fileID: 3760994992852774116}
   down: {fileID: 3208901670561959877}
   right: {fileID: 6291200047008300924}
