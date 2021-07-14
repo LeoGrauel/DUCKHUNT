@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ClientSend : MonoBehaviour
 {
+    #region send Mothods
     private static void SendTCPData(Packet _packet)
     {
         _packet.WriteLength();
@@ -15,8 +16,9 @@ public class ClientSend : MonoBehaviour
         _packet.WriteLength();
         Client.instance.udp.SendData(_packet);
     }
+    #endregion
 
-    #region Packets
+#region Packets
     public static void WelcomeReceived()
     {
         using (Packet _packet = new Packet((int)ClientPackets.welcomeReceived))
@@ -27,8 +29,6 @@ public class ClientSend : MonoBehaviour
             SendTCPData(_packet);
         }
     }
-
-
 
     public static void PlayerTransform()
     {
@@ -70,5 +70,6 @@ public class ClientSend : MonoBehaviour
             SendTCPData(packet);
         }
     }
-    #endregion
+
+#endregion
 }

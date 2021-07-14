@@ -11,6 +11,14 @@ public class UIManager : MonoBehaviour
     public GameObject startMenu;
     public InputField usernameField;
 
+    public GameObject textfield;
+    public GameObject button1;
+    public GameObject button2;
+    public GameObject loadingtext;
+
+    int lstate = 0;
+    float lstatedelay = 0.1f;
+
     private void Awake()
     {
         if (instance == null)
@@ -24,8 +32,51 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void FixedUpdate()
+    {
+        Debug.Log(Time.deltaTime);
+
+        lstatedelay -= Time.deltaTime;
+        if (lstatedelay <= 0)
+        {
+            lstatedelay = 100;
+            switch (lstate)
+            {
+                case 0:
+                    {
+                        loadingtext.GetComponent<Text>().text = "Loading";
+                        lstate = 1;
+                        break;
+                    }
+                case 1:
+                    {
+                        loadingtext.GetComponent<Text>().text = "Loading.";
+                        lstate = 2;
+                        break;
+                    }
+                case 2:
+                    {
+                        loadingtext.GetComponent<Text>().text = "Loading..";
+                        lstate = 3;
+                        break;
+                    }
+                case 3:
+                    {
+                        loadingtext.GetComponent<Text>().text = "Loading...";
+                        lstate = 0;
+                        break;
+                    }
+            }
+        }
+        
+    }
+
     private void Start()
     {
+        textfield.SetActive(false);
+        button1.SetActive(false);
+        button2.SetActive(false);
+
         if (GameInstance.instance != null)
         {
             if (GameInstance.instance.username != null)
@@ -47,16 +98,14 @@ public class UIManager : MonoBehaviour
 
     public void ConnectedToServer()
     {
-        Debug.Log("1");
         StartCoroutine(delayedstart());
     }
     private void ConnectedToServer2()
     {
-        Debug.Log("2");
-        startMenu.SetActive(false);
-        usernameField.interactable = false;
+        //startMenu.SetActive(false);
+        //usernameField.interactable = false;
 
-        GameInstance.instance.username = usernameField.text;
+        //GameInstance.instance.username = usernameField.text;
 
         int index = 0;
         while (Client.instance.tcp == null)
