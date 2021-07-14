@@ -146,13 +146,14 @@ namespace GameServer
             }
         }
 
-        public static void playershot(int instigator, Vector3 location, Quaternion rotation)
+        public static void playershot(int instigator, Vector3 location, Quaternion rotation, int shotid)
         {
             using (Packet packet = new Packet((int)ServerPackets.playershot))
             {
                 packet.Write(instigator);
                 packet.Write(location);
                 packet.Write(rotation);
+                packet.Write(shotid);
 
                 SendTCPDataToAll(instigator, packet );
             }
