@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +13,9 @@ public class Gamemode : MonoBehaviour
     public GameObject localPlayerPrefab;
     public string username0;
 
-    public Vector3 spawnlocation;
+    public Vector3 deathlocation;
+
+    public GameObject[] respawns;
 
     private void Awake()
     {
@@ -29,9 +32,12 @@ public class Gamemode : MonoBehaviour
 
     void Start()
     {
+        respawns = GameObject.FindGameObjectsWithTag("Respawn");
+
+
         if (playoffline)
         {
-            GameManager.instance.SpawnPlayer(0, "local", spawnlocation, new Quaternion(0, 0, 0, 0));
+            GameManager.instance.SpawnPlayer(0, "local", 0, getrandomSpawnpoint(), new Quaternion(0, 0, 0, 0)); ;
         }
     }
 
@@ -40,4 +46,19 @@ public class Gamemode : MonoBehaviour
     {
 
     }
+
+
+    public Vector3 getrandomSpawnpoint()
+    {
+        if (respawns.Length == 0)
+        {
+            Debug.LogError("NO RESPAWNS AVAILABLE");
+        }
+
+        int index = Random.Range(0, respawns.Length);
+
+        return respawns[index].transform.position;
+    }
+
+
 }

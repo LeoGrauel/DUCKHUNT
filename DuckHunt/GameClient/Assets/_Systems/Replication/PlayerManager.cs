@@ -9,11 +9,25 @@ public class PlayerManager : MonoBehaviour
     public int teamid;
 
 
-    public GameObject shotprefab;
+    public GameObject shotprefab0;
+    public GameObject shotprefab1;
 
-    public void spawnShot(Vector3 location, Quaternion rotation)
+    public void spawnShot(Vector3 location, Quaternion rotation, int shotid)
     {
-        Instantiate(shotprefab, location, rotation);
+        switch (shotid)
+        {
+            case 0:
+                {
+                    Instantiate(shotprefab0, location, rotation);
+                    break;
+                }
+            case 1:
+                {
+                    Instantiate(shotprefab1, location, rotation);
+                    break;
+                }
+        }
+
         Debug.Log("Enemy shot at " + location.ToString());
     }
 }

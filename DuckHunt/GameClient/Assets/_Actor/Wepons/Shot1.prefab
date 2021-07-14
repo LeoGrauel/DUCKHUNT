@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7224217004483702384}
   - component: {fileID: 141339714175913055}
   m_Layer: 0
-  m_Name: Shot
+  m_Name: Shot1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,7 +62,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   muzzleFlash: {fileID: 5170136917471817228}
   bulletTrail: {fileID: 3908613292656574478}
-  shot: {fileID: 0}
 --- !u!82 &141339714175913055
 AudioSource:
   m_ObjectHideFlags: 0
@@ -73,9 +72,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 69dfee57e3702154bb60880aa5947095, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c9aa8624199083b4ab6352a5a6d725a0, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.503
   m_Pitch: 1
   Loop: 0
   Mute: 0

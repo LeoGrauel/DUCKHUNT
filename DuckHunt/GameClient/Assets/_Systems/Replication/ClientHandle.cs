@@ -29,7 +29,7 @@ public class ClientHandle : MonoBehaviour
         Vector3 _position = _packet.ReadVector3();
         Quaternion _rotation = _packet.ReadQuaternion();
 
-        _position = Gamemode.instance.spawnlocation;
+        _position = Gamemode.instance.getrandomSpawnpoint();
 
         Debug.Log($"Received spawn Player {username} at {_position}");
 
@@ -76,12 +76,11 @@ public class ClientHandle : MonoBehaviour
 
         Debug.Log($"{GameManager.players[instigatorid].username} killed {GameManager.players[id].username}");
 
-        GameManager.players[id].gameObject.transform.position = new Vector3(0,0,0);
+        GameManager.players[id].gameObject.transform.position = Gamemode.instance.deathlocation;
 
         if (Client.instance.myId == id)
         {
             PlayerController.instance.enabled = false;
-                
         }
     }
 
@@ -89,7 +88,7 @@ public class ClientHandle : MonoBehaviour
     {
         int id = packet.ReadInt();
 
-        GameManager.players[id].gameObject.transform.position = Gamemode.instance.spawnlocation;
+        GameManager.players[id].gameObject.transform.position = Gamemode.instance.getrandomSpawnpoint();
 
         if (Client.instance.myId == id)
         {
@@ -102,8 +101,9 @@ public class ClientHandle : MonoBehaviour
         int instigator = packet.ReadInt();
         Vector3 location = packet.ReadVector3();
         Quaternion rotation = packet.ReadQuaternion();
+        int shotid = packet.ReadInt();
 
-        GameManager.players[instigator].gameObject.GetComponent<PlayerManager>().spawnShot(location, rotation);
+        GameManager.players[instigator].gameObject.GetComponent<PlayerManager>().spawnShot(location, rotation, shotid);
     }
 
     public static void despawnPlayer(Packet packet)

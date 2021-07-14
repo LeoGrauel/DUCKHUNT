@@ -2182,9 +2182,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a58b80a3689464896e2ccd180735a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startScreen: {fileID: 0}
-  loginScreen: {fileID: 0}
-  mainScreen: {fileID: 0}
+  startScreen: {fileID: 5616150208007278853}
+  loginScreen: {fileID: 5616150207164539923}
+  mainScreen: {fileID: 5616150207062593280}
   settings: {fileID: 0}
   db: {fileID: 5616150208168418471}
   loginerrortext: {fileID: 5616150208539956056}
