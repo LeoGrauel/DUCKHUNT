@@ -164,7 +164,8 @@ public class MainMenu : MonoBehaviour
     #region Mathchmaking
     public void quikplay()
     {
-        SceneManager.LoadScene("Camp");
+        string[] maps = {"Camp", "City"};
+        SceneManager.LoadScene(maps[1]); 
     }
     #endregion
 
