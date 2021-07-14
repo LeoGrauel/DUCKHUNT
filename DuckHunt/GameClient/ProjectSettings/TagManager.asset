@@ -6,6 +6,7 @@ TagManager:
   tags:
   - localPlayer
   - Box
+  - lightSource
   layers:
   - Default
   - TransparentFX
