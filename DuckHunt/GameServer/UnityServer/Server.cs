@@ -27,7 +27,6 @@ namespace GameServer
 
         private static bool shouldclose = false;
 
-        #region Data
         public static void Start(int maxplayers, int port)
         {
             MaxPlayers = maxplayers;
@@ -47,6 +46,7 @@ namespace GameServer
             Log.Info($"Server started on {Port}");
         }
 
+        #region Data
         private static void TCPConnectionCallback(IAsyncResult result)
         {
             TcpClient client = tcpListener.EndAcceptTcpClient(result);
@@ -129,7 +129,6 @@ namespace GameServer
                 Log.Error($"Error sending data to {clientendpoint} via UDP: {e}");
             }
         }
-
 
         private static void InitializeServerData()
         {

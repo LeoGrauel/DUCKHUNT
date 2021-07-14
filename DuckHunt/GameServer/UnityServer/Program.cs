@@ -1,6 +1,7 @@
 ﻿using NiloxUniversalLib.Logging;
 using System;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -8,6 +9,26 @@ namespace GameServer
 {
     class Program
     {
+        #region Console close 
+        static ConsoleEventDelegate handler;   // Keeps it from getting garbage collected
+                                               // Pinvoke
+        private delegate bool ConsoleEventDelegate(int eventType);
+        [DllImport("kernel32.dll", SetLastError = true)]
+        private static extern bool SetConsoleCtrlHandler(ConsoleEventDelegate callback, bool add);
+
+        static bool ConsoleEventCallback(int eventType)
+        {
+            if (eventType == 2)
+            {
+                Log.Warning("Closing Console shuting server down");
+                Thread.Sleep(100);
+                Quit(true);
+                Thread.Sleep(100);
+            }
+            return false;
+        }
+        #endregion
+
         private static bool isRunning = false;
 
         public static Thread mainthread;
@@ -15,6 +36,11 @@ namespace GameServer
 
         static void Main(string[] args)
         {
+            #region Console close
+            handler = new ConsoleEventDelegate(ConsoleEventCallback);
+            SetConsoleCtrlHandler(handler, true);
+            #endregion
+
             Console.Title = "Server";
             isRunning = true;
 
@@ -25,15 +51,17 @@ namespace GameServer
             inputthread.Start();
 
             Server.Start(50, 26950);
-
         }
 
-        public async static void Quit()
+        public async static void Quit(bool alreadyclosing = false)
         {
             Server.kickAll();
             await Server.removefromDatabase();
             Log.Info("------------------------------------------------------------------------------");
-            Environment.Exit(0);
+            if (alreadyclosing == false)
+            {
+                Environment.Exit(0);
+            }
         }
 
         public static void Restart()

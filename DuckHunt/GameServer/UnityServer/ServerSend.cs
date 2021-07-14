@@ -75,17 +75,18 @@ namespace GameServer
         }
 
 
-        public static void SpawnPlayer(int _toClient, Player _player)
+        public static void SpawnPlayer(int _toClient, Player player)
         {
-            Log.Info($"Sending Spawn Player({_player.username})");
-            using (Packet _packet = new Packet((int)ServerPackets.spawnPlayer))
+            Log.Info($"Sending Spawn Player({player.username})");
+            using (Packet packet = new Packet((int)ServerPackets.spawnPlayer))
             {
-                _packet.Write(_player.id);
-                _packet.Write(_player.username);
-                _packet.Write(_player.position);
-                _packet.Write(_player.rotation);
+                packet.Write(player.id);
+                packet.Write(player.username);
+                packet.Write(player.teamid);
+                packet.Write(player.position);
+                packet.Write(player.rotation);
 
-                SendTCPData(_toClient, _packet);
+                SendTCPData(_toClient, packet);
             }
         }
 
@@ -147,13 +148,24 @@ namespace GameServer
 
         public static void playershot(int instigator, Vector3 location, Quaternion rotation)
         {
-            using (Packet _packet = new Packet((int)ServerPackets.playershot))
+            using (Packet packet = new Packet((int)ServerPackets.playershot))
             {
-                _packet.Write(instigator);
-                _packet.Write(location);
-                _packet.Write(rotation);
+                packet.Write(instigator);
+                packet.Write(location);
+                packet.Write(rotation);
 
-                SendTCPDataToAll(instigator, _packet );
+                SendTCPDataToAll(instigator, packet );
+            }
+        }
+
+        public static void updatePoints()
+        {
+            using (Packet packet = new Packet((int)ServerPackets.updatepoints))
+            {
+                packet.Write(Game.pointsblue);
+                packet.Write(Game.pointsred);
+
+                SendTCPDataToAll(packet);
             }
         }
 

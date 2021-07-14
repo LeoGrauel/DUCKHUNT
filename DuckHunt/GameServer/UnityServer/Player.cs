@@ -12,6 +12,8 @@ namespace GameServer
         public int id;
         public string username;
 
+        public int teamid;
+
         public int health;
         public bool alive
         {
@@ -33,13 +35,23 @@ namespace GameServer
 
         Timer respawntimer = new Timer();
 
-        public Player(int _id, string _username, Vector3 _spawnPosition)
+        public Player(int _id, string _username, int _teamid, Vector3 _spawnPosition)
         {
             id = _id;
             username = _username;
+            teamid = _teamid;
             position = _spawnPosition;
             rotation = Quaternion.Identity;
             health = 100;
+
+            if (teamid == 0)
+            {
+                Game.bluecount++;
+            }
+            if (teamid == 1)
+            {
+                Game.redcount++;
+            }
 
             respawntimer.Interval = 2000;
             respawntimer.Elapsed += Respawn;
@@ -81,9 +93,20 @@ namespace GameServer
 
                 if (alive == false)
                 {
+                    if (teamid == 0)
+                    {
+                        Game.pointsred++;
+                    }
+                    if (teamid == 1)
+                    {
+                        Game.pointsblue++;
+                    }
+
                     Log.Info($"Player {username} died");
                     ServerSend.playerDied(this, instigatorid);
                     respawntimer.Start();
+
+                    ServerSend.updatePoints();
                 }
             }
             else

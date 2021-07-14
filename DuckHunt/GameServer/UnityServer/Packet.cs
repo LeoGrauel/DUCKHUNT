@@ -15,7 +15,8 @@ namespace GameServer
         playerdied,
         playerrespawn,
         playershot,
-        despawnplayer
+        despawnplayer,
+        updatepoints
     }
 
     /// <summary>Sent from client to server.</summary>
