@@ -9,6 +9,8 @@ public class GameInstance : MonoBehaviour
 
     public string username = "localhorst";
 
+    public float MasterVolume;
+
     private void Awake()
     {
         if (instance == null)
@@ -22,6 +24,9 @@ public class GameInstance : MonoBehaviour
         }
 
         DontDestroyOnLoad(this);
+
+        MasterVolume = PlayerPrefs.GetFloat("MasterVolume");
+
         Debug.Log("Gaminstance initiated");
     }
 

@@ -54,10 +54,12 @@ public class PauseMenu : MonoBehaviour
         if (instance.gameObject.GetComponent<Canvas>().enabled)
         {
             instance.hidePausemenu();
+            Cursor.lockState = CursorLockMode.None;
         }
         else
         {
             instance.showPausemenu();
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 

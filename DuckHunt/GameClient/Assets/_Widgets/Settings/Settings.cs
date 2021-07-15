@@ -47,6 +47,7 @@ public class Settings : MonoBehaviour
         
     }
 
+
     #region show hide
     public static void closeSettings()
     {
@@ -137,10 +138,12 @@ public class Settings : MonoBehaviour
     #endregion
 
 
-
-    public void updateMasterVolume(float value)
+    public void updateMasterVolume()
     {
-        PlayerPrefs.SetFloat("MasterVolume", value);
+        PlayerPrefs.SetFloat("MasterVolume", mastervolumeslider.value);
+        GameInstance.instance.MasterVolume = mastervolumeslider.value;
+
+        Debug.Log(GameInstance.instance.MasterVolume);
     }
 
 }

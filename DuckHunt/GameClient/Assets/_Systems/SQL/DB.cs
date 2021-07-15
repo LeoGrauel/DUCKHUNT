@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Data.Sql;
-using System.Data.SqlClient;
 using UnityEngine.Networking;
 
 public class DB : MonoBehaviour

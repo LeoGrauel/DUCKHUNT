@@ -96,9 +96,12 @@ public class WeaponFunc : MonoBehaviour
         {
             reload = false;
             reloadLock = true;
+
             StartCoroutine(canShootAgain(reloadTime));
+            
             reloadA.Play();
             rounds = magazine;
+
             HUD.instance.setAmmo(rounds);
             return;
         }
@@ -110,7 +113,7 @@ public class WeaponFunc : MonoBehaviour
             {
                 if (!empty)
                 {
-                    this.GetComponent<AudioSource>().PlayOneShot(emptyAudio);
+                    this.GetComponent<AudioSource>().PlayOneShot(emptyAudio, GameInstance.instance.MasterVolume);
                     empty = true;
                 }
                 return;
@@ -123,7 +126,8 @@ public class WeaponFunc : MonoBehaviour
             rounds -= 1;
             HUD.instance.setAmmo(rounds);
             muzzleFlash.Play();
-            this.GetComponent<AudioSource>().PlayOneShot(shot);
+
+            this.GetComponent<AudioSource>().PlayOneShot(shot, GameInstance.instance.MasterVolume);
             recoil.Stop();
             recoil.Play();
 

@@ -1,4 +1,3 @@
-using NiloxUniversalLib.SQL;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -84,8 +83,14 @@ public class MainMenu : MonoBehaviour
         hideLoginScreen();
         hideStartScreen();
         hideSettings();
-
+        
         mainScreen.SetActive(true);
+
+        videplayer.Play();
+
+        audioclip.volume = GameInstance.instance.MasterVolume;
+        audioclip.Play();
+
     }
     public void hideMainScreen()
     {

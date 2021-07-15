@@ -115,7 +115,10 @@ public class UIManager : MonoBehaviour
 
     private void OnDisable()
     {
-        HUD.SetActive(true);
+        if (HUD != null)
+        {
+            HUD.SetActive(true);
+        }
     }
 
 
