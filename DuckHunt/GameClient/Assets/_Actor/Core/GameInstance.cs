@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class GameInstance : MonoBehaviour
     public string username = "localhorst";
 
     public float MasterVolume;
+    public bool fullscreen;
 
     private void Awake()
     {
@@ -25,7 +27,32 @@ public class GameInstance : MonoBehaviour
 
         DontDestroyOnLoad(this);
 
+        //Default presets
+        if (PlayerPrefs.GetInt("OpenedYet") == 0)
+        {
+            PlayerPrefs.SetInt("OpenedYet", 1);
+            PlayerPrefs.SetFloat("MasterVolume", 0.5f);
+            PlayerPrefs.SetInt("Fullscreen", 1);
+            PlayerPrefs.SetFloat("resX", 1920);
+            PlayerPrefs.SetFloat("resY", 1080);
+
+            PlayerPrefs.SetInt("OpenedYet", 1);
+        }
+
+
+        //Load
         MasterVolume = PlayerPrefs.GetFloat("MasterVolume");
+        fullscreen = Convert.ToBoolean( PlayerPrefs.GetInt("Fullscreen"));
+
+        if (fullscreen == false)
+        {
+            Screen.fullScreenMode = FullScreenMode.Windowed;
+        }
+
+        if (PlayerPrefs.GetInt("resX") > 500 || PlayerPrefs.GetInt("resY") > 500)
+        {
+            Screen.SetResolution(PlayerPrefs.GetInt("resX"), PlayerPrefs.GetInt("resY"), fullscreen);
+        }
 
         Debug.Log("Gaminstance initiated");
     }
