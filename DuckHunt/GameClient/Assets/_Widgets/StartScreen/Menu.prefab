@@ -713,6 +713,7 @@ MonoBehaviour:
   button1: {fileID: 2072406216882246411}
   button2: {fileID: 2072406215722894514}
   loadingtext: {fileID: 2072406216162695827}
+  HUD: {fileID: 2072406216257186997}
 --- !u!1 &2072406216510884974
 GameObject:
   m_ObjectHideFlags: 0

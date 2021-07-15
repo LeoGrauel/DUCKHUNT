@@ -9925,12 +9925,14 @@ MonoBehaviour:
     type: 3}
   recoil: {fileID: 2645908907006705133}
   reloadA: {fileID: 8514894236107800531}
+  aimcamera: {fileID: 0}
+  shotid: 0
   shot: {fileID: 8300000, guid: c9aa8624199083b4ab6352a5a6d725a0, type: 3}
   emptyAudio: {fileID: 8300000, guid: 331f6b14c16f57d48b511f82ce8f24ff, type: 3}
-  rpm: 500
-  magazine: 20
-  damage: 6
-  reloadTime: 1.1
+  rpm: 800
+  magazine: 25
+  damage: 10
+  reloadTime: 1
 --- !u!111 &2645908907006705133
 Animation:
   m_ObjectHideFlags: 0

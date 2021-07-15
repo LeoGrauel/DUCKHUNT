@@ -29,6 +29,8 @@ public class HUD : MonoBehaviour
     public GameObject right;
     public GameObject left;
 
+    public GameObject slider;
+
     public int maxoffset = 100;
     public float percentage = 0;
 
@@ -65,6 +67,11 @@ public class HUD : MonoBehaviour
         left.GetComponent<RectTransform>().position = Vector3.Lerp(startleft, maxleft, percentage);
     }
 
+    public void setHealth(float percentage)
+    {
+        slider.GetComponent<Slider>().value = percentage;
+    }
+
     public void setAmmo(int value)
     {
         ammo.GetComponent<Text>().text = value.ToString();   
@@ -75,4 +82,15 @@ public class HUD : MonoBehaviour
         pointsblue.GetComponent<Text>().text = blue.ToString();
         pointsred.GetComponent<Text>().text = red.ToString();
     }
+
+    public void updateBlue(int blue)
+    {
+        pointsblue.GetComponent<Text>().text = blue.ToString();
+    }
+
+    public void updateRed(int red)
+    {
+        pointsred.GetComponent<Text>().text = red.ToString();
+    }
+
 }

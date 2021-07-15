@@ -1,12 +1,9 @@
-using NiloxUniversalLib.SQL;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
 using UnityEngine.SceneManagement;
-
-using NiloxUniversalLib.EnDecryption;
 
 public class MainMenu : MonoBehaviour
 {
@@ -86,8 +83,14 @@ public class MainMenu : MonoBehaviour
         hideLoginScreen();
         hideStartScreen();
         hideSettings();
-
+        
         mainScreen.SetActive(true);
+
+        videplayer.Play();
+
+        audioclip.volume = GameInstance.instance.MasterVolume;
+        audioclip.Play();
+
     }
     public void hideMainScreen()
     {
@@ -175,4 +178,9 @@ public class MainMenu : MonoBehaviour
         GameInstance.quitGame();
     }
     #endregion
+
+    public void startSinglePlayer()
+    {
+        SceneManager.LoadScene("Training");
+    }
 }

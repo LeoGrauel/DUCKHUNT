@@ -16,6 +16,8 @@ public class UIManager : MonoBehaviour
     public GameObject button2;
     public GameObject loadingtext;
 
+    public GameObject HUD;
+
     int lstate = 0;
     float lstatedelay = 0.1f;
 
@@ -34,8 +36,6 @@ public class UIManager : MonoBehaviour
 
     public void FixedUpdate()
     {
-        Debug.Log(Time.deltaTime);
-
         lstatedelay -= Time.deltaTime;
         if (lstatedelay <= 0)
         {
@@ -73,6 +73,29 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        if (Gamemode.instance.playoffline) 
+        {
+            if (GameInstance.instance == null)
+            {
+                GameObject gi = new GameObject("GameInstance");
+                gi.AddComponent<GameInstance>();
+                gi.GetComponent<GameInstance>().username = "user";
+            }
+
+            HUD.SetActive(true);
+
+            textfield.SetActive(false);
+            button1.SetActive(false);
+            button2.SetActive(false);
+
+            startMenu.SetActive(false);
+
+            Cursor.lockState = CursorLockMode.Locked;
+            return;
+        }
+
+        HUD.SetActive(false);
+
         textfield.SetActive(false);
         button1.SetActive(false);
         button2.SetActive(false);
@@ -95,6 +118,15 @@ public class UIManager : MonoBehaviour
             ConnectedToServer();
         }
     }
+
+    private void OnDisable()
+    {
+        if (HUD != null)
+        {
+            HUD.SetActive(true);
+        }
+    }
+
 
     public void ConnectedToServer()
     {

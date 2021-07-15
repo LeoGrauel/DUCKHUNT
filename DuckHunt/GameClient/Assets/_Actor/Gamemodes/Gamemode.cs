@@ -17,6 +17,8 @@ public class Gamemode : MonoBehaviour
 
     public GameObject[] respawns;
 
+    public int kills = 0;
+
     private void Awake()
     {
         if (instance == null)

@@ -96,9 +96,12 @@ public class WeaponFunc : MonoBehaviour
         {
             reload = false;
             reloadLock = true;
+
             StartCoroutine(canShootAgain(reloadTime));
+            
             reloadA.Play();
             rounds = magazine;
+
             HUD.instance.setAmmo(rounds);
             return;
         }
@@ -110,7 +113,7 @@ public class WeaponFunc : MonoBehaviour
             {
                 if (!empty)
                 {
-                    this.GetComponent<AudioSource>().PlayOneShot(emptyAudio);
+                    this.GetComponent<AudioSource>().PlayOneShot(emptyAudio, GameInstance.instance.MasterVolume);
                     empty = true;
                 }
                 return;
@@ -123,7 +126,8 @@ public class WeaponFunc : MonoBehaviour
             rounds -= 1;
             HUD.instance.setAmmo(rounds);
             muzzleFlash.Play();
-            this.GetComponent<AudioSource>().PlayOneShot(shot);
+
+            this.GetComponent<AudioSource>().PlayOneShot(shot, GameInstance.instance.MasterVolume);
             recoil.Stop();
             recoil.Play();
 
@@ -132,20 +136,33 @@ public class WeaponFunc : MonoBehaviour
             if (Physics.Raycast(lookpos, direction, out hitresult, gun_range))
             {
                 bulletTrail.transform.LookAt(hitresult.point);
-                Health h = hitresult.collider.gameObject.GetComponentInParent<Health>();
-                if (h != null)
+                if (Gamemode.instance.playoffline)
                 {
-                    Debug.Log(h.ToString());
-
-                    h.Damage(damage);
-                    Instantiate(playerHit, hitresult.point, Quaternion.LookRotation(hitresult.normal));
-                    Debug.Log("Damaged player has now " + h.health);
+                    OFFHealth h = hitresult.collider.gameObject.GetComponentInParent<OFFHealth>();
+                    if (h != null)
+                    {
+                        h.getDamage(damage);
+                        Instantiate(playerHit, hitresult.point, Quaternion.LookRotation(hitresult.normal));
+                    }
+                    else
+                    {
+                        Instantiate(bulletHit, hitresult.point, Quaternion.LookRotation(hitresult.normal));
+                    }
                 }
                 else
                 {
-                    Instantiate(bulletHit, hitresult.point, Quaternion.LookRotation(hitresult.normal));
-                    Debug.Log("Not a player");
+                    Health h = hitresult.collider.gameObject.GetComponentInParent<Health>();
+                    if (h != null)
+                    {
+                        h.Damage(damage);
+                        Instantiate(playerHit, hitresult.point, Quaternion.LookRotation(hitresult.normal));
+                    }
+                    else
+                    {
+                        Instantiate(bulletHit, hitresult.point, Quaternion.LookRotation(hitresult.normal));
+                    }
                 }
+                
             }
             else
             {

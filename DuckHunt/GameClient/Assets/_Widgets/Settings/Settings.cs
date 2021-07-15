@@ -28,14 +28,20 @@ public class Settings : MonoBehaviour
     public GameObject Video;
     public GameObject Audio;
 
+    public Slider mastervolumeslider;
+    public Dropdown resolutiondropdown;
+
+    public Button fullscreenbutton;
 
     // Start is called before the first frame update
     void Start()
     {
+        mastervolumeslider.value = PlayerPrefs.GetFloat("MasterVolume");
+        fullscreenbutton.GetComponentInChildren<Text>().text = GameInstance.instance.fullscreen.ToString();
+
         hideAccount();
         hideAudio();
         hideVideo();
-
     }
 
     // Update is called once per frame
@@ -43,6 +49,7 @@ public class Settings : MonoBehaviour
     {
         
     }
+
 
     #region show hide
     public static void closeSettings()
@@ -134,8 +141,70 @@ public class Settings : MonoBehaviour
     #endregion
 
 
+    public void updateMasterVolume()
+    {
+        PlayerPrefs.SetFloat("MasterVolume", mastervolumeslider.value);
+        GameInstance.instance.MasterVolume = mastervolumeslider.value;
 
+        Debug.Log(GameInstance.instance.MasterVolume);
+    }
 
+    public void toggleFullscreen()
+    {
+        if (GameInstance.instance.fullscreen)
+        {
+            Screen.fullScreenMode = FullScreenMode.Windowed;
+            GameInstance.instance.fullscreen = false;
+            fullscreenbutton.GetComponentInChildren<Text>().text = GameInstance.instance.fullscreen.ToString();
+            PlayerPrefs.SetInt("Fullscreen", 0);
+        }
+        else
+        {
+            Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
+            GameInstance.instance.fullscreen = true;
+            fullscreenbutton.GetComponentInChildren<Text>().text = GameInstance.instance.fullscreen.ToString();
+            PlayerPrefs.SetInt("Fullscreen", 0);
+        }
+    }
+    public void setResolution()
+    {
+        int[] res = stringToResolution(resolutiondropdown.options[resolutiondropdown.value].text);
+
+        Screen.SetResolution(res[0], res[1], true);
+
+        PlayerPrefs.SetInt("resX", res[0]);
+        PlayerPrefs.SetInt("resY", res[1]);
+    }
+
+    public int[] stringToResolution(string resolution)
+    {
+        int[] res = new int[2];
+        string[] parts = resolution.Split('*');
+
+        if (parts[0] == "848" && parts[1] == "480")
+        {
+            res[0] = 848;
+            res[1] = 480;
+        }
+        if (parts[0] == "1280" && parts[1] == "720")
+        {
+            res[0] = 1280;
+            res[1] = 720;
+        }
+        if (parts[0] == "1920" && parts[1] == "1080")
+        {
+            res[0] = 1920;
+            res[1] = 1080;
+        }
+        if (parts[0] == "2560" && parts[1] == "1440")
+        {
+            res[0] = 2560;
+            res[1] = 1440;
+        }
+
+        return res;
+    }
+    
 
 
 }

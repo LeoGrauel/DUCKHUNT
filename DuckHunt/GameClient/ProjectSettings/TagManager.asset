@@ -7,15 +7,16 @@ TagManager:
   - localPlayer
   - Box
   - lightSource
+  - Duck
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - IgnoreNav
   - Water
   - UI
-  - 
-  - 
+  - Enemy
+  - Lamp Post
   - PostProcessing
   - 
   - 

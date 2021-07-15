@@ -65,8 +65,17 @@ public class ClientHandle : MonoBehaviour
         int id = packet.ReadInt();
         int value = packet.ReadInt();
 
-        GameManager.players[id].GetComponent<Health>().health = value;
-        Debug.Log($"Player {GameManager.players[id].username} took {value} Damage");
+        if (Client.instance.myId == id)
+        {
+            HUD.instance.setHealth((float)value / 100f);
+            Debug.Log("My Health is at " + (float)value / 100f);
+        }
+        else
+        {
+            GameManager.players[id].GetComponent<Health>().health = value;
+            Debug.Log($"Player {GameManager.players[id].username} took {value} Damage");
+        }
+
     }
 
     public static void playerdied(Packet packet)
@@ -89,6 +98,8 @@ public class ClientHandle : MonoBehaviour
         int id = packet.ReadInt();
 
         GameManager.players[id].gameObject.transform.position = Gamemode.instance.getrandomSpawnpoint();
+
+        HUD.instance.setHealth(1);
 
         if (Client.instance.myId == id)
         {

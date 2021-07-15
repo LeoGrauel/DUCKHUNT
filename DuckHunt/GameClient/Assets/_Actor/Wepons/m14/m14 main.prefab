@@ -9915,9 +9915,9 @@ MonoBehaviour:
   shot: {fileID: 8300000, guid: 69dfee57e3702154bb60880aa5947095, type: 3}
   emptyAudio: {fileID: 8300000, guid: 331f6b14c16f57d48b511f82ce8f24ff, type: 3}
   rpm: 200
-  magazine: 5
-  damage: 20
-  reloadTime: 1.1
+  magazine: 7
+  damage: 40
+  reloadTime: 2.5
 --- !u!1 &8772241242649417904
 GameObject:
   m_ObjectHideFlags: 0

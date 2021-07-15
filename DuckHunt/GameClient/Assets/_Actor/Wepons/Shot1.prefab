@@ -62,6 +62,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   muzzleFlash: {fileID: 5170136917471817228}
   bulletTrail: {fileID: 3908613292656574478}
+  audio: {fileID: 8300000, guid: c9aa8624199083b4ab6352a5a6d725a0, type: 3}
 --- !u!82 &141339714175913055
 AudioSource:
   m_ObjectHideFlags: 0

@@ -32,7 +32,7 @@ public class Health : MonoBehaviour
     public void Damage(int ammount, damagetype type = damagetype.normal)
     {
         ClientSend.PlayerDamage(Client.instance.myId, pm.id, ammount);
-        this.GetComponent<AudioSource>().PlayOneShot(hitSound);
+        this.GetComponent<AudioSource>().PlayOneShot(hitSound, GameInstance.instance.MasterVolume);
     }
 
 
