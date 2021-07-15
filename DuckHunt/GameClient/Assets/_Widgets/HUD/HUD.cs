@@ -82,4 +82,15 @@ public class HUD : MonoBehaviour
         pointsblue.GetComponent<Text>().text = blue.ToString();
         pointsred.GetComponent<Text>().text = red.ToString();
     }
+
+    public void updateBlue(int blue)
+    {
+        pointsblue.GetComponent<Text>().text = blue.ToString();
+    }
+
+    public void updateRed(int red)
+    {
+        pointsred.GetComponent<Text>().text = red.ToString();
+    }
+
 }
