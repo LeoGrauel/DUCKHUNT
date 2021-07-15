@@ -110,7 +110,7 @@ namespace GameServer
                 _packet.Write(player.id);
                 _packet.Write(player.health);
 
-                SendTCPDataToAll(player.id, _packet);
+                SendTCPDataToAll(_packet);
             }
         }
 

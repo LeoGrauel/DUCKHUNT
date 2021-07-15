@@ -31,6 +31,12 @@ namespace GameServer
                         Program.Restart();
                         break;
                     }
+                case "l":
+                case "list":
+                    {
+                        
+                        break;
+                    }
                 default:
                     break;
             }
