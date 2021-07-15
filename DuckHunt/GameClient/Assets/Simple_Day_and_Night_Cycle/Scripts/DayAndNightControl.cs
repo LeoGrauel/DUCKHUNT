@@ -167,7 +167,7 @@ public class DayAndNightControl : MonoBehaviour {
 
 		foreach (GameObject g in lightPosts)
 		{
-			g.GetComponentInChildren<Light>().intensity = 1.5F;
+			g.GetComponentInChildren<Light>().intensity = 0.8F;
 		}
 	}
 

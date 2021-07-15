@@ -10719,7 +10719,7 @@ GameObject:
   - component: {fileID: 433575216}
   - component: {fileID: 433575218}
   - component: {fileID: 433575217}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33927,7 +33927,7 @@ PrefabInstance:
       objectReference: {fileID: 85479949}
     - target: {fileID: 11431738, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
       propertyPath: StartDay
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11431738, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
       propertyPath: moonState
