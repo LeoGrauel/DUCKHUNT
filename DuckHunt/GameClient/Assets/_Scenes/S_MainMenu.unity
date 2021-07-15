@@ -341,6 +341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   username: 
+  MasterVolume: 0
 --- !u!4 &225489827
 Transform:
   m_ObjectHideFlags: 0
@@ -353,7 +354,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &407840079
 GameObject:
@@ -515,7 +516,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &590074431
 GameObject:
@@ -914,6 +915,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 628126059}
     m_Modifications:
+    - target: {fileID: 701872286159681409, guid: e4e755c105ac4064f96caa0f891e3ac1,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 701872286159681409, guid: e4e755c105ac4064f96caa0f891e3ac1,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 701872286159681409, guid: e4e755c105ac4064f96caa0f891e3ac1,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444636011567103470, guid: e4e755c105ac4064f96caa0f891e3ac1,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444636011567103470, guid: e4e755c105ac4064f96caa0f891e3ac1,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7891180475061202931, guid: e4e755c105ac4064f96caa0f891e3ac1,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1477,7 +1503,7 @@ Transform:
   - {fileID: 12400475}
   - {fileID: 1649975650}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2028017005
 GameObject:
@@ -1511,7 +1537,7 @@ RectTransform:
   m_Children:
   - {fileID: 590074432}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1696,6 +1722,12 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5616150207117043224, guid: 077371e02792f4144b13160886c46652,
+        type: 3}
+      propertyPath: m_VideoClip
+      value: 
+      objectReference: {fileID: 32900000, guid: ec5c7f674d7d4354c8d080c733a4558e,
+        type: 3}
     - target: {fileID: 5616150207164539923, guid: 077371e02792f4144b13160886c46652,
         type: 3}
       propertyPath: m_IsActive
@@ -1705,6 +1737,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5616150208061962844, guid: 077371e02792f4144b13160886c46652,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 5616150208089765959, guid: 077371e02792f4144b13160886c46652,
+        type: 3}
+      propertyPath: m_Text
+      value: Training
       objectReference: {fileID: 0}
     - target: {fileID: 5616150208168418464, guid: 077371e02792f4144b13160886c46652,
         type: 3}
@@ -1719,7 +1761,7 @@ PrefabInstance:
     - target: {fileID: 5616150208168418464, guid: 077371e02792f4144b13160886c46652,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5616150208168418464, guid: 077371e02792f4144b13160886c46652,
         type: 3}
@@ -1855,6 +1897,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MainMenuCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5616150208270529149, guid: 077371e02792f4144b13160886c46652,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5616150208270529149, guid: 077371e02792f4144b13160886c46652,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5616150208270529149, guid: 077371e02792f4144b13160886c46652,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5616150208270529151, guid: 077371e02792f4144b13160886c46652,
+        type: 3}
+      propertyPath: m_Name
+      value: Training
+      objectReference: {fileID: 0}
+    - target: {fileID: 5616150208834203699, guid: 077371e02792f4144b13160886c46652,
+        type: 3}
+      propertyPath: m_Text
+      value: DUCKWAR
       objectReference: {fileID: 0}
     - target: {fileID: 5616150208839468219, guid: 077371e02792f4144b13160886c46652,
         type: 3}

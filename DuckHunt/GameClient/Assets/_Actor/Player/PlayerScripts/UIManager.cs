@@ -77,6 +77,13 @@ public class UIManager : MonoBehaviour
     {
         if (Gamemode.instance.playoffline) 
         {
+            if (GameInstance.instance == null)
+            {
+                GameObject gi = new GameObject("GameInstance");
+                gi.AddComponent<GameInstance>();
+                gi.GetComponent<GameInstance>().username = "user";
+            }
+
             HUD.SetActive(true);
 
             textfield.SetActive(false);
@@ -85,6 +92,7 @@ public class UIManager : MonoBehaviour
 
             startMenu.SetActive(false);
 
+            Cursor.lockState = CursorLockMode.Locked;
             return;
         }
 

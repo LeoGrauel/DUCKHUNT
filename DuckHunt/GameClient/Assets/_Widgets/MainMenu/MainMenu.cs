@@ -179,4 +179,8 @@ public class MainMenu : MonoBehaviour
     }
     #endregion
 
+    public void startSinglePlayer()
+    {
+        SceneManager.LoadScene("Training");
+    }
 }
