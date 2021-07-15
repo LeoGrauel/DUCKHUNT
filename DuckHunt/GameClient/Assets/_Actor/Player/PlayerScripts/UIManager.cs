@@ -16,6 +16,8 @@ public class UIManager : MonoBehaviour
     public GameObject button2;
     public GameObject loadingtext;
 
+    public GameObject HUD;
+
     int lstate = 0;
     float lstatedelay = 0.1f;
 
@@ -73,6 +75,8 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        HUD.SetActive(false);
+
         textfield.SetActive(false);
         button1.SetActive(false);
         button2.SetActive(false);
@@ -95,6 +99,12 @@ public class UIManager : MonoBehaviour
             ConnectedToServer();
         }
     }
+
+    private void OnDisable()
+    {
+        HUD.SetActive(true);
+    }
+
 
     public void ConnectedToServer()
     {

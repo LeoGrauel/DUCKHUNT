@@ -65,6 +65,11 @@ public class ClientHandle : MonoBehaviour
         int id = packet.ReadInt();
         int value = packet.ReadInt();
 
+        if (Client.instance.myId == id)
+        {
+            HUD.instance.setHealth(100 / value);
+        }
+
         GameManager.players[id].GetComponent<Health>().health = value;
         Debug.Log($"Player {GameManager.players[id].username} took {value} Damage");
     }
