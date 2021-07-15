@@ -28,10 +28,13 @@ public class Settings : MonoBehaviour
     public GameObject Video;
     public GameObject Audio;
 
+    public Slider mastervolumeslider;
 
     // Start is called before the first frame update
     void Start()
     {
+        mastervolumeslider.value = PlayerPrefs.GetFloat("MasterVolume");
+
         hideAccount();
         hideAudio();
         hideVideo();
@@ -135,7 +138,9 @@ public class Settings : MonoBehaviour
 
 
 
-
-
+    public void updateMasterVolume(float value)
+    {
+        PlayerPrefs.SetFloat("MasterVolume", value);
+    }
 
 }

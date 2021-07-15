@@ -6,8 +6,6 @@ using UnityEngine.UI;
 using UnityEngine.Video;
 using UnityEngine.SceneManagement;
 
-using NiloxUniversalLib.EnDecryption;
-
 public class MainMenu : MonoBehaviour
 {
     public static MainMenu instance;
@@ -175,4 +173,5 @@ public class MainMenu : MonoBehaviour
         GameInstance.quitGame();
     }
     #endregion
+
 }

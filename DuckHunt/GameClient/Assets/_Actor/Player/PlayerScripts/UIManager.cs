@@ -75,6 +75,19 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        if (Gamemode.instance.playoffline) 
+        {
+            HUD.SetActive(true);
+
+            textfield.SetActive(false);
+            button1.SetActive(false);
+            button2.SetActive(false);
+
+            startMenu.SetActive(false);
+
+            return;
+        }
+
         HUD.SetActive(false);
 
         textfield.SetActive(false);
