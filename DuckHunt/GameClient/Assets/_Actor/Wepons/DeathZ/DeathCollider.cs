@@ -18,9 +18,17 @@ public class DeathCollider : MonoBehaviour
         foreach(Collider c in colliders)
         {
             PlayerController p = c.gameObject.gameObject.GetComponent<PlayerController>();
-            if (p != null)
+            if (p != null && Gamemode.instance.playoffline == false)
             {
                 ClientSend.PlayerDamage(Client.instance.myId, Client.instance.myId, 1000000);
+            }
+            if (p != null && Gamemode.instance.playoffline)
+            {
+                p.gameObject.GetComponent<OFFPlayerHealth>().getDamage(5);
+                Debug.Log("Damage");
+            }
+            else
+            {
             }
         }
     }

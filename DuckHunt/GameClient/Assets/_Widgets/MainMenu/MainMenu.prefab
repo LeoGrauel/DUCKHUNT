@@ -1906,7 +1906,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Training
+  m_Text: ZombieMode
 --- !u!1 &5616150208121213187
 GameObject:
   m_ObjectHideFlags: 0
@@ -2138,7 +2138,7 @@ GameObject:
   - component: {fileID: 5616150208270529148}
   - component: {fileID: 5616150208270529149}
   m_Layer: 5
-  m_Name: Training
+  m_Name: ZombieMode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
