@@ -32,6 +32,8 @@ public class DayAndNightControl : MonoBehaviour {
 
 	Camera targetCam;
 
+	GameObject[] lightPosts;
+
 	// Use this for initialization
 	void Start () {
 		RenderSettings.ambientMode = UnityEngine.Rendering.AmbientMode.Trilight;
@@ -41,7 +43,7 @@ public class DayAndNightControl : MonoBehaviour {
 				targetCam = c;
 			}
 		}*/
-		targetCam = PlayerController.instance.gameObject.GetComponent<Camera>();
+		
 
 		lightIntensity = directionalLight.intensity; //what's the current intensity of the light
 		starMat = StarDome.GetComponentInChildren<MeshRenderer> ().material;
@@ -52,7 +54,9 @@ public class DayAndNightControl : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
+		targetCam = PlayerController.instance.gameObject.GetComponentInChildren<Camera>();
 		UpdateLight();
 		currentTime += (Time.deltaTime / SecondsInAFullDay) * timeMultiplier;
 		if (currentTime >= 1) {
@@ -78,15 +82,18 @@ public class DayAndNightControl : MonoBehaviour {
 		{
 			intensityMultiplier = 0; //when the sun is below the horizon, or setting, the intensity needs to be 0 or else it'll look weird
 			starMat.color = new Color(1,1,1,Mathf.Lerp(1,0,Time.deltaTime));
+			switchLightOn();
 		}
 		else if (currentTime <= 0.25f) 
 		{
 			intensityMultiplier = Mathf.Clamp01((currentTime - 0.23f) * (1 / 0.02f));
 			starMat.color = new Color(1,1,1,Mathf.Lerp(0,1,Time.deltaTime));
+			switchLightOff();
 		}
 		else if (currentTime <= 0.73f) 
 		{
 			intensityMultiplier = Mathf.Clamp01(1 - ((currentTime - 0.73f) * (1 / 0.02f)));
+			switchLightOff();
 		}
 
 
@@ -151,6 +158,26 @@ public class DayAndNightControl : MonoBehaviour {
 			GUILayout.Box (TimeOfDay ());
 			GUILayout.Box ("Time slider");
 			GUILayout.VerticalSlider (currentTime, 0f, 1f);
+		}
+	}
+
+	void switchLightOn()
+    {
+		lightPosts = GameObject.FindGameObjectsWithTag("lightSource");
+
+		foreach (GameObject g in lightPosts)
+		{
+			g.GetComponentInChildren<Light>().intensity = 1.5F;
+		}
+	}
+
+	void switchLightOff()
+    {
+		lightPosts = GameObject.FindGameObjectsWithTag("lightSource");
+
+		foreach (GameObject g in lightPosts)
+		{
+			g.GetComponentInChildren<Light>().intensity = 0F;
 		}
 	}
 }

@@ -2045,6 +2045,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.017655043, y: 0.005948782, z: 0.012324338}
   m_Center: {x: 0.006332918, y: 0.0005189014, z: 0.006162169}
+--- !u!1 &85479949 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 153028, guid: 1dce2846dc915b44ea1a12401fe517e1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1447205136}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &86905234
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33185,7 +33191,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1412467656}
-  - component: {fileID: 1412467654}
   - component: {fileID: 1412467657}
   m_Layer: 0
   m_Name: NavMesh
@@ -33194,21 +33199,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1412467654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1412467653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5da5f63de0873d44c9485ef137cb8baf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy: {fileID: 0}
-  targetPosition: {fileID: 0}
-  areaMask: 1
 --- !u!4 &1412467656
 Transform:
   m_ObjectHideFlags: 0
@@ -33456,6 +33446,12 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2534964839176971238, guid: 56050171a37b87443bd9b732810996dc, type: 3}
+--- !u!1 &1419458019 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 154664, guid: 1dce2846dc915b44ea1a12401fe517e1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1447205136}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1421917366
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33918,13 +33914,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11431738, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
+      propertyPath: moon
+      value: 
+      objectReference: {fileID: 1762188878}
+    - target: {fileID: 11431738, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
       propertyPath: showUI
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11431738, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
+      propertyPath: StarDome
+      value: 
+      objectReference: {fileID: 85479949}
+    - target: {fileID: 11431738, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
       propertyPath: StartDay
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11431738, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
+      propertyPath: moonState
+      value: 
+      objectReference: {fileID: 1419458019}
     - target: {fileID: 11431738, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
       propertyPath: targetCam
       value: 
@@ -33939,7 +33947,7 @@ PrefabInstance:
       objectReference: {fileID: 116725593}
     - target: {fileID: 11431738, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
       propertyPath: SecondsInAFullDay
-      value: 20
+      value: 120
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
@@ -38925,6 +38933,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.012764678, y: 0.007195117, z: 0.0063613686}
   m_Center: {x: -0.000000013469244, y: -4.2791767e-11, z: 0.00038037362}
+--- !u!1 &1762188878 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 148458, guid: 1dce2846dc915b44ea1a12401fe517e1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1447205136}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1765257160 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7360265758475029750, guid: 9b9428891f3bd70458e79f565f0bd70b,
