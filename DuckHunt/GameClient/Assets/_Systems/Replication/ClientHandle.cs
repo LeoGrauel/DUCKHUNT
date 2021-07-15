@@ -67,12 +67,11 @@ public class ClientHandle : MonoBehaviour
 
         if (Client.instance.myId == id)
         {
-            HUD.instance.setHealth(value / 100);
-            Debug.Log("My Health is at " + value / 100);
+            HUD.instance.setHealth((float)value / 100f);
+            Debug.Log("My Health is at " + (float)value / 100f);
         }
         else
         {
-
             GameManager.players[id].GetComponent<Health>().health = value;
             Debug.Log($"Player {GameManager.players[id].username} took {value} Damage");
         }
