@@ -67,7 +67,7 @@ public class HUD : MonoBehaviour
         left.GetComponent<RectTransform>().position = Vector3.Lerp(startleft, maxleft, percentage);
     }
 
-    public void setHealth(int percentage)
+    public void setHealth(float percentage)
     {
         slider.GetComponent<Slider>().value = percentage;
     }

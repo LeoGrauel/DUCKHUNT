@@ -135,8 +135,6 @@ public class WeaponFunc : MonoBehaviour
                 Health h = hitresult.collider.gameObject.GetComponentInParent<Health>();
                 if (h != null)
                 {
-                    Debug.Log(h.ToString());
-
                     h.Damage(damage);
                     Instantiate(playerHit, hitresult.point, Quaternion.LookRotation(hitresult.normal));
                     Debug.Log("Damaged player has now " + h.health);
