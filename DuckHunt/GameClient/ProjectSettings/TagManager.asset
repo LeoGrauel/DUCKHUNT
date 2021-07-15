@@ -11,11 +11,11 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - IgnoreNav
   - Water
   - UI
-  - 
-  - 
+  - Enemy
+  - Lamp Post
   - PostProcessing
   - 
   - 

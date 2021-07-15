@@ -26,7 +26,7 @@ public class enemyHunt : MonoBehaviour
 
         if (pathFound)
         {
-            NavMesh.
+            
         }
         else
         {
