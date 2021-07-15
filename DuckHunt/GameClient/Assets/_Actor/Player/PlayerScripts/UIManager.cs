@@ -36,8 +36,6 @@ public class UIManager : MonoBehaviour
 
     public void FixedUpdate()
     {
-        Debug.Log(Time.deltaTime);
-
         lstatedelay -= Time.deltaTime;
         if (lstatedelay <= 0)
         {

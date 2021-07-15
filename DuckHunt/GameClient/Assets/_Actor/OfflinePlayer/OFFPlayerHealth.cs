@@ -2,8 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OFFHealth : MonoBehaviour
+public class OFFPlayerHealth : MonoBehaviour
 {
+    public static OFFPlayerHealth instance;
+
+    public void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Debug.LogError("Instance already exists destroying OFFPlayerHealth2");
+            Destroy(gameObject);
+        }
+    }
+
     public bool ALIVE
     {
         get
@@ -19,21 +34,23 @@ public class OFFHealth : MonoBehaviour
         }
     }
 
-    public int health;
+    public float health;
     public int maxhealth;
 
     public bool dorespawn = true;
 
+    public GameObject endscreen;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
 
@@ -41,6 +58,11 @@ public class OFFHealth : MonoBehaviour
     public void getDamage(int value)
     {
         health -= value;
+
+        Debug.Log("Took Damage " + value + " Health: " + health);
+
+
+        HUD.instance.setHealth((float)health / 100);
 
         if (ALIVE == false)
         {
@@ -51,9 +73,11 @@ public class OFFHealth : MonoBehaviour
 
     public void die()
     {
-        Gamemode.instance.kills++;
-        HUD.instance.updateRed(Gamemode.instance.kills);
-        Destroy(gameObject);
+        gameObject.transform.position = Gamemode.instance.deathlocation;
+        Instantiate(endscreen);
+        gameObject.SetActive(false);
     }
+
+    
 
 }

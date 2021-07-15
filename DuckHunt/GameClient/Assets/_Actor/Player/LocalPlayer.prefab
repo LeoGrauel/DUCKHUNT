@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 8772446691771242952}
   - component: {fileID: 6325386139011089068}
   - component: {fileID: 6631346146377165651}
+  - component: {fileID: -4156611531474495126}
   m_Layer: 0
   m_Name: LocalPlayer
   m_TagString: localPlayer
@@ -152,6 +153,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mp5: {fileID: 5106153886177163656}
   m14: {fileID: 7210418148470481435}
+--- !u!114 &-4156611531474495126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7135128349409551598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e0ccc67f341983469e58221f156ed40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  maxhealth: 100
+  dorespawn: 1
+  endscreen: {fileID: 7751264238621616366, guid: f638b82da69cebe4b9c91ccd07eca3f9,
+    type: 3}
 --- !u!1 &7180405253224457795
 GameObject:
   m_ObjectHideFlags: 0

@@ -30,19 +30,17 @@ public class WaveManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (spawning == false)
+        if (spawning == false && countAis() == 0)
         {
+            wave++;
             Debug.Log("Started Wave:" + wave);
             wavetotal = (int)(wave * multiplier);
+            spawns = 0;
             spawning = true;
             StartCoroutine(spawnAi());
         }
 
-        if (countAis() <= 0)
-        {
-            Debug.Log("Wave finished");
-            wave++;
-        }
+        
     }
 
     public void startWave()
@@ -60,7 +58,7 @@ public class WaveManager : MonoBehaviour
         }
 
         spawning = false;
-        Debug.Log("Wave fully spawned");
+        Debug.Log("Wave " + wave + " fully spawned " + spawns);
     }
 
     public void spawnDuck()
