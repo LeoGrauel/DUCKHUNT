@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.1273174, g: 0.13414761, b: 0.12107885, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1851,6 +1851,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5616150207775861080, guid: 077371e02792f4144b13160886c46652,
+        type: 3}
+      propertyPath: m_Text
+      value: Quakmatch
+      objectReference: {fileID: 0}
     - target: {fileID: 5616150208007278853, guid: 077371e02792f4144b13160886c46652,
         type: 3}
       propertyPath: m_IsActive
@@ -1864,7 +1869,7 @@ PrefabInstance:
     - target: {fileID: 5616150208089765959, guid: 077371e02792f4144b13160886c46652,
         type: 3}
       propertyPath: m_Text
-      value: Training
+      value: ZombieMode
       objectReference: {fileID: 0}
     - target: {fileID: 5616150208168418464, guid: 077371e02792f4144b13160886c46652,
         type: 3}

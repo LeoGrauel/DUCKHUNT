@@ -56,6 +56,11 @@ public class DayAndNightControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
+        if (PlayerController.instance == null)
+        {
+			return;
+        }
+
 		targetCam = PlayerController.instance.gameObject.GetComponentInChildren<Camera>();
 		UpdateLight();
 		currentTime += (Time.deltaTime / SecondsInAFullDay) * timeMultiplier;
