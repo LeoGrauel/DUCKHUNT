@@ -1,10 +1,21 @@
 {
   "version": 2,
-  "dgSpecHash": "+PlT8WS+FxmLgzQuZ24jnS8BuyCBhS2+k1vmBgEadAXRVcdEMPxEfRJxoBLSldHORsJ5LXaTApjIXlkCV9we7g==",
+  "dgSpecHash": "xcty8W3UAoxFlnQeIEWo5dffJYr1Lr5mUyyQbKGHO2oDJgvpyf0YsZPvvNLC84rTQXz4NfL5flfHShwZuqJLnQ==",
   "success": true,
-  "projectFilePath": "F:\\.Projects\\.GitHub\\DUCKHUNT\\DuckHunt\\GameServer\\UnityServer\\UnityServer.csproj",
+  "projectFilePath": "F:\\.Projects\\.GitHub\\DUCKHUNT\\DuckHunt\\GameServer\\UnityServer\\GameServer.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\jtmau\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512"
+    "C:\\Users\\jtmau\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\jtmau\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "C:\\Users\\jtmau\\.nuget\\packages\\system.globalization\\4.3.0\\system.globalization.4.3.0.nupkg.sha512",
+    "C:\\Users\\jtmau\\.nuget\\packages\\system.io\\4.3.0\\system.io.4.3.0.nupkg.sha512",
+    "C:\\Users\\jtmau\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
+    "C:\\Users\\jtmau\\.nuget\\packages\\system.reflection.primitives\\4.3.0\\system.reflection.primitives.4.3.0.nupkg.sha512",
+    "C:\\Users\\jtmau\\.nuget\\packages\\system.resources.resourcemanager\\4.3.0\\system.resources.resourcemanager.4.3.0.nupkg.sha512",
+    "C:\\Users\\jtmau\\.nuget\\packages\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512",
+    "C:\\Users\\jtmau\\.nuget\\packages\\system.runtime.extensions\\4.3.0\\system.runtime.extensions.4.3.0.nupkg.sha512",
+    "C:\\Users\\jtmau\\.nuget\\packages\\system.runtime.numerics\\4.3.0\\system.runtime.numerics.4.3.0.nupkg.sha512",
+    "C:\\Users\\jtmau\\.nuget\\packages\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
+    "C:\\Users\\jtmau\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }
